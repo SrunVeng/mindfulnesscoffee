@@ -9,20 +9,39 @@ export default function Menu() {
     const { t, i18n } = useTranslation()
     const prefersReduced = useReducedMotion()
 
-    // unique categories in file order
-    const allCategories = useMemo(() => {
-        const seen = new Set()
-        return data.map(d => d.category).filter(c => !seen.has(c) && seen.add(c))
-    }, [])
-
+    // State first (avoid TDZ issues)
     const [active, setActive] = useState("All")
     const [query, setQuery] = useState("")
 
+    const sameCat = (a, b) =>
+        (a || "").trim().toLowerCase() === (b || "").trim().toLowerCase()
+
+    // Unique categories in file order (NO "All" here)
+    const categories = useMemo(() => {
+        const seen = new Set()
+        return data
+            .map(d => d.category || "")
+            .filter(c => {
+                const k = c.trim().toLowerCase()
+                if (!k || k === "all" || seen.has(k)) return false
+                seen.add(k)
+                return true
+            })
+    }, [])
+
+    // Items (filtered by category + search)
     const items = useMemo(() => {
-        const chosen = active === "All" ? data : data.filter(d => d.category === active)
-        const flat = chosen.flatMap(d => d.items.map(it => ({ ...it, _category: d.category })))
+        const buckets = active === "All"
+            ? data
+            : data.filter(d => sameCat(d.category, active))
+
+        const flat = buckets.flatMap(d =>
+            (d.items || []).map(it => ({ ...it, _category: d.category }))
+        )
+
         const q = query.trim().toLowerCase()
         if (!q) return flat
+
         return flat.filter(it =>
             (it.name?.en || "").toLowerCase().includes(q) ||
             (it.name?.zh || "").toLowerCase().includes(q) ||
@@ -51,17 +70,20 @@ export default function Menu() {
 
             {/* Header card */}
             <motion.div variants={fadeUp} initial="hidden" animate="show" className="rounded-2xl border border-[#e7dbc9] bg-[#fffaf3] p-6 shadow-sm">
-                <h1 className="text-3xl font-extrabold text-[#2d1a14]">{t("menu.title")}</h1>
+                <h1 className="text-3xl font-extrabold text-[#2d1a14]">
+                    {t("menu.title", "Our Menu")}
+                </h1>
 
                 <div className="mt-4 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
                     <div className="flex-1">
-                        <CategoryBar categories={allCategories} active={active} onChange={setActive} />
+                        {/* Pass only real categories; CategoryBar shows "All" */}
+                        <CategoryBar categories={categories} active={active} onChange={setActive} />
                     </div>
 
                     <input
                         value={query}
                         onChange={e => setQuery(e.target.value)}
-                        placeholder={t("menu.search_placeholder")}
+                        placeholder={t("menu.search_placeholder", "Search drinks or food...")}
                         className="w-full md:w-72 px-3 py-2 rounded-xl border border-[#e7dbc9] bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#c9a44c] shadow-sm"
                     />
                 </div>
@@ -69,6 +91,7 @@ export default function Menu() {
 
             {/* Grid */}
             <motion.div
+                key={`${active}-${query}`}
                 variants={stagger}
                 initial="hidden"
                 whileInView="show"
