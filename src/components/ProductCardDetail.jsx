@@ -175,8 +175,10 @@ export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) 
                                 </button>
                             )}
                             <button
+                                type="button"
                                 onClick={onClose}
-                                className="px-4 py-2 rounded-xl border border-[#e7dbc9] hover:bg-[#fffaf3]"
+                                className="px-4 py-2 rounded-xl bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-300 transition"
+                                aria-label="Close"
                             >
                                 Close
                             </button>
