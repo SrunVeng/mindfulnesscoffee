@@ -89,14 +89,14 @@ export default function Menu() {
                 </div>
             </motion.div>
 
-            {/* Grid */}
+            {/* Grid: 2 items per row on mobile, 3 on large screens */}
             <motion.div
                 key={`${active}-${query}`}
                 variants={stagger}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-80px" }}
-                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"
+                className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-6"
             >
                 {items.map(it => (
                     <motion.div key={it.id} variants={fadeUp}>

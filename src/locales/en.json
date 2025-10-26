@@ -68,7 +68,7 @@
     "email": "Email",
     "address": "Address",
     "hours": "Hours",
-    "hours_value": "Daily, 7:00–21:00",
+    "hours_value": "Daily, 7:00AM–6:00PM",
     "map_title": "Map",
     "map_unavailable": "Map unavailable.",
     "hero_alt": "Our space"

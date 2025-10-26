@@ -52,7 +52,7 @@ export default function ProductCard({ item, lang, onAdd }) {
                 whileTap={prefersReduced ? undefined : { scale: 0.99 }}
             >
                 {/* Image */}
-                <div className="w-full h-40 overflow-hidden rounded-t-2xl bg-gray-50">
+                <div className="w-full rounded-t-2xl bg-gray-50">
                     <img
                         src={item.image}
                         alt={name}

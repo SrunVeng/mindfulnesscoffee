@@ -116,7 +116,7 @@ export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) 
                         <img
                             src={item.image}
                             alt={name}
-                            className="w-full h-64 md:h-full object-cover"
+                            className="w-full h-full md:h-full object-cover"
                             loading="lazy"
                         />
                     </div>
