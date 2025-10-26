@@ -41,7 +41,7 @@ export default function Menu() {
     }
 
     return (
-        <section className="relative mx-auto max-w-6xl px-4 py-12">
+        <section className="relative mx-auto max-w-6xl px-8 py-20">
             {/* Ambient background */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
                 <div className="absolute -top-24 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-gradient-to-b from-amber-100 via-orange-50 to-transparent blur-3xl opacity-70" />
