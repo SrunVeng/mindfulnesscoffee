@@ -1,0 +1,85 @@
+[
+  {
+    "category": "Signature",
+    "items": [
+      {
+        "id": "sig-1",
+        "name": { "en": "Pandan Latte", "zh": "香兰拿铁", "km": "ឡាតិ ពន្ធាន់" },
+        "price": 3.8,
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761455308/ice_latte_mockup_cup1_mqyskr.jpg"
+      },
+      {
+        "id": "sig-2",
+        "name": { "en": "Palm Sugar Cappuccino", "zh": "椰糖卡布奇诺", "km": "កាបូឆីណូ ស្ករត្នោត" },
+        "price": 3.9,
+        "image": "/assets/products/palm-cappuccino.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Premium",
+    "items": [
+      {
+        "id": "pre-1",
+        "name": { "en": "Single Origin Pour Over", "zh": "单品手冲", "km": "កាហ្វេដើមតែមួយ ហាន់ដៃ" },
+        "price": 4.5,
+        "image": "/assets/products/pour-over.jpg"
+      }
+    ]
+  },
+  {
+    "category": "Hot",
+    "items": [
+      {
+        "id": "hot-1",
+        "name": { "en": "Americano", "zh": "美式", "km": "អាមេរិកាណូ" },
+        "price": 2.2,
+        "image": "/assets/products/americano.jpg"
+      }
+    ]
+  },
+  {
+    "category": "COLD",
+    "items": [
+      {
+        "id": "cold-1",
+        "name": { "en": "Iced Latte", "zh": "冰拿铁", "km": "ឡាតិ ទឹកកក" },
+        "price": 2.8,
+        "image": "/assets/products/iced-latte.jpg"
+      }
+    ]
+  },
+  {
+    "category": "FRAPPE/SMOOTHIES",
+    "items": [
+      {
+        "id": "fra-1",
+        "name": { "en": "Mocha Frappe", "zh": "摩卡星冰乐", "km": "ម៉ូខា ហ្វ្រ៉ាប៉េ" },
+        "price": 3.5,
+        "image": "/assets/products/mocha-frappe.jpg"
+      }
+    ]
+  },
+  {
+    "category": "TEA/PASSION/SODA",
+    "items": [
+      {
+        "id": "tea-1",
+        "name": { "en": "Passion Fruit Tea", "zh": "百香果茶", "km": "តែ ស្វាយជោង" },
+        "price": 2.5,
+        "image": "/assets/products/passion-tea.jpg"
+      }
+    ]
+  },
+  {
+    "category": "FOOD",
+    "items": [
+      {
+        "id": "food-1",
+        "name": { "en": "Croissant", "zh": "可颂", "km": "ក្រេាសង់" },
+        "price": 2.0,
+        "image": "/assets/products/croissant.jpg"
+      }
+    ]
+  }
+]

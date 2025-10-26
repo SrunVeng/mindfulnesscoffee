@@ -1,0 +1,52 @@
+{
+  "brand": "Mindfulness Coffee",
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "language": "Language"
+  },
+  "home": {
+    "headline": "Brewed with heart. Served with soul.",
+    "cta": "Explore Menu"
+  },
+  "about": {
+    "founders_title": "Our Team",
+    "founders_blurb": "Meet the team behind Mindfulness Coffee.",
+    "title": "Our Story",
+    "body": "“To rule the universe, you must first rule yourself. To rule yourself, you must be able to rule your own mind. To rule your mind, you must practice mindfulness and clear comprehension.” - Maha Ghosananda \n\nThis is a reason for our small coffee shop. We found it on Friday 1st January, 2021. We envision that a cup of coffee that inspires a positive change in people and the community.",
+    "image_alt": "About image"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "tagline": "Questions, catering, or collabs? Drop us a line.",
+    "hours": "Opening Hours",
+    "hours_value": "Mon–Sun, 7:00AM – 6:00PM",
+    "call": "Call",
+    "call_primary": "Call",
+    "get_directions": "Directions",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "map_title": "Map",
+    "map_unavailable": "Map unavailable.",
+    "hero_alt": "Our space"
+  },
+  "menu": {
+    "title": "Menu",
+    "categories": {
+      "Signature": "Signature",
+      "Premium": "Premium",
+      "Hot": "Hot",
+      "COLD": "Cold",
+      "FRAPPE/SMOOTHIES": "Frappe / Smoothies",
+      "TEA/PASSION/SODA": "Tea / Passion / Soda",
+      "FOOD": "Food"
+    },
+    "search_placeholder": "Search drinks…"
+  },
+  "footer": {
+    "legal": "© {{year}} {{brand}}. All rights reserved."
+  }
+}

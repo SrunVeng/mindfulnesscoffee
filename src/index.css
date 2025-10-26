@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+:root {
+    --brand-from: #62B672;
+    --brand-to: #1F4D28;
+}
+
+/* Handy utilities */
+.bg-brand-gradient { background: linear-gradient(90deg, var(--brand-from), var(--brand-to)); }
+.text-brand { color: var(--brand-to); }
+.border-brand { border-color: var(--brand-from); }

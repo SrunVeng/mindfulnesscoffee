@@ -1,0 +1,52 @@
+{
+  "brand": "森林咖啡",
+  "nav": {
+    "home": "首页",
+    "menu": "菜单",
+    "about": "关于我们",
+    "contact": "联系",
+    "language": "语言"
+  },
+  "home": {
+    "headline": "一杯用心烘焙，一口灵魂香气。",
+    "cta": "查看菜单"
+  },
+  "about": {
+    "founders_title": "我们的团队",
+    "founders_blurb": "认识“森林咖啡”背后的团队。",
+    "title": "我们的故事",
+    "body": "我们精选道德采购的咖啡豆，融合柬埔寨的灵感风味。",
+    "image_alt": "关于我们的图片"
+  },
+  "contact": {
+    "title": "联系与位置",
+    "tagline": "有问题或合作需求？欢迎联系。",
+    "hours": "营业时间",
+    "hours_value": "周一至周日，7:00 – 21:00",
+    "call": "拨打",
+    "call_primary": "拨打电话",
+    "get_directions": "获取路线",
+    "phone": "电话",
+    "email": "邮箱",
+    "address": "地址",
+    "map_title": "地图",
+    "map_unavailable": "地图不可用。",
+    "hero_alt": "我们的空间"
+  },
+  "menu": {
+    "title": "菜单",
+    "categories": {
+      "Signature": "招牌",
+      "Premium": "精品",
+      "Hot": "热饮",
+      "COLD": "冷饮",
+      "FRAPPE/SMOOTHIES": "星冰乐 / 思慕雪",
+      "TEA/PASSION/SODA": "茶 / 百香果 / 汽水",
+      "FOOD": "餐食"
+    },
+    "search_placeholder": "搜索饮品…"
+  },
+  "footer": {
+    "legal": "© {{year}} {{brand}}。保留所有权利。"
+  }
+}
