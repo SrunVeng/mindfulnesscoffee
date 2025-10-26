@@ -5,6 +5,37 @@ import data from "../data/products.json"
 import CategoryBar from "../components/CategoryBar.jsx"
 import ProductCard from "../components/ProductCard.jsx"
 
+// Mobile-only wrapped categories (no horizontal scroll)
+function WrappedCategories({ categories, active, onChange }) {
+    const eq = (a, b) => (a || "").trim().toLowerCase() === (b || "").trim().toLowerCase()
+    const chips = useMemo(() => ["All", ...categories], [categories])
+
+    return (
+        <div className="flex flex-wrap gap-2">
+            {chips.map(cat => {
+                const isActive = eq(cat, active)
+                return (
+                    <button
+                        key={cat}
+                        type="button"
+                        onClick={() => onChange(cat)}
+                        className={[
+                            "px-3 py-1.5 rounded-xl border text-sm transition",
+                            "border-[#e7dbc9]",
+                            isActive
+                                ? "bg-[#2d1a14] text-white"
+                                : "bg-white hover:bg-[#fffaf3] text-[#2d1a14]"
+                        ].join(" ")}
+                        aria-pressed={isActive}
+                    >
+                        {cat}
+                    </button>
+                )
+            })}
+        </div>
+    )
+}
+
 export default function Menu() {
     const { t, i18n } = useTranslation()
     const prefersReduced = useReducedMotion()
@@ -28,6 +59,15 @@ export default function Menu() {
                 return true
             })
     }, [])
+
+    // Reorder for display so Signature/Premium/Hot Drink(s) are first (if present)
+    const displayCategories = useMemo(() => {
+        const norm = s => (s || "").trim().toLowerCase()
+        const priority = ["signature", "premium", "hot drink", "hot drinks"]
+        const pinned = categories.filter(c => priority.includes(norm(c)))
+        const rest = categories.filter(c => !priority.includes(norm(c)))
+        return [...pinned, ...rest]
+    }, [categories])
 
     // Items (filtered by category + search)
     const items = useMemo(() => {
@@ -69,23 +109,56 @@ export default function Menu() {
             </div>
 
             {/* Header card */}
-            <motion.div variants={fadeUp} initial="hidden" animate="show" className="rounded-2xl border border-[#e7dbc9] bg-[#fffaf3] p-6 shadow-sm">
+            <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                className="rounded-2xl border border-[#e7dbc9] bg-[#fffaf3] p-6 shadow-sm"
+            >
                 <h1 className="text-3xl font-extrabold text-[#2d1a14]">
                     {t("menu.title", "Our Menu")}
                 </h1>
 
-                <div className="mt-4 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
-                    <div className="flex-1">
-                        {/* Pass only real categories; CategoryBar shows "All" */}
-                        <CategoryBar categories={categories} active={active} onChange={setActive} />
+                {/* On mobile: wrapped chips (no scroll). On md+: original CategoryBar */}
+                <div className="mt-4 flex flex-col gap-3">
+                    {/* Mobile filter (always visible, wraps to multiple lines) */}
+                    <div className="md:hidden">
+                        <WrappedCategories
+                            categories={displayCategories}
+                            active={active}
+                            onChange={setActive}
+                        />
                     </div>
 
-                    <input
-                        value={query}
-                        onChange={e => setQuery(e.target.value)}
-                        placeholder={t("menu.search_placeholder", "Search drinks or food...")}
-                        className="w-full md:w-72 px-3 py-2 rounded-xl border border-[#e7dbc9] bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#c9a44c] shadow-sm"
-                    />
+                    {/* Desktop/tablet filter */}
+                    <div className="hidden md:flex md:flex-row md:items-center md:gap-6">
+                        <div className="flex-1 min-w-0">
+                            <CategoryBar
+                                categories={displayCategories}
+                                active={active}
+                                onChange={setActive}
+                            />
+                        </div>
+
+                        <input
+                            value={query}
+                            onChange={e => setQuery(e.target.value)}
+                            placeholder={t("menu.search_placeholder", "Search drinks or food...")}
+                            className="w-full md:w-72 md:flex-none md:shrink-0 px-3 py-2 rounded-xl border border-[#e7dbc9] bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#c9a44c] shadow-sm"
+                            aria-label={t("menu.search_aria", "Search menu")}
+                        />
+                    </div>
+
+                    {/* Mobile search (stacked under wrapped chips) */}
+                    <div className="md:hidden">
+                        <input
+                            value={query}
+                            onChange={e => setQuery(e.target.value)}
+                            placeholder={t("menu.search_placeholder", "Search drinks or food...")}
+                            className="w-full px-3 py-2 rounded-xl border border-[#e7dbc9] bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#c9a44c] shadow-sm"
+                            aria-label={t("menu.search_aria", "Search menu")}
+                        />
+                    </div>
                 </div>
             </motion.div>
 
