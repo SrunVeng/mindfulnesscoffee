@@ -4,21 +4,21 @@
     "items": [
       {
         "id": "sig-1",
-        "name": { "en": "Mindfulness Coffee", "zh": "Mindfulness Coffee", "km": "Mindfulness Coffee" },
+        "name": { "en": "Mindfulness Coffee", "zh": "正念咖啡冰", "km": "កាហ្វេសម្មាធិ" },
         "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
-        "image": "/assets/products/mindfulness-coffee.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761469896/Mindfulness_bc8z7o.jpg"
       },
       {
         "id": "sig-2",
-        "name": { "en": "Iced Cafe Trapae", "zh": "Iced Cafe Trapae", "km": "Iced Cafe Trapae" },
+        "name": { "en": "Iced Cafe Trapae", "zh": "发酵糯米咖啡冰", "km": "កាហ្វេត្រប៉ែ" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
-        "image": "/assets/products/iced-cafe-trapae.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761470146/%E1%9E%80%E1%9E%B6%E1%9E%A0%E1%9F%92%E1%9E%9C%E1%9F%81%E1%9E%8F%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9F%89%E1%9F%82_oz8a7b.jpg"
       },
       {
         "id": "sig-3",
-        "name": { "en": "Cafe Trapae Frappe", "zh": "Cafe Trapae Frappe", "km": "Cafe Trapae Frappe" },
+        "name": { "en": "Cafe Trapae Frappe", "zh": "发酵糯米咖啡冰沙", "km": "កាហ្វេត្រប៉ែហ្វ្រាប" },
         "price": { "s": 2.25, "m": 2.99, "l": 3.50 },
-        "image": "/assets/products/cafe-trapae-frappe.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761470354/Trapae_Frappe_cyaiku.png"
       },
       {
         "id": "sig-4",
