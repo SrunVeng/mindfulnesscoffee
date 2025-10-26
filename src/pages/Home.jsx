@@ -63,39 +63,39 @@ export default function Home() {
 
                 {/* Content */}
                 <motion.div {...fadeInUp} className="relative z-10 px-6 text-center max-w-3xl">
-                    <h1 className="text-white text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-sm">
-                        {t("home.heroTitle")}
-                    </h1>
+                    {/*<h1 className="text-white text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-sm">*/}
+                    {/*    {t("home.heroTitle")}*/}
+                    {/*</h1>*/}
 
-                    <p className="mt-4 text-white/90 text-base md:text-lg">
-                        {t("home.heroSubtitle")}
-                    </p>
+                    {/*<p className="mt-4 text-white/90 text-base md:text-lg">*/}
+                    {/*    {t("home.heroSubtitle")}*/}
+                    {/*</p>*/}
 
-                    <div className="mt-7 flex items-center justify-center gap-3">
-                        <Link
-                            to="/menu"
-                            className="
-                inline-flex items-center justify-center rounded-xl
-                bg-[var(--brand-accent)] px-6 py-3 text-white font-semibold
-                shadow-lg shadow-black/20 transition-transform hover:scale-[1.03] active:scale-[0.98]
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black/20
-              "
-                        >
-                            {t("home.cta")}
-                        </Link>
+              {/*      <div className="mt-7 flex items-center justify-center gap-3">*/}
+              {/*          <Link*/}
+              {/*              to="/menu"*/}
+              {/*              className="*/}
+              {/*  inline-flex items-center justify-center rounded-xl*/}
+              {/*  bg-[var(--brand-accent)] px-6 py-3 text-white font-semibold*/}
+              {/*  shadow-lg shadow-black/20 transition-transform hover:scale-[1.03] active:scale-[0.98]*/}
+              {/*  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black/20*/}
+              {/*"*/}
+              {/*          >*/}
+              {/*              {t("home.cta")}*/}
+              {/*          </Link>*/}
 
-                        <Link
-                            to="/about"
-                            className="
-                inline-flex items-center justify-center rounded-xl
-                bg-white/10 px-6 py-3 text-white backdrop-blur
-                ring-1 ring-white/30 hover:bg-white/20 transition
-                focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70
-              "
-                        >
-                            {t("nav.about")}
-                        </Link>
-                    </div>
+              {/*          <Link*/}
+              {/*              to="/about"*/}
+              {/*              className="*/}
+              {/*  inline-flex items-center justify-center rounded-xl*/}
+              {/*  bg-white/10 px-6 py-3 text-white backdrop-blur*/}
+              {/*  ring-1 ring-white/30 hover:bg-white/20 transition*/}
+              {/*  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70*/}
+              {/*"*/}
+              {/*          >*/}
+              {/*              {t("nav.about")}*/}
+              {/*          </Link>*/}
+              {/*      </div>*/}
                 </motion.div>
             </section>
 
