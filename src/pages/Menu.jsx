@@ -8,15 +8,21 @@ import ProductCard from "../components/ProductCard.jsx"
 export default function Menu() {
     const { t, i18n } = useTranslation()
     const prefersReduced = useReducedMotion()
-    const allCategories = useMemo(() => data.map(d => d.category), [])
+
+    // unique categories in file order
+    const allCategories = useMemo(() => {
+        const seen = new Set()
+        return data.map(d => d.category).filter(c => !seen.has(c) && seen.add(c))
+    }, [])
+
     const [active, setActive] = useState("All")
     const [query, setQuery] = useState("")
 
     const items = useMemo(() => {
         const chosen = active === "All" ? data : data.filter(d => d.category === active)
         const flat = chosen.flatMap(d => d.items.map(it => ({ ...it, _category: d.category })))
-        if (!query.trim()) return flat
-        const q = query.toLowerCase()
+        const q = query.trim().toLowerCase()
+        if (!q) return flat
         return flat.filter(it =>
             (it.name?.en || "").toLowerCase().includes(q) ||
             (it.name?.zh || "").toLowerCase().includes(q) ||
@@ -44,21 +50,12 @@ export default function Menu() {
             </div>
 
             {/* Header card */}
-            <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                animate="show"
-                className="rounded-2xl border border-[#e7dbc9] bg-[#fffaf3] p-6 shadow-sm"
-            >
+            <motion.div variants={fadeUp} initial="hidden" animate="show" className="rounded-2xl border border-[#e7dbc9] bg-[#fffaf3] p-6 shadow-sm">
                 <h1 className="text-3xl font-extrabold text-[#2d1a14]">{t("menu.title")}</h1>
 
                 <div className="mt-4 flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
                     <div className="flex-1">
-                        <CategoryBar
-                            categories={allCategories}
-                            active={active}
-                            onChange={setActive}
-                        />
+                        <CategoryBar categories={allCategories} active={active} onChange={setActive} />
                     </div>
 
                     <input
@@ -78,7 +75,7 @@ export default function Menu() {
                 viewport={{ once: true, margin: "-80px" }}
                 className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6"
             >
-                {items.map((it) => (
+                {items.map(it => (
                     <motion.div key={it.id} variants={fadeUp}>
                         <ProductCard item={it} lang={i18n.language} />
                     </motion.div>

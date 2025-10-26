@@ -2,7 +2,7 @@ import React, { useMemo } from "react"
 import variables from "../data/variables.json"
 import { useTranslation } from "react-i18next"
 import { Phone, Mail, MapPinned, ExternalLink } from "lucide-react"
-import { SiTelegram, SiFacebook } from "react-icons/si"
+import {SiFacebook, SiTelegram,} from "react-icons/si"
 import { motion, useReducedMotion } from "framer-motion"
 import {
     parsePhones,
@@ -10,6 +10,11 @@ import {
     buildDirectionsUrl,
     safeEmbedSrc,
 } from "../utils/contactUtils"
+
+const normalizeUrl = (u) => {
+    if (!u) return null
+    return /^https?:\/\//i.test(u) ? u : `https://${u}`
+}
 
 export default function Contact() {
     const { t } = useTranslation()
@@ -20,20 +25,31 @@ export default function Contact() {
 
     const phones = useMemo(() => parsePhones(info.phone), [info.phone])
     const primaryTel = phones?.[0]
-    const tgLink = telegramHref(info.telegram)
-    const fbLink = telegramHref(info.facebook) // keeping your utils usage as-is
+    const tgLink = telegramHref(info.telegram) || normalizeUrl(info.telegram)
+    const fbLink = normalizeUrl(info.facebook) // fixed: don't use telegramHref here
     const mapEmbed = safeEmbedSrc(info.map?.embedUrl)
     const directionsUrl = buildDirectionsUrl(info.map?.directionsQuery || info.address)
 
+    // Animations
     const fadeUp = {
         hidden: { opacity: 0, y: prefersReduced ? 0 : 18, filter: "blur(6px)" },
         show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" } },
     }
-
     const stagger = {
         hidden: {},
         show: { transition: { staggerChildren: prefersReduced ? 0 : 0.06, delayChildren: prefersReduced ? 0 : 0.06 } },
     }
+
+    // Consistent button styles
+    const BTN_BASE =
+        "group inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-3 md:h-12 font-medium transition-all " +
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/60 active:scale-[0.98]"
+    const BTN_SOFT =
+        BTN_BASE + " border-[#e7dbc9] bg-[#fffaf3] text-[#2d1a14] shadow-sm hover:-translate-y-0.5 hover:shadow-md"
+    const BTN_OUTLINE =
+        BTN_BASE + " border-[#e7dbc9] bg-white text-[#2d1a14] shadow-sm hover:bg-[#fffaf3] hover:-translate-y-0.5 hover:shadow-md"
+    const BTN_PRIMARY =
+        BTN_BASE + " border-transparent bg-[var(--brand-accent)] text-black shadow-sm hover:-translate-y-0.5 hover:shadow-md"
 
     return (
         <section className="relative mx-auto max-w-6xl px-4 py-12 space-y-10">
@@ -75,10 +91,10 @@ export default function Contact() {
                         variants={fadeUp}
                         href={primaryTel.href}
                         aria-label={t("contact.call_primary", "Call")}
-                        className="group inline-flex items-center justify-center gap-2 rounded-xl border border-[#e7dbc9] bg-[#fffaf3] px-4 py-3 shadow-sm transition hover:shadow md:h-12"
+                        className={BTN_OUTLINE}
                     >
-                        <Phone className="h-4 w-4" />
-                        <span className="font-medium">{t("contact.call", "Call")}</span>
+                        <Phone className="h-4 w-4 shrink-0" />
+                        <span>{t("contact.call", "Call")}</span>
                     </motion.a>
                 )}
 
@@ -88,11 +104,12 @@ export default function Contact() {
                         href={tgLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-2 rounded-xl border border-[#e7dbc9] bg-white px-4 py-3 shadow-sm transition hover:shadow md:h-12"
+                        aria-label={t("contact.telegram", "Telegram")}
+                        className={BTN_OUTLINE}
                     >
-                        <SiTelegram className="h-4 w-4" />
-                        <span className="font-medium">Telegram</span>
-                        <ExternalLink className="h-4 w-4 opacity-70 group-hover:opacity-100" />
+                        <SiTelegram className="h-4 w-4 shrink-0" />
+                        <span>{t("contact.telegram", "Telegram")}</span>
+                        <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
                     </motion.a>
                 )}
 
@@ -102,11 +119,12 @@ export default function Contact() {
                         href={fbLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-2 rounded-xl border border-[#e7dbc9] bg-white px-4 py-3 shadow-sm transition hover:shadow md:h-12"
+                        aria-label={t("contact.facebook", "Facebook")}
+                        className={BTN_OUTLINE}
                     >
-                        <SiFacebook className="h-4 w-4" />
-                        <span className="font-medium">Facebook</span>
-                        <ExternalLink className="h-4 w-4 opacity-70 group-hover:opacity-100" />
+                        <SiFacebook className="h-4 w-4 shrink-0" />
+                        <span>{t("contact.facebook", "Facebook")}</span>
+                        <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
                     </motion.a>
                 )}
 
@@ -116,11 +134,12 @@ export default function Contact() {
                         href={directionsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-white bg-[var(--brand-accent)] shadow-sm transition hover:scale-[1.02] active:scale-[0.98] md:h-12"
+                        aria-label={t("contact.get_directions", "Directions")}
+                        className={BTN_OUTLINE + " hover:scale-[1.02]"}
                     >
-                        <MapPinned className="h-4 w-4" />
-                        <span className="font-medium">{t("contact.get_directions", "Directions")}</span>
-                        <ExternalLink className="h-4 w-4 opacity-70 group-hover:opacity-100" />
+                        <MapPinned className="h-4 w-4 shrink-0" />
+                        <span>{t("contact.get_directions", "Directions")}</span>
+                        <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
                     </motion.a>
                 )}
             </motion.div>
@@ -138,7 +157,7 @@ export default function Contact() {
                     <div className="space-y-8 text-gray-800">
                         {(cfg.contactImage || cfg.aboutImage) && (
                             <img
-                                src={cfg.contactImage || cfg.aboutImage}
+                                src={cfg.logo || cfg.logo}
                                 alt={t("contact.hero_alt", "Our space")}
                                 className="h-52 w-full object-cover rounded-lg ring-1 ring-[#e7dbc9]"
                                 loading="lazy"

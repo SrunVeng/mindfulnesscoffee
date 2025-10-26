@@ -57,30 +57,33 @@
     "image_alt": "关于我们的图片"
   },
   "contact": {
-    "title": "联系与位置",
-    "tagline": "有问题或合作需求？欢迎联系。",
-    "hours": "营业时间",
-    "hours_value": "周一至周日，7:00 – 21:00",
-    "call": "拨打",
+    "title": "联系我们",
+    "tagline": "",
+    "call": "拨打电话",
     "call_primary": "拨打电话",
-    "get_directions": "获取路线",
+    "telegram": "Telegram 电报",
+    "facebook": "Facebook",
+    "get_directions": "导航",
     "phone": "电话",
     "email": "邮箱",
     "address": "地址",
+    "hours": "营业时间",
+    "hours_value": "每天 7:00–21:00",
     "map_title": "地图",
     "map_unavailable": "地图不可用。",
     "hero_alt": "我们的空间"
   },
   "menu": {
     "title": "菜单",
+    "all": "全部",
     "categories": {
-      "Signature": "招牌",
-      "Premium": "精品",
-      "Hot": "热饮",
-      "COLD": "冷饮",
-      "FRAPPE/SMOOTHIES": "星冰乐 / 思慕雪",
-      "TEA/PASSION/SODA": "茶 / 百香果 / 汽水",
-      "FOOD": "餐食"
+      "signature": "招牌",
+      "premium": "精品",
+      "hot": "热饮",
+      "cold": "冷饮",
+      "frappe_smoothies": "星冰乐 / 思慕雪",
+      "tea_passion_soda": "茶 / 百香果 / 汽水",
+      "food": "餐食"
     },
     "search_placeholder": "搜索饮品…"
   },

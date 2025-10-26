@@ -57,30 +57,33 @@
     "image_alt": "About image"
   },
   "contact": {
-    "title": "Contact Us",
-    "tagline": "Questions, catering, or collabs? Drop us a line.",
-    "hours": "Opening Hours",
-    "hours_value": "Mon–Sun, 7:00AM – 6:00PM",
+    "title": "Get in touch",
+    "tagline": "",
     "call": "Call",
     "call_primary": "Call",
+    "telegram": "Telegram",
+    "facebook": "Facebook",
     "get_directions": "Directions",
     "phone": "Phone",
     "email": "Email",
     "address": "Address",
+    "hours": "Hours",
+    "hours_value": "Daily, 7:00–21:00",
     "map_title": "Map",
     "map_unavailable": "Map unavailable.",
     "hero_alt": "Our space"
   },
   "menu": {
     "title": "Menu",
+    "all": "All",
     "categories": {
-      "Signature": "Signature",
-      "Premium": "Premium",
-      "Hot": "Hot",
-      "COLD": "Cold",
-      "FRAPPE/SMOOTHIES": "Frappe / Smoothies",
-      "TEA/PASSION/SODA": "Tea / Passion / Soda",
-      "FOOD": "Food"
+      "signature": "Signature",
+      "premium": "Premium",
+      "hot": "Hot",
+      "cold": "Cold",
+      "frappe_smoothies": "Frappe / Smoothies",
+      "tea_passion_soda": "Tea / Passion / Soda",
+      "food": "Food"
     },
     "search_placeholder": "Search drinks…"
   },

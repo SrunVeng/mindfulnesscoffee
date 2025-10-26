@@ -4,15 +4,33 @@
     "items": [
       {
         "id": "sig-1",
-        "name": { "en": "Pandan Latte", "zh": "香兰拿铁", "km": "ឡាតិ ពន្ធាន់" },
-        "price": 3.8,
-        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761455308/ice_latte_mockup_cup1_mqyskr.jpg"
+        "name": { "en": "Mindfulness Coffee", "zh": "Mindfulness Coffee", "km": "Mindfulness Coffee" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/mindfulness-coffee.jpg"
       },
       {
         "id": "sig-2",
-        "name": { "en": "Palm Sugar Cappuccino", "zh": "椰糖卡布奇诺", "km": "កាបូឆីណូ ស្ករត្នោត" },
-        "price": 3.9,
-        "image": "/assets/products/palm-cappuccino.jpg"
+        "name": { "en": "Iced Cafe Trapae", "zh": "Iced Cafe Trapae", "km": "Iced Cafe Trapae" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/iced-cafe-trapae.jpg"
+      },
+      {
+        "id": "sig-3",
+        "name": { "en": "Cafe Trapae Frappe", "zh": "Cafe Trapae Frappe", "km": "Cafe Trapae Frappe" },
+        "price": { "s": 2.25, "m": 2.99, "l": 3.50 },
+        "image": "/assets/products/cafe-trapae-frappe.jpg"
+      },
+      {
+        "id": "sig-4",
+        "name": { "en": "Trapae Milk Frappe", "zh": "Trapae Milk Frappe", "km": "Trapae Milk Frappe" },
+        "price": { "s": 2.00, "m": 2.75, "l": 3.25 },
+        "image": "/assets/products/trapae-milk-frappe.jpg"
+      },
+      {
+        "id": "sig-5",
+        "name": { "en": "Trapae Green / Red Tea", "zh": "Trapae Green / Red Tea", "km": "Trapae Green / Red Tea" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/trapae-green-red-tea.jpg"
       }
     ]
   },
@@ -21,9 +39,69 @@
     "items": [
       {
         "id": "pre-1",
-        "name": { "en": "Single Origin Pour Over", "zh": "单品手冲", "km": "កាហ្វេដើមតែមួយ ហាន់ដៃ" },
-        "price": 4.5,
-        "image": "/assets/products/pour-over.jpg"
+        "name": { "en": "Bopha Chnas", "zh": "Bopha Chnas", "km": "Bopha Chnas" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/bopha-chnas.jpg"
+      },
+      {
+        "id": "pre-2",
+        "name": { "en": "Champei Siemreap", "zh": "Champei Siemreap", "km": "Champei Siemreap" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/champei-siemreap.jpg"
+      },
+      {
+        "id": "pre-3",
+        "name": { "en": "Cafe Oreo", "zh": "Cafe Oreo", "km": "Cafe Oreo" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/cafe-oreo.jpg"
+      },
+      {
+        "id": "pre-4",
+        "name": { "en": "Yogurt Frappe", "zh": "Yogurt Frappe", "km": "Yogurt Frappe" },
+        "price": { "s": 2.00, "m": 2.75, "l": 3.25 },
+        "image": "/assets/products/yogurt-frappe.jpg"
+      },
+      {
+        "id": "pre-5",
+        "name": { "en": "Yogurt Passion Frappe", "zh": "Yogurt Passion Frappe", "km": "Yogurt Passion Frappe" },
+        "price": { "s": 2.50, "m": 2.99, "l": 3.50 },
+        "image": "/assets/products/yogurt-passion-frappe.jpg"
+      },
+      {
+        "id": "pre-6",
+        "name": { "en": "Yogurt Strawberry Frappe", "zh": "Yogurt Strawberry Frappe", "km": "Yogurt Strawberry Frappe" },
+        "price": { "s": 2.50, "m": 2.99, "l": 3.50 },
+        "image": "/assets/products/yogurt-strawberry-frappe.jpg"
+      },
+      {
+        "id": "pre-7",
+        "name": { "en": "Red Syrup Sterilized Milk", "zh": "Red Syrup Sterilized Milk", "km": "Red Syrup Sterilized Milk" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/red-syrup-milk.jpg"
+      },
+      {
+        "id": "pre-8",
+        "name": { "en": "Brown Sugar Milk Tea", "zh": "Brown Sugar Milk Tea", "km": "Brown Sugar Milk Tea" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/brown-sugar-milk-tea.jpg"
+      },
+      {
+        "id": "pre-9",
+        "name": { "en": "Iced Ovaltine Volcano", "zh": "Iced Ovaltine Volcano", "km": "Iced Ovaltine Volcano" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/ovaltine-volcano.jpg"
+      },
+      {
+        "id": "pre-10",
+        "name": { "en": "Honey Lemon Tea", "zh": "Honey Lemon Tea", "km": "Honey Lemon Tea" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/honey-lemon-tea.jpg"
+      },
+      {
+        "id": "pre-11",
+        "name": { "en": "Matcha Latte (Iced & Hot)", "zh": "Matcha Latte", "km": "Matcha Latte" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/matcha-latte.jpg"
       }
     ]
   },
@@ -32,53 +110,258 @@
     "items": [
       {
         "id": "hot-1",
-        "name": { "en": "Americano", "zh": "美式", "km": "អាមេរិកាណូ" },
-        "price": 2.2,
-        "image": "/assets/products/americano.jpg"
+        "name": { "en": "Espresso / Americano", "zh": "Espresso / Americano", "km": "Espresso / Americano" },
+        "price": { "s": 1.00, "m": 1.50 },
+        "image": "/assets/products/hot-americano.jpg"
+      },
+      {
+        "id": "hot-2",
+        "name": { "en": "Hot Fresh Milk", "zh": "Hot Fresh Milk", "km": "Hot Fresh Milk" },
+        "price": { "s": 1.25, "m": 1.99 },
+        "image": "/assets/products/hot-fresh-milk.jpg"
+      },
+      {
+        "id": "hot-3",
+        "name": { "en": "Condensed Milk Coffee", "zh": "Condensed Milk Coffee", "km": "Condensed Milk Coffee" },
+        "price": { "s": 1.25, "m": 1.99 },
+        "image": "/assets/products/hot-condensed-milk-coffee.jpg"
+      },
+      {
+        "id": "hot-4",
+        "name": { "en": "Hot Latte", "zh": "Hot Latte", "km": "Hot Latte" },
+        "price": { "s": 1.25, "m": 1.99 },
+        "image": "/assets/products/hot-latte.jpg"
+      },
+      {
+        "id": "hot-5",
+        "name": { "en": "Hot Cappuccino", "zh": "Hot Cappuccino", "km": "Hot Cappuccino" },
+        "price": { "s": 1.25, "m": 1.99 },
+        "image": "/assets/products/hot-cappuccino.jpg"
+      },
+      {
+        "id": "hot-6",
+        "name": { "en": "Hot Mocha", "zh": "Hot Mocha", "km": "Hot Mocha" },
+        "price": { "s": 1.50, "m": 2.25 },
+        "image": "/assets/products/hot-mocha.jpg"
+      },
+      {
+        "id": "hot-7",
+        "name": { "en": "Hot Vanilla Latte", "zh": "Hot Vanilla Latte", "km": "Hot Vanilla Latte" },
+        "price": { "s": 1.50, "m": 2.25 },
+        "image": "/assets/products/hot-vanilla-latte.jpg"
+      },
+      {
+        "id": "hot-8",
+        "name": { "en": "Hot Caramel Latte", "zh": "Hot Caramel Latte", "km": "Hot Caramel Latte" },
+        "price": { "s": 1.50, "m": 2.25 },
+        "image": "/assets/products/hot-caramel-latte.jpg"
+      },
+      {
+        "id": "hot-9",
+        "name": { "en": "Hot Chocolate Latte", "zh": "Hot Chocolate Latte", "km": "Hot Chocolate Latte" },
+        "price": { "s": 1.50, "m": 2.25 },
+        "image": "/assets/products/hot-chocolate-latte.jpg"
+      },
+      {
+        "id": "hot-10",
+        "name": { "en": "Hot Green Tea Latte", "zh": "Hot Green Tea Latte", "km": "Hot Green Tea Latte" },
+        "price": { "s": 1.50, "m": 2.25 },
+        "image": "/assets/products/hot-green-tea-latte.jpg"
+      },
+      {
+        "id": "hot-11",
+        "name": { "en": "Hot Lemon Tea", "zh": "Hot Lemon Tea", "km": "Hot Lemon Tea" },
+        "price": { "s": 1.25, "m": 1.99 },
+        "image": "/assets/products/hot-lemon-tea.jpg"
+      },
+      {
+        "id": "hot-12",
+        "name": { "en": "Hot Honey Lemon Tea", "zh": "Hot Honey Lemon Tea", "km": "Hot Honey Lemon Tea" },
+        "price": { "s": 1.50, "m": 2.25 },
+        "image": "/assets/products/hot-honey-lemon-tea.jpg"
       }
     ]
   },
   {
-    "category": "COLD",
+    "category": "Cold",
     "items": [
       {
         "id": "cold-1",
-        "name": { "en": "Iced Latte", "zh": "冰拿铁", "km": "ឡាតិ ទឹកកក" },
-        "price": 2.8,
+        "name": { "en": "Iced Fresh Milk", "zh": "Iced Fresh Milk", "km": "Iced Fresh Milk" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-fresh-milk.jpg"
+      },
+      {
+        "id": "cold-2",
+        "name": { "en": "Iced Americano", "zh": "Iced Americano", "km": "Iced Americano" },
+        "price": { "s": 1.00, "m": 1.50, "l": 1.99 },
+        "image": "/assets/products/iced-americano.jpg"
+      },
+      {
+        "id": "cold-3",
+        "name": { "en": "Condensed Milk Coffee", "zh": "Condensed Milk Coffee", "km": "Condensed Milk Coffee" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-condensed-milk-coffee.jpg"
+      },
+      {
+        "id": "cold-4",
+        "name": { "en": "Iced Latte", "zh": "Iced Latte", "km": "Iced Latte" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
         "image": "/assets/products/iced-latte.jpg"
+      },
+      {
+        "id": "cold-5",
+        "name": { "en": "Iced Cappuccino", "zh": "Iced Cappuccino", "km": "Iced Cappuccino" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-cappuccino.jpg"
+      },
+      {
+        "id": "cold-6",
+        "name": { "en": "Iced Mocha Coffee", "zh": "Iced Mocha Coffee", "km": "Iced Mocha Coffee" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/iced-mocha.jpg"
+      },
+      {
+        "id": "cold-7",
+        "name": { "en": "Iced Vanilla Coffee", "zh": "Iced Vanilla Coffee", "km": "Iced Vanilla Coffee" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/iced-vanilla-coffee.jpg"
+      },
+      {
+        "id": "cold-8",
+        "name": { "en": "Iced Caramel Coffee", "zh": "Iced Caramel Coffee", "km": "Iced Caramel Coffee" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/iced-caramel-coffee.jpg"
+      },
+      {
+        "id": "cold-9",
+        "name": { "en": "Iced Chocolate", "zh": "Iced Chocolate", "km": "Iced Chocolate" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/iced-chocolate.jpg"
+      },
+      {
+        "id": "cold-10",
+        "name": { "en": "Iced Spanish Latte", "zh": "Iced Spanish Latte", "km": "Iced Spanish Latte" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/iced-spanish-latte.jpg"
       }
     ]
   },
   {
-    "category": "FRAPPE/SMOOTHIES",
+    "category": "Frappe/Smothies",
     "items": [
       {
         "id": "fra-1",
-        "name": { "en": "Mocha Frappe", "zh": "摩卡星冰乐", "km": "ម៉ូខា ហ្វ្រ៉ាប៉េ" },
-        "price": 3.5,
-        "image": "/assets/products/mocha-frappe.jpg"
+        "name": { "en": "Milk Frappe", "zh": "Milk Frappe", "km": "Milk Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/milk-frappe.jpg"
+      },
+      {
+        "id": "fra-2",
+        "name": { "en": "Coffee Frappe", "zh": "Coffee Frappe", "km": "Coffee Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/coffee-frappe.jpg"
+      },
+      {
+        "id": "fra-3",
+        "name": { "en": "Cappuccino Frappe", "zh": "Cappuccino Frappe", "km": "Cappuccino Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/cappuccino-frappe.jpg"
+      },
+      {
+        "id": "fra-4",
+        "name": { "en": "Mocha Coffee Frappe", "zh": "Mocha Coffee Frappe", "km": "Mocha Coffee Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/mocha-coffee-frappe.jpg"
+      },
+      {
+        "id": "fra-5",
+        "name": { "en": "Vanilla Coffee Frappe", "zh": "Vanilla Coffee Frappe", "km": "Vanilla Coffee Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/vanilla-coffee-frappe.jpg"
+      },
+      {
+        "id": "fra-6",
+        "name": { "en": "Caramel Coffee Frappe", "zh": "Caramel Coffee Frappe", "km": "Caramel Coffee Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/caramel-coffee-frappe.jpg"
+      },
+      {
+        "id": "fra-7",
+        "name": { "en": "Chocolate Frappe", "zh": "Chocolate Frappe", "km": "Chocolate Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/chocolate-frappe.jpg"
+      },
+      {
+        "id": "fra-8",
+        "name": { "en": "Green Tea Frappe", "zh": "Green Tea Frappe", "km": "Green Tea Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/green-tea-frappe.jpg"
+      },
+      {
+        "id": "fra-9",
+        "name": { "en": "Caramel Green Tea Frappe", "zh": "Caramel Green Tea Frappe", "km": "Caramel Green Tea Frappe" },
+        "price": { "s": 1.99, "m": 2.99, "l": 3.50 },
+        "image": "/assets/products/caramel-green-tea-frappe.jpg"
+      },
+      {
+        "id": "fra-10",
+        "name": { "en": "Passion Milk Frappe", "zh": "Passion Milk Frappe", "km": "Passion Milk Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/passion-milk-frappe.jpg"
+      },
+      {
+        "id": "fra-11",
+        "name": { "en": "Strawberry Frappe", "zh": "Strawberry Frappe", "km": "Strawberry Frappe" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/strawberry-frappe.jpg"
       }
     ]
   },
   {
-    "category": "TEA/PASSION/SODA",
+    "category": "Tea/Passion/Soda",
     "items": [
       {
         "id": "tea-1",
-        "name": { "en": "Passion Fruit Tea", "zh": "百香果茶", "km": "តែ ស្វាយជោង" },
-        "price": 2.5,
-        "image": "/assets/products/passion-tea.jpg"
-      }
-    ]
-  },
-  {
-    "category": "FOOD",
-    "items": [
+        "name": { "en": "Iced Lemon Tea", "zh": "Iced Lemon Tea", "km": "Iced Lemon Tea" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-lemon-tea.jpg"
+      },
       {
-        "id": "food-1",
-        "name": { "en": "Croissant", "zh": "可颂", "km": "ក្រេាសង់" },
-        "price": 2.0,
-        "image": "/assets/products/croissant.jpg"
+        "id": "tea-2",
+        "name": { "en": "Iced Green Tea Milk", "zh": "Iced Green Tea Milk", "km": "Iced Green Tea Milk" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-green-tea-milk.jpg"
+      },
+      {
+        "id": "tea-3",
+        "name": { "en": "Iced Red Tea Milk", "zh": "Iced Red Tea Milk", "km": "Iced Red Tea Milk" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-red-tea-milk.jpg"
+      },
+      {
+        "id": "tea-4",
+        "name": { "en": "Iced Passion Milk", "zh": "Iced Passion Milk", "km": "Iced Passion Milk" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-passion-milk.jpg"
+      },
+      {
+        "id": "tea-5",
+        "name": { "en": "Iced Passion Soda", "zh": "Iced Passion Soda", "km": "Iced Passion Soda" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-passion-soda.jpg"
+      },
+      {
+        "id": "tea-6",
+        "name": { "en": "Iced Passion Soda Milk", "zh": "Iced Passion Soda Milk", "km": "Iced Passion Soda Milk" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-passion-soda-milk.jpg"
+      },
+      {
+        "id": "tea-7",
+        "name": { "en": "Iced Strawberry Soda", "zh": "Iced Strawberry Soda", "km": "Iced Strawberry Soda" },
+        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "image": "/assets/products/iced-strawberry-soda.jpg"
       }
     ]
   }

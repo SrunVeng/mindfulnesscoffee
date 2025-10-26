@@ -1,24 +1,36 @@
 // src/components/layout/LanguageSwitch.jsx
-// Requires: npm i country-flag-icons
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { setLocale } from '../locales/i18n.js'
 import { GB, KH, CN } from 'country-flag-icons/react/3x2'
 
 const LOCALES = [
-    { id: 'kh', code: 'ខ្មែរ', Flag: KH },
+    { id: 'kh', code: 'ខ្មែរ',  Flag: KH },   // UI id (maps to km)
     { id: 'en', code: 'English', Flag: GB },
-    { id: 'cn', code: '中文', Flag: CN },
+    { id: 'cn', code: '中文',    Flag: CN },   // UI id (maps to zh)
 ]
+
+// helpers: map between UI ids and i18next ids
+const toCanon = (idOrTag = 'en') => {
+    const s = idOrTag.toLowerCase()
+    if (s === 'kh' || s.startsWith('km')) return 'km'
+    if (s === 'cn' || s.startsWith('zh')) return 'zh'
+    return 'en'
+}
+const toUiId = (resolved = 'en') => {
+    const s = resolved.toLowerCase()
+    if (s.startsWith('km')) return 'kh'
+    if (s.startsWith('zh')) return 'cn'
+    return 'en'
+}
 
 export default function LanguageSwitch() {
     const { i18n } = useTranslation()
     const [open, setOpen] = useState(false)
     const ref = useRef(null)
 
-    // normalize (handle 'km' or 'kh')
-    const currentId = (i18n.language || 'kh').startsWith('km') ? 'kh' : i18n.language
-    const current = LOCALES.find(l => l.id === currentId) || LOCALES[0]
+    const currentUiId = toUiId(i18n.resolvedLanguage || i18n.language || 'en')
+    const current = LOCALES.find(l => l.id === currentUiId) || LOCALES[0]
     const CurrentFlag = current.Flag
 
     // close on outside click
@@ -35,7 +47,12 @@ export default function LanguageSwitch() {
         return () => window.removeEventListener('keydown', onEsc)
     }, [open])
 
-    const pick = (id) => { setLocale(id); setOpen(false) }
+    const pick = (uiId) => {
+        // map UI id (kh/cn/en) -> canonical (km/zh/en)
+        const next = toCanon(uiId)
+        setLocale(next) // this calls i18n.changeLanguage internally
+        setOpen(false)
+    }
 
     return (
         <div className="relative" ref={ref}>
@@ -65,7 +82,7 @@ export default function LanguageSwitch() {
                             <button
                                 onClick={() => pick(id)}
                                 className={`w-full flex items-center gap-2 rounded-xl px-3 py-2 text-sm
-                                    hover:bg-[var(--brand-bg)]/60 transition ${id===current.id ? 'font-semibold' : ''}`}
+                            hover:bg-[var(--brand-bg)]/60 transition ${id===currentUiId ? 'font-semibold' : ''}`}
                             >
                                 <Flag className="h-4 w-auto rounded-[2px] shadow-sm" />
                                 <span>{code}</span>

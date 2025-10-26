@@ -6,7 +6,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 export default function About() {
     const { t } = useTranslation()
     const team = variables.team.founders
-    const aboutImage = variables.aboutImage
+    const aboutImage = variables.logo
 
     const prefersReduced = useReducedMotion()
     const { scrollYProgress } = useScroll()

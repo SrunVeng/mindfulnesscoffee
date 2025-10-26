@@ -1,13 +1,39 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState, useMemo } from "react"
 import { createPortal } from "react-dom"
 import { useTranslation } from "react-i18next"
 import { X } from "lucide-react"
 
+function isNumber(n) {
+    return typeof n === "number" && !Number.isNaN(n)
+}
+function getBaseLang(code = "en") {
+    return code.split("-")[0]
+}
+
 export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
     const { i18n } = useTranslation()
-    const code = lang || i18n.language || "en"
+    const code = getBaseLang(lang || i18n.language || "en")
     const name = item?.name?.[code] ?? item?.name?.en ?? "—"
     const desc = item?.desc?.[code] ?? item?.desc?.en ?? ""
+
+    // Build variant list from { s, m, l } or a single number
+    const variants = useMemo(() => {
+        if (!item) return []
+        if (typeof item.price === "object") {
+            const v = []
+            if (isNumber(item.price.s)) v.push({ key: "s", label: "Small", price: item.price.s })
+            if (isNumber(item.price.m)) v.push({ key: "m", label: "Medium", price: item.price.m })
+            if (isNumber(item.price.l)) v.push({ key: "l", label: "Large", price: item.price.l })
+            return v
+        }
+        if (isNumber(item.price)) return [{ key: "one", label: "Regular", price: item.price }]
+        return []
+    }, [item])
+
+    const [size, setSize] = useState(variants[0]?.key)
+    useEffect(() => setSize(variants[0]?.key), [open]) // reset each open
+    const current = variants.find(v => v.key === size) || variants[0]
+
     const closeBtnRef = useRef(null)
     const dialogRef = useRef(null)
 
@@ -49,6 +75,15 @@ export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) 
 
     const handleOverlay = (e) => {
         if (e.target === e.currentTarget) onClose?.()
+    }
+
+    const handleAdd = () => {
+        if (!onAdd || !current) return
+        onAdd({
+            ...item,
+            selectedSize: current.key,
+            selectedPrice: current.price,
+        })
     }
 
     return createPortal(
@@ -93,9 +128,11 @@ export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) 
                             {name}
                         </h2>
 
-                        <div className="mt-2 text-2xl font-extrabold text-[#2d1a14]">
-                            ${item.price?.toFixed?.(2) ?? "—"}
-                        </div>
+                        {current && (
+                            <div className="mt-2 text-2xl font-extrabold text-[#2d1a14]">
+                                ${current.price.toFixed(2)}
+                            </div>
+                        )}
 
                         {desc && (
                             <p className="mt-4 text-[#6b5545] leading-7">
@@ -103,10 +140,35 @@ export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) 
                             </p>
                         )}
 
+                        {/* Size picker */}
+                        {variants.length > 1 && (
+                            <div className="mt-5">
+                                <div className="text-sm text-[#6b5545] mb-2">Size</div>
+                                <div className="flex flex-wrap gap-2">
+                                    {variants.map(v => (
+                                        <button
+                                            key={v.key}
+                                            onClick={() => setSize(v.key)}
+                                            className={[
+                                                "px-3 py-2 rounded-xl border transition",
+                                                size === v.key
+                                                    ? "border-[#1f4d28] bg-[#fffaf3] text-[#2d1a14]"
+                                                    : "border-[#e7dbc9] hover:bg-[#fffaf3]"
+                                            ].join(" ")}
+                                            aria-pressed={size === v.key}
+                                        >
+                                            <span className="font-medium">{v.label}</span>
+                                            <span className="ml-2 text-sm opacity-80">${v.price.toFixed(2)}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
                         <div className="mt-6 flex gap-3">
                             {onAdd && (
                                 <button
-                                    onClick={() => onAdd(item)}
+                                    onClick={handleAdd}
                                     className="px-4 py-2 rounded-xl text-white bg-[var(--brand-accent)] shadow-sm transition hover:scale-[1.02] active:scale-[0.98]"
                                 >
                                     Add to order

@@ -10,10 +10,10 @@ export default function Home() {
 
     // Map available images from variables.json
     const HOME_IMAGES = {
-        hero: data.aboutImage,
+        hero: data.logo,
         farm: data.aboutImage,
         brew: data.contactImage,
-        featured: data.logo,
+        featured: data.feature,
     }
 
     // Parallax for hero background
@@ -163,7 +163,6 @@ export default function Home() {
                 title={t("home.sections.featured.title")}
                 subtitle={t("home.sections.featured.subtitle")}
                 image={HOME_IMAGES.featured}
-                cta={{ to: "/menu", label: t("home.cta") }}
             />
 
             {/* CTA BANNER */}
