@@ -32,4 +32,9 @@ i18n
 applyLangFont(i18n.language)
 i18n.on("languageChanged", applyLangFont)
 
+export const setLocale = (lng)=>{
+    i18n.changeLanguage(lng)
+    localStorage.setItem('locale', lng)
+    document.documentElement.lang = lng === 'en' ? 'en' : (lng === 'cn' ? 'zh-CN' : 'km')
+}
 export default i18n

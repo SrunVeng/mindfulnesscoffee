@@ -1,54 +1,79 @@
-import React, { useState } from "react"
-import { useTranslation } from "react-i18next"
-// import { Flag as FlagIcon } from "lucide-react" // not used
-import { GB as GBFlag, CN as CNFlag, KH as KHFlag } from "country-flag-icons/react/3x2"
+// src/components/layout/LanguageSwitch.jsx
+// Requires: npm i country-flag-icons
+import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { setLocale } from '../locales/i18n.js'
+import { GB, KH, CN } from 'country-flag-icons/react/3x2'
 
-const LANGS = [
-    { code: "en", label: "English", Flag: GBFlag },
-    { code: "zh", label: "中文",    Flag: CNFlag },
-    { code: "km", label: "ខ្មែរ",   Flag: KHFlag }
+const LOCALES = [
+    { id: 'kh', code: 'ខ្មែរ', Flag: KH },
+    { id: 'en', code: 'English', Flag: GB },
+    { id: 'cn', code: '中文', Flag: CN },
 ]
 
-export default function LanguageSwitcher({ compact = false }) {
-    const { i18n, t } = useTranslation()
+export default function LanguageSwitch() {
+    const { i18n } = useTranslation()
     const [open, setOpen] = useState(false)
+    const ref = useRef(null)
 
-    const base = (i18n.language || "en").split("-")[0]
-    const current = LANGS.find(l => l.code === base) || LANGS[0]
+    // normalize (handle 'km' or 'kh')
+    const currentId = (i18n.language || 'kh').startsWith('km') ? 'kh' : i18n.language
+    const current = LOCALES.find(l => l.id === currentId) || LOCALES[0]
+    const CurrentFlag = current.Flag
+
+    // close on outside click
+    useEffect(() => {
+        const onDoc = (e) => { if (!ref.current?.contains(e.target)) setOpen(false) }
+        document.addEventListener('pointerdown', onDoc, { passive: true })
+        return () => document.removeEventListener('pointerdown', onDoc)
+    }, [])
+
+    // close on Esc
+    useEffect(() => {
+        const onEsc = (e) => { if (e.key === 'Escape') setOpen(false) }
+        if (open) window.addEventListener('keydown', onEsc)
+        return () => window.removeEventListener('keydown', onEsc)
+    }, [open])
+
+    const pick = (id) => { setLocale(id); setOpen(false) }
 
     return (
-        <div className="relative">
+        <div className="relative" ref={ref}>
             <button
-                onClick={() => setOpen(o => !o)}
-                className="flex items-center gap-2 px-3 py-2 border rounded-md hover:bg-gray-50"
-                aria-haspopup="menu"
+                type="button"
                 aria-expanded={open}
-                title={t("nav.language")}
+                onClick={() => setOpen(v => !v)}
+                className="flex items-center gap-2 rounded-2xl border border-[var(--ring)] bg-white/90 px-3 py-1.5
+                   hover:bg-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-ink)]/20"
             >
-                <current.Flag className="h-4 w-6 rounded-[2px] shadow-sm" title={current.label} />
-                {!compact && <span className="text-sm">{current.label}</span>}
+                <CurrentFlag className="h-4 w-auto rounded-[2px] shadow-sm" />
+                <span className="text-sm font-medium">{current.code}</span>
+                <svg className="w-4 h-4 opacity-70" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
             </button>
 
-            {open && (
-                <div
-                    className="absolute right-0 mt-2 w-44 bg-white border rounded-md shadow-lg overflow-hidden z-50"
-                    role="menu"
-                >
-                    {LANGS.map((l) => (
-                        <button
-                            key={l.code}
-                            onClick={() => { i18n.changeLanguage(l.code); setOpen(false) }}
-                            className={`w-full px-3 py-2 text-left hover:bg-gray-50 flex items-center gap-2 ${
-                                base === l.code ? "bg-gray-50" : ""
-                            }`}
-                            role="menuitem"
-                        >
-                            <l.Flag className="h-4 w-6 rounded-[2px] shadow-sm" title={l.label} />
-                            <span className="text-sm">{l.label}</span>
-                        </button>
+            {/* Dropdown */}
+            <div
+                className={`absolute right-0 z-50 mt-2 w-28 rounded-2xl border border-[var(--ring)] bg-white/95 backdrop-blur shadow-lg
+                    origin-top-right transition transform
+                    ${open ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}`}
+            >
+                <ul className="p-1">
+                    {LOCALES.map(({ id, code, Flag }) => (
+                        <li key={id}>
+                            <button
+                                onClick={() => pick(id)}
+                                className={`w-full flex items-center gap-2 rounded-xl px-3 py-2 text-sm
+                                    hover:bg-[var(--brand-bg)]/60 transition ${id===current.id ? 'font-semibold' : ''}`}
+                            >
+                                <Flag className="h-4 w-auto rounded-[2px] shadow-sm" />
+                                <span>{code}</span>
+                            </button>
+                        </li>
                     ))}
-                </div>
-            )}
+                </ul>
+            </div>
         </div>
     )
 }

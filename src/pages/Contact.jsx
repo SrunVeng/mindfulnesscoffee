@@ -2,7 +2,8 @@ import React, { useMemo } from "react"
 import variables from "../data/variables.json"
 import { useTranslation } from "react-i18next"
 import { Phone, Mail, MapPinned, ExternalLink } from "lucide-react"
-import { SiTelegram,SiFacebook } from "react-icons/si"
+import { SiTelegram, SiFacebook } from "react-icons/si"
+import { motion, useReducedMotion } from "framer-motion"
 import {
     parsePhones,
     telegramHref,
@@ -12,110 +13,143 @@ import {
 
 export default function Contact() {
     const { t } = useTranslation()
+    const prefersReduced = useReducedMotion()
 
-    const cfg = variables || {}
-    const info = cfg.contact || {}
+    const cfg = variables
+    const info = cfg.contact
 
     const phones = useMemo(() => parsePhones(info.phone), [info.phone])
     const primaryTel = phones?.[0]
     const tgLink = telegramHref(info.telegram)
-    const fbLink = telegramHref(info.facebook)
+    const fbLink = telegramHref(info.facebook) // keeping your utils usage as-is
     const mapEmbed = safeEmbedSrc(info.map?.embedUrl)
     const directionsUrl = buildDirectionsUrl(info.map?.directionsQuery || info.address)
 
+    const fadeUp = {
+        hidden: { opacity: 0, y: prefersReduced ? 0 : 18, filter: "blur(6px)" },
+        show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" } },
+    }
+
+    const stagger = {
+        hidden: {},
+        show: { transition: { staggerChildren: prefersReduced ? 0 : 0.06, delayChildren: prefersReduced ? 0 : 0.06 } },
+    }
 
     return (
-        <section className="mx-auto max-w-6xl px-4 py-12 space-y-10">
-            {/* ---------- Header ---------- */}
-            <header className="flex flex-col gap-2">
+        <section className="relative mx-auto max-w-6xl px-4 py-12 space-y-10">
+            {/* Ambient background aligned with Home */}
+            <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+                <div className="absolute -top-24 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-gradient-to-b from-amber-100 via-orange-50 to-transparent blur-3xl opacity-70" />
+                <div className="absolute bottom-0 right-0 h-56 w-56 rounded-full bg-gradient-to-tr from-amber-200/50 to-white/0 blur-2xl" />
+                <div className="absolute inset-0 mix-blend-multiply [background-image:radial-gradient(#000/6_1px,transparent_1px)] [background-size:12px_12px] opacity-[0.06]" />
+            </div>
 
-                <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">
-          <span className="bg-clip-text text-black">
-            {t("contact.title", "Get in touch")}
-          </span>
-                </h1>
+            {/* Header */}
+            <motion.header
+                variants={stagger}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-100px" }}
+                className="flex flex-col gap-2"
+            >
+                <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold leading-tight">
+                    <span className="bg-clip-text text-black">{t("contact.title", "Get in touch")}</span>
+                </motion.h1>
                 {info.tagline ? (
-                    <p className="max-w-prose text-sm text-gray-600">{info.tagline}</p>
+                    <motion.p variants={fadeUp} className="max-w-prose text-sm text-gray-600">
+                        {info.tagline}
+                    </motion.p>
                 ) : null}
-            </header>
+            </motion.header>
 
-            {/* ---------- Single action bar (no duplicated buttons elsewhere) ---------- */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {/* Single action bar */}
+            <motion.div
+                variants={stagger}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-100px" }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-3"
+            >
                 {primaryTel && (
-                    <a
+                    <motion.a
+                        variants={fadeUp}
                         href={primaryTel.href}
                         aria-label={t("contact.call_primary", "Call")}
-                        className="group inline-flex items-center justify-center gap-2 rounded-xl border bg-white px-4 py-3 shadow-sm transition hover:shadow md:h-12"
+                        className="group inline-flex items-center justify-center gap-2 rounded-xl border border-[#e7dbc9] bg-[#fffaf3] px-4 py-3 shadow-sm transition hover:shadow md:h-12"
                     >
                         <Phone className="h-4 w-4" />
                         <span className="font-medium">{t("contact.call", "Call")}</span>
-                    </a>
+                    </motion.a>
                 )}
 
-
                 {tgLink && (
-                    <a
+                    <motion.a
+                        variants={fadeUp}
                         href={tgLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-2 rounded-xl border bg-white px-4 py-3 shadow-sm transition hover:shadow md:h-12"
+                        className="group inline-flex items-center justify-center gap-2 rounded-xl border border-[#e7dbc9] bg-white px-4 py-3 shadow-sm transition hover:shadow md:h-12"
                     >
                         <SiTelegram className="h-4 w-4" />
                         <span className="font-medium">Telegram</span>
                         <ExternalLink className="h-4 w-4 opacity-70 group-hover:opacity-100" />
-                    </a>
+                    </motion.a>
                 )}
 
                 {fbLink && (
-                    <a
+                    <motion.a
+                        variants={fadeUp}
                         href={fbLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-2 rounded-xl border bg-white px-4 py-3 shadow-sm transition hover:shadow md:h-12"
+                        className="group inline-flex items-center justify-center gap-2 rounded-xl border border-[#e7dbc9] bg-white px-4 py-3 shadow-sm transition hover:shadow md:h-12"
                     >
                         <SiFacebook className="h-4 w-4" />
                         <span className="font-medium">Facebook</span>
                         <ExternalLink className="h-4 w-4 opacity-70 group-hover:opacity-100" />
-                    </a>
+                    </motion.a>
                 )}
 
                 {directionsUrl && (
-                    <a
+                    <motion.a
+                        variants={fadeUp}
                         href={directionsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-white bg-brand-gradient shadow-sm transition hover:opacity-90 md:h-12"
+                        className="group inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-white bg-[var(--brand-accent)] shadow-sm transition hover:scale-[1.02] active:scale-[0.98] md:h-12"
                     >
                         <MapPinned className="h-4 w-4" />
                         <span className="font-medium">{t("contact.get_directions", "Directions")}</span>
                         <ExternalLink className="h-4 w-4 opacity-70 group-hover:opacity-100" />
-                    </a>
+                    </motion.a>
                 )}
-            </div>
+            </motion.div>
 
-            {/* ---------- Main content ---------- */}
+            {/* Main content */}
             <div className="grid gap-8 md:grid-cols-2">
                 {/* Details card */}
-                <div className="rounded-2xl border bg-white p-6 shadow-sm">
+                <motion.div
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-80px" }}
+                    className="rounded-2xl border border-[#e7dbc9] bg-[#fffaf3] p-6 shadow-sm"
+                >
                     <div className="space-y-8 text-gray-800">
-                        {/* Hero image (purely decorative here, no CTAs to avoid duplication) */}
                         {(cfg.contactImage || cfg.aboutImage) && (
-
-                                <img
-                                    src={cfg.contactImage || cfg.aboutImage}
-                                    alt={t("contact.hero_alt", "Our space")}
-                                    className="h-52 w-full object-cover"
-                                    loading="lazy"
-                                />
-
+                            <img
+                                src={cfg.contactImage || cfg.aboutImage}
+                                alt={t("contact.hero_alt", "Our space")}
+                                className="h-52 w-full object-cover rounded-lg ring-1 ring-[#e7dbc9]"
+                                loading="lazy"
+                            />
                         )}
 
-                        {/* Phones */}
                         {phones?.length > 0 && (
                             <section aria-labelledby="phones-heading">
                                 <div className="mb-3 flex items-center gap-2">
-                                    <Phone className="h-4 w-4 text-brand" />
-                                    <h2 id="phones-heading" className="font-semibold">
+                                    <Phone className="h-4 w-4 text-[#2d1a14]" />
+                                    <h2 id="phones-heading" className="font-semibold text-[#2d1a14]">
                                         {t("contact.phone", "Phone")}
                                     </h2>
                                 </div>
@@ -134,12 +168,11 @@ export default function Contact() {
                             </section>
                         )}
 
-                        {/* Email */}
                         {info.email && (
                             <section aria-labelledby="email-heading">
                                 <div className="mb-3 flex items-center gap-2">
-                                    <Mail className="h-4 w-4 text-brand" />
-                                    <h2 id="email-heading" className="font-semibold">
+                                    <Mail className="h-4 w-4 text-[#2d1a14]" />
+                                    <h2 id="email-heading" className="font-semibold text-[#2d1a14]">
                                         {t("contact.email", "Email")}
                                     </h2>
                                 </div>
@@ -151,36 +184,42 @@ export default function Contact() {
                                 </a>
                             </section>
                         )}
-                        {/* Address & Hours */}
+
                         {(info.address || info.hours) && (
                             <section className="grid gap-6 sm:grid-cols-2">
                                 {info.address && (
                                     <div>
-                                        <div className="mb-1 font-semibold">
+                                        <div className="mb-1 font-semibold text-[#2d1a14]">
                                             {t("contact.address", "Address")}
                                         </div>
-                                        <address className="not-italic text-gray-700 whitespace-pre-line">
+                                        <address className="not-italic text-[#6b5545] whitespace-pre-line">
                                             {info.address}
                                         </address>
                                     </div>
                                 )}
                                 <div>
-                                    <div className="mb-1 font-semibold">
+                                    <div className="mb-1 font-semibold text-[#2d1a14]">
                                         {t("contact.hours", "Hours")}
                                     </div>
-                                    <p className="text-gray-700">
+                                    <p className="text-[#6b5545]">
                                         {info.hours || t("contact.hours_value", "Daily, 7:00–21:00")}
                                     </p>
                                 </div>
                             </section>
                         )}
                     </div>
-                </div>
+                </motion.div>
 
-                {/* Map card (embed only; no extra Directions button here to avoid duplication) */}
-                <div className="rounded-2xl border bg-white p-4 shadow-sm">
+                {/* Map card */}
+                <motion.div
+                    variants={fadeUp}
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, margin: "-80px" }}
+                    className="rounded-2xl border border-[#e7dbc9] bg-white p-4 shadow-sm"
+                >
                     {mapEmbed ? (
-                        <div className="overflow-hidden rounded-xl border">
+                        <div className="overflow-hidden rounded-xl border border-[#e7dbc9]">
                             <iframe
                                 title={t("contact.map_title", "Map")}
                                 src={mapEmbed}
@@ -195,7 +234,7 @@ export default function Contact() {
                             {t("contact.map_unavailable", "Map unavailable.")}
                         </div>
                     )}
-                </div>
+                </motion.div>
             </div>
         </section>
     )

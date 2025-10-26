@@ -8,8 +8,46 @@
     "language": "Language"
   },
   "home": {
-    "headline": "Brewed with heart. Served with soul.",
-    "cta": "Explore Menu"
+    "heroTitle": "Brewed with heart. Served with soul.",
+    "heroSubtitle": "Mindfulness Coffee",
+    "cta": "Explore Menu",
+    "cards": {
+      "beans": {
+        "title": "Ethically Sourced Beans",
+        "text": "We partner directly with responsible farms to ensure quality and fairness."
+      },
+      "local": {
+        "title": "Locally Roasted",
+        "text": "Fresh roasts crafted in small batches for peak flavor and aroma."
+      },
+      "cozy": {
+        "title": "Cozy, Mindful Space",
+        "text": "Slow down, breathe, and enjoy a cup designed to brighten your day."
+      }
+    },
+    "stats": {
+      "farmers": "Partner farmers",
+      "profiles": "Flavor profiles",
+      "rating": "Average rating"
+    },
+    "sections": {
+      "farm": {
+        "title": "From Farm to Cup",
+        "subtitle": "Traceable sourcing and long-term relationships across the region."
+      },
+      "brew": {
+        "title": "Brewing with Intention",
+        "subtitle": "Every cup is weighed, timed, and tasted for consistency."
+      },
+      "featured": {
+        "title": "Featured This Week",
+        "subtitle": "Ask our baristas about seasonal specials and limited releases."
+      }
+    },
+    "banner": {
+      "title": "Ready for your next favorite coffee?",
+      "subtitle": "Explore our signature drinks and new arrivals."
+    }
   },
   "about": {
     "founders_title": "Our Team",

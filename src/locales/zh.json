@@ -8,8 +8,46 @@
     "language": "语言"
   },
   "home": {
-    "headline": "一杯用心烘焙，一口灵魂香气。",
-    "cta": "查看菜单"
+    "heroTitle": "一杯用心烘焙，一口灵魂香气。",
+    "heroSubtitle": "森林咖啡",
+    "cta": "查看菜单",
+    "cards": {
+      "beans": {
+        "title": "道德采购咖啡豆",
+        "text": "与负责任的农场直接合作，保证品质与公平。"
+      },
+      "local": {
+        "title": "本地小批量烘焙",
+        "text": "新鲜烘焙，风味与香气在最佳状态。"
+      },
+      "cozy": {
+        "title": "舒适而专注的空间",
+        "text": "放慢脚步，深呼吸，享受为你而调的每一杯。"
+      }
+    },
+    "stats": {
+      "farmers": "合作农户",
+      "profiles": "风味轮廓",
+      "rating": "平均评分"
+    },
+    "sections": {
+      "farm": {
+        "title": "从产地到杯中",
+        "subtitle": "可追溯采购，与区域伙伴建立长期关系。"
+      },
+      "brew": {
+        "title": "以用心之名萃取",
+        "subtitle": "每一杯都经过称量、计时与杯测，确保稳定。"
+      },
+      "featured": {
+        "title": "本周推荐",
+        "subtitle": "向咖啡师咨询季节限定与限量上新。"
+      }
+    },
+    "banner": {
+      "title": "准备好遇见下一杯最爱了吗？",
+      "subtitle": "探索我们的招牌饮品与最新上新。"
+    }
   },
   "about": {
     "founders_title": "我们的团队",
