@@ -2,6 +2,7 @@ import React from "react"
 import variables from "../data/variables.json"
 import { useTranslation } from "react-i18next"
 import { Facebook, Instagram, Send } from "lucide-react"
+import { AiFillTikTok } from "react-icons/ai";
 
 export default function Footer() {
     const { t } = useTranslation()
@@ -9,7 +10,7 @@ export default function Footer() {
     const social = variables.social || {}
     const contact = variables.contact || {}
     const fb = social.facebook
-    const ig = social.instagram
+    const tiktok = social.tiktok
     const telegramHandle = contact.telegram
     const tele = telegramHandle ? `https://t.me/${telegramHandle.replace(/^@/, "")}` : null
 
@@ -18,7 +19,7 @@ export default function Footer() {
             <div className="h-1 bg-brand-gradient"></div>
             <div
                 className="container-narrow px-4 md:px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                {/* Left: Logo + Copyright */}
+                {/* Left: Logo + Copyrtiktokht */}
                 <div className="flex items-center gap-5">
                     <img
                         src={variables.logo}
@@ -30,7 +31,7 @@ export default function Footer() {
                     </span>
                 </div>
 
-                {/* Right: Social links */}
+                {/* Rtiktokht: Social links */}
                 <div className="flex gap-6 text-sm font-medium">
                     {fb && (
                         <a
@@ -45,18 +46,18 @@ export default function Footer() {
                             <span className="hidden sm:inline">{t("contact.facebook")}</span>
                         </a>
                     )}
-                    {ig && (
+                    {tiktok && (
                         <a
-                            href={ig}
+                            href={tiktok}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 hover:opacity-90 transition"
-                            aria-label={t("contact.instagram", {defaultValue: "Instagram"})}
-                            title={t("contact.instagram", {defaultValue: "Instagram"})}
+                            aria-label={t("contact.titok", {defaultValue: "TikTok"})}
+                            title={t("contact.tiktok", {defaultValue: "TikTok"})}
                         >
-                            <Instagram className="w-5 h-5"/>
+                            <AiFillTikTok className="w-5 h-5"/>
                             <span
-                                className="hidden sm:inline">{t("contact.instagram", {defaultValue: "Instagram"})}</span>
+                                className="hidden sm:inline">{t("contact.tiktok", {defaultValue: "TikTok"})}</span>
                         </a>
                     )}
                     {tele && (

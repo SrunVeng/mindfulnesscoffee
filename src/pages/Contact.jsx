@@ -3,6 +3,7 @@ import variables from "../data/variables.json"
 import { useTranslation } from "react-i18next"
 import { Phone, Mail, MapPinned, ExternalLink } from "lucide-react"
 import { SiFacebook, SiTelegram } from "react-icons/si"
+import { AiFillTikTok } from "react-icons/ai";
 import { motion as Motion, useReducedMotion } from "framer-motion"
 import {
     parsePhones,
@@ -21,6 +22,8 @@ const createStagger = (reduced) => ({
     show: { transition: { staggerChildren: reduced ? 0 : 0.06, delayChildren: reduced ? 0 : 0.06 } },
 })
 
+
+
 const normalizeUrl = (u) => {
     if (!u) return null
     return /^https?:\/\//i.test(u) ? u : `https://${u}`
@@ -36,7 +39,9 @@ export default function Contact() {
     const phones = useMemo(() => parsePhones(info.phone), [info.phone])
     const primaryTel = phones?.[0]
     const tgLink = telegramHref(info.telegram) || normalizeUrl(info.telegram)
-    const fbLink = normalizeUrl(info.facebook) // fixed: don't use telegramHref here
+    const fbLink = normalizeUrl(info.facebook)
+    const social = variables.social || {}
+    const tiktok = social.tiktok
     const mapEmbed = safeEmbedSrc(info.map?.embedUrl)
     const directionsUrl = buildDirectionsUrl(info.map?.directionsQuery || info.address)
 
@@ -130,6 +135,21 @@ export default function Contact() {
                         <span>{t("contact.facebook", "Facebook")}</span>
                         <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
                         </Motion.a>
+                )}
+
+                {tiktok && (
+                    <Motion.a
+                        variants={fadeUp}
+                        href={tiktok}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={t("contact.tiktok", "TikTok")}
+                        className={BTN_OUTLINE}
+                    >
+                        <AiFillTikTok className="h-4 w-4 shrink-0" />
+                        <span>{t("contact.Tiktok", "TikTok")}</span>
+                        <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
+                    </Motion.a>
                 )}
 
                 {directionsUrl && (
