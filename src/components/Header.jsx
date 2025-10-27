@@ -10,6 +10,7 @@ const NAV = [
     { to: "/menu", key: "menu" },
     { to: "/about", key: "about" },
     { to: "/contact", key: "contact" },
+    { to: "/gallary", key: "gallary" },
 ]
 
 // Framer Motion variants declared outside the component to avoid re-creation on each render
@@ -82,7 +83,7 @@ export default function Header() {
                 {/* Brand */}
                 <Link to="/" className="group flex items-center gap-2">
                     <img
-                        src={variables.logo}
+                        src={variables.logo_corner}
                         alt={t("brand")}
                         className="h-9 w-9 rounded-xl bg-brand-white shadow-sm ring-1 ring-brand-30 object-cover group-hover:scale-105 transition"
                     />

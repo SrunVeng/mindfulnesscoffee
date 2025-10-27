@@ -5,7 +5,8 @@
     "menu": "Menu",
     "about": "About Us",
     "contact": "Contact Us",
-    "language": "Language"
+    "language": "Language",
+    "gallary": "Gallery"
   },
   "home": {
     "heroTitle": "Brewed with heart. Served with soul.",
@@ -90,5 +91,8 @@
   },
   "footer": {
     "legal": "© {{year}} {{brand}}. All rights reserved."
+  },
+  "gallery": {
+    "title": "Gallery"
   }
 }

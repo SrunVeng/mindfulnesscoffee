@@ -5,7 +5,8 @@
     "menu": "菜单",
     "about": "关于我们",
     "contact": "联系",
-    "language": "语言"
+    "language": "语言",
+    "gallary": "画廊"
   },
   "home": {
     "heroTitle": "一杯用心烘焙，一口灵魂香气。",
@@ -90,5 +91,8 @@
   },
   "footer": {
     "legal": "© {{year}} {{brand}}。保留所有权利。"
+  },
+  "gallery": {
+    "title": "画廊"
   }
 }

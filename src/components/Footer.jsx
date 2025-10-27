@@ -22,7 +22,7 @@ export default function Footer() {
                 {/* Left: Logo + Copyrtiktokht */}
                 <div className="flex items-center gap-5">
                     <img
-                        src={variables.logo}
+                        src={variables.logo_corner}
                         alt={t("brand")}
                         className="h-8 w-8 rounded-lg bg-white shadow-sm ring-1 ring-[var(--ring)] object-cover"
                     />
