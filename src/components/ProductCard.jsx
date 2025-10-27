@@ -1,7 +1,8 @@
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useState, lazy, Suspense } from "react"
 import { useTranslation } from "react-i18next"
 import { motion as Motion, useReducedMotion } from "framer-motion"
-import ProductCardDetail from "./ProductCardDetail.jsx"
+
+const ProductCardDetail = lazy(() => import("./ProductCardDetail.jsx"))
 
 function isNumber(n) {
     return typeof n === "number" && !Number.isNaN(n)
@@ -50,6 +51,7 @@ function ProductCard({ item, lang, onAdd }) {
                 aria-label={`${name}, ${priceLabel}`}
                 whileHover={prefersReduced ? undefined : { y: -2, scale: 1.01 }}
                 whileTap={prefersReduced ? undefined : { scale: 0.99 }}
+                style={{ contentVisibility: "auto" }}
             >
                 {/* Image */}
                 <div className="w-full rounded-t-2xl bg-gray-50">
@@ -75,13 +77,17 @@ function ProductCard({ item, lang, onAdd }) {
                 </div>
             </Motion.div>
 
-            <ProductCardDetail
-                open={open}
-                item={item}
-                lang={code}
-                onClose={() => setOpen(false)}
-                onAdd={onAdd}
-            />
+            {open && (
+                <Suspense fallback={null}>
+                    <ProductCardDetail
+                        open={open}
+                        item={item}
+                        lang={code}
+                        onClose={() => setOpen(false)}
+                        onAdd={onAdd}
+                    />
+                </Suspense>
+            )}
         </>
     )
 }

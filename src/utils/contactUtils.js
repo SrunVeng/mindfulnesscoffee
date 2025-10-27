@@ -2,7 +2,7 @@
 export function parsePhones(raw, countryCode = "+855") {
     if (!raw) return []
     return raw
-        .split(/[\/,|]/) // support "/", "," or "|"
+        .split(/[/,|]/) // support "/", "," or "|"
         .map(s => s.trim())
         .filter(Boolean)
         .map(display => {

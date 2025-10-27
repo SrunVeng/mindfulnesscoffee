@@ -2,14 +2,24 @@ import React, { useMemo } from "react"
 import variables from "../data/variables.json"
 import { useTranslation } from "react-i18next"
 import { Phone, Mail, MapPinned, ExternalLink } from "lucide-react"
-import {SiFacebook, SiTelegram,} from "react-icons/si"
-import { motion, useReducedMotion } from "framer-motion"
+import { SiFacebook, SiTelegram } from "react-icons/si"
+import { motion as Motion, useReducedMotion } from "framer-motion"
 import {
     parsePhones,
     telegramHref,
     buildDirectionsUrl,
     safeEmbedSrc,
 } from "../utils/contactUtils"
+
+// Animation factories for stable objects and reduced-motion support
+const createFadeUp = (reduced) => ({
+    hidden: { opacity: 0, y: reduced ? 0 : 18, filter: "blur(6px)" },
+    show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" } },
+})
+const createStagger = (reduced) => ({
+    hidden: {},
+    show: { transition: { staggerChildren: reduced ? 0 : 0.06, delayChildren: reduced ? 0 : 0.06 } },
+})
 
 const normalizeUrl = (u) => {
     if (!u) return null
@@ -31,14 +41,8 @@ export default function Contact() {
     const directionsUrl = buildDirectionsUrl(info.map?.directionsQuery || info.address)
 
     // Animations
-    const fadeUp = {
-        hidden: { opacity: 0, y: prefersReduced ? 0 : 18, filter: "blur(6px)" },
-        show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" } },
-    }
-    const stagger = {
-        hidden: {},
-        show: { transition: { staggerChildren: prefersReduced ? 0 : 0.06, delayChildren: prefersReduced ? 0 : 0.06 } },
-    }
+    const fadeUp = createFadeUp(prefersReduced)
+    const stagger = createStagger(prefersReduced)
 
     // Consistent button styles
     const BTN_BASE =
@@ -61,25 +65,25 @@ export default function Contact() {
             </div>
 
             {/* Header */}
-            <motion.header
+            <Motion.header
                 variants={stagger}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
                 className="flex flex-col gap-2"
             >
-                <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold leading-tight">
+                <Motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold leading-tight">
                     <span className="bg-clip-text text-black">{t("contact.title", "Get in touch")}</span>
-                </motion.h1>
+                </Motion.h1>
                 {info.tagline ? (
-                    <motion.p variants={fadeUp} className="max-w-prose text-sm text-gray-600">
+                    <Motion.p variants={fadeUp} className="max-w-prose text-sm text-gray-600">
                         {info.tagline}
-                    </motion.p>
+                    </Motion.p>
                 ) : null}
-            </motion.header>
+            </Motion.header>
 
             {/* Single action bar */}
-            <motion.div
+            <Motion.div
                 variants={stagger}
                 initial="hidden"
                 whileInView="show"
@@ -87,7 +91,7 @@ export default function Contact() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-3"
             >
                 {primaryTel && (
-                    <motion.a
+                    <Motion.a
                         variants={fadeUp}
                         href={primaryTel.href}
                         aria-label={t("contact.call_primary", "Call")}
@@ -95,11 +99,11 @@ export default function Contact() {
                     >
                         <Phone className="h-4 w-4 shrink-0" />
                         <span>{t("contact.call", "Call")}</span>
-                    </motion.a>
+                    </Motion.a>
                 )}
 
                 {tgLink && (
-                    <motion.a
+                    <Motion.a
                         variants={fadeUp}
                         href={tgLink}
                         target="_blank"
@@ -110,11 +114,11 @@ export default function Contact() {
                         <SiTelegram className="h-4 w-4 shrink-0" />
                         <span>{t("contact.telegram", "Telegram")}</span>
                         <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
-                    </motion.a>
+                    </Motion.a>
                 )}
 
                 {fbLink && (
-                    <motion.a
+                    <Motion.a
                         variants={fadeUp}
                         href={fbLink}
                         target="_blank"
@@ -125,11 +129,11 @@ export default function Contact() {
                         <SiFacebook className="h-4 w-4 shrink-0" />
                         <span>{t("contact.facebook", "Facebook")}</span>
                         <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
-                    </motion.a>
+                        </Motion.a>
                 )}
 
                 {directionsUrl && (
-                    <motion.a
+                    <Motion.a
                         variants={fadeUp}
                         href={directionsUrl}
                         target="_blank"
@@ -140,14 +144,14 @@ export default function Contact() {
                         <MapPinned className="h-4 w-4 shrink-0" />
                         <span>{t("contact.get_directions", "Directions")}</span>
                         <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
-                    </motion.a>
+                    </Motion.a>
                 )}
-            </motion.div>
+            </Motion.div>
 
             {/* Main content */}
             <div className="grid gap-8 md:grid-cols-2">
                 {/* Details card */}
-                <motion.div
+                <Motion.div
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="show"
@@ -155,12 +159,13 @@ export default function Contact() {
                     className="rounded-2xl border border-[#e7dbc9] bg-[#fffaf3] p-6 shadow-sm"
                 >
                     <div className="space-y-8 text-gray-800">
-                        {(cfg.contactImage || cfg.aboutImage) && (
+                        {(cfg.logo) && (
                             <img
-                                src={cfg.logo || cfg.logo}
+                                src={cfg.logo}
                                 alt={t("contact.hero_alt", "Our space")}
                                 className="h-52 w-full object-cover rounded-lg ring-1 ring-[#e7dbc9]"
                                 loading="lazy"
+                                decoding="async"
                             />
                         )}
 
@@ -227,10 +232,10 @@ export default function Contact() {
                             </section>
                         )}
                     </div>
-                </motion.div>
+                </Motion.div>
 
                 {/* Map card */}
-                <motion.div
+                <Motion.div
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="show"
@@ -253,7 +258,7 @@ export default function Contact() {
                             {t("contact.map_unavailable", "Map unavailable.")}
                         </div>
                     )}
-                </motion.div>
+                </Motion.div>
             </div>
         </section>
     )

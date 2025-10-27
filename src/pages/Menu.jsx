@@ -56,15 +56,16 @@ export default function Menu() {
         return filterItems(active, deferredQuery)
     }, [active, deferredQuery, filterItems])
 
-    const fadeUp = {
-        hidden: { opacity: 0, y: prefersReduced ? 0 : 18, filter: "blur(6px)" },
-        show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" } },
-    }
+    // Memoized animation variants (avoid re-creating objects and drop costly CSS blur)
+    const fadeUp = useMemo(() => ({
+        hidden: { opacity: 0, y: prefersReduced ? 0 : 18 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+    }), [prefersReduced])
 
-    const stagger = {
+    const stagger = useMemo(() => ({
         hidden: {},
         show: { transition: { staggerChildren: prefersReduced ? 0 : 0.05, delayChildren: prefersReduced ? 0 : 0.06 } },
-    }
+    }), [prefersReduced])
 
     return (
         <section className="relative mx-auto max-w-6xl px-8 py-20">
@@ -131,7 +132,6 @@ export default function Menu() {
 
             {/* Grid: 2 items per row on mobile, 3 on large screens */}
             <Motion.div
-                key={`${active}-${query}`}
                 variants={stagger}
                 initial="hidden"
                 whileInView="show"

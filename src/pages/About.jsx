@@ -1,7 +1,17 @@
 import React from "react"
 import variables from "../data/variables.json"
 import { useTranslation } from "react-i18next"
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
+import { motion as Motion, useReducedMotion, useScroll, useTransform } from "framer-motion"
+
+// Animation factories to keep objects stable and avoid re-creation noise
+const createFadeUp = (reduced) => ({
+    hidden: { opacity: 0, y: reduced ? 0 : 20, filter: "blur(6px)" },
+    show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: "easeOut" } },
+})
+const createStagger = (reduced) => ({
+    hidden: {},
+    show: { transition: { staggerChildren: reduced ? 0 : 0.06, delayChildren: reduced ? 0 : 0.08 } },
+})
 
 export default function About() {
     const { t } = useTranslation()
@@ -12,21 +22,14 @@ export default function About() {
     const { scrollYProgress } = useScroll()
     const yBg = useTransform(scrollYProgress, [0, 1], [0, -60])
 
-    const fadeUp = {
-        hidden: { opacity: 0, y: prefersReduced ? 0 : 20, filter: "blur(6px)" },
-        show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.6, ease: "easeOut" } },
-    }
-
-    const stagger = {
-        hidden: {},
-        show: { transition: { staggerChildren: prefersReduced ? 0 : 0.06, delayChildren: prefersReduced ? 0 : 0.08 } },
-    }
+    const fadeUp = createFadeUp(prefersReduced)
+    const stagger = createStagger(prefersReduced)
 
     return (
         <main className="relative">
             {/* HERO (parallax image + tint + subtle texture, aligned with Home) */}
             <section className="relative h-[52vh] min-h-[340px] flex items-center justify-center overflow-hidden bg-[var(--brand-bg)]">
-                <motion.div
+                <Motion.div
                     style={{ y: yBg, backgroundImage: `url(${aboutImage})` }}
                     className="absolute inset-0 bg-cover bg-center scale-110"
                     aria-hidden
@@ -52,7 +55,7 @@ export default function About() {
                     aria-hidden
                 />
 
-                <motion.div
+                <Motion.div
                     variants={fadeUp}
                     initial="hidden"
                     animate="show"
@@ -61,12 +64,12 @@ export default function About() {
                     <h1 className="text-white text-4xl md:text-5xl font-extrabold leading-tight drop-shadow-sm">
                         {t("about.title")}
                     </h1>
-                </motion.div>
+                </Motion.div>
             </section>
 
             {/* STORY CARD */}
             <section className="px-4 -mt-10 md:-mt-14 relative z-10">
-                <motion.div
+                <Motion.div
                     variants={fadeUp}
                     initial="hidden"
                     whileInView="show"
@@ -87,28 +90,28 @@ export default function About() {
                             />
                         </figure>
                     </div>
-                </motion.div>
+                </Motion.div>
             </section>
 
             {/* FOUNDERS */}
             <section className="px-4 mt-12 md:mt-14">
                 <div className="mx-auto max-w-6xl">
-                    <motion.div
+                    <Motion.div
                         variants={stagger}
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, margin: "-100px" }}
                         className="space-y-3"
                     >
-                        <motion.h2 variants={fadeUp} className="text-2xl md:text-3xl font-bold text-[#2d1a14]">
+                        <Motion.h2 variants={fadeUp} className="text-2xl md:text-3xl font-bold text-[#2d1a14]">
                             {t("about.founders_title")}
-                        </motion.h2>
-                        <motion.p variants={fadeUp} className="max-w-prose text-sm text-[#6b5545]">
+                        </Motion.h2>
+                        <Motion.p variants={fadeUp} className="max-w-prose text-sm text-[#6b5545]">
                             {t("about.founders_blurb")}
-                        </motion.p>
-                    </motion.div>
+                        </Motion.p>
+                    </Motion.div>
 
-                    <motion.ul
+                    <Motion.ul
                         role="list"
                         variants={stagger}
                         initial="hidden"
@@ -117,7 +120,7 @@ export default function About() {
                         className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
                     >
                         {team?.map((member, idx) => (
-                            <motion.li
+                            <Motion.li
                                 key={`${member.name}-${idx}`}
                                 variants={fadeUp}
                                 className="group relative rounded-2xl border border-[#e7dbc9] bg-white p-5 shadow-sm hover:shadow-md transition"
@@ -136,9 +139,9 @@ export default function About() {
                                         <div className="text-sm text-[#6b5545]">{member.role}</div>
                                     </figcaption>
                                 </figure>
-                            </motion.li>
+                            </Motion.li>
                         ))}
-                    </motion.ul>
+                    </Motion.ul>
                 </div>
             </section>
 
