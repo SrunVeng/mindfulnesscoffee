@@ -25,7 +25,7 @@ const normalize = (s) =>
         .replace(/^_+|_+$/g, "")          // trim underscores
     || s
 
-export default function CategoryBar({ categories, active, onChange }) {
+function CategoryBar({ categories, active, onChange }) {
     const { t } = useTranslation()
 
     const labelFor = (cat) => {
@@ -44,6 +44,7 @@ export default function CategoryBar({ categories, active, onChange }) {
             {["All", ...categories].map((cat) => (
                 <button
                     key={cat}
+                    type="button"
                     onClick={() => onChange(cat)}
                     className={`px-3 py-1.5 whitespace-nowrap rounded-full border transition
           ${active === cat
@@ -57,3 +58,5 @@ export default function CategoryBar({ categories, active, onChange }) {
         </div>
     )
 }
+
+export default React.memo(CategoryBar)

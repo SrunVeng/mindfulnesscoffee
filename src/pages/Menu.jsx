@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from "react"
+import React, { useMemo, useState, useDeferredValue } from "react"
 import { useTranslation } from "react-i18next"
-import { motion, useReducedMotion } from "framer-motion"
-import data from "../data/products.json"
+import { motion as Motion, useReducedMotion } from "framer-motion"
+import useProducts from "../hooks/useProducts.js"
 import CategoryBar from "../components/CategoryBar.jsx"
 import ProductCard from "../components/ProductCard.jsx"
 
@@ -44,50 +44,17 @@ export default function Menu() {
     const [active, setActive] = useState("All")
     const [query, setQuery] = useState("")
 
-    const sameCat = (a, b) =>
-        (a || "").trim().toLowerCase() === (b || "").trim().toLowerCase()
 
-    // Unique categories in file order (NO "All" here)
-    const categories = useMemo(() => {
-        const seen = new Set()
-        return data
-            .map(d => d.category || "")
-            .filter(c => {
-                const k = c.trim().toLowerCase()
-                if (!k || k === "all" || seen.has(k)) return false
-                seen.add(k)
-                return true
-            })
-    }, [])
+    // Centralized products data and helpers
+    const { displayCategories, filterItems } = useProducts()
 
-    // Reorder for display so Signature/Premium/Hot Drink(s) are first (if present)
-    const displayCategories = useMemo(() => {
-        const norm = s => (s || "").trim().toLowerCase()
-        const priority = ["signature", "premium", "hot drink", "hot drinks"]
-        const pinned = categories.filter(c => priority.includes(norm(c)))
-        const rest = categories.filter(c => !priority.includes(norm(c)))
-        return [...pinned, ...rest]
-    }, [categories])
+    // Defer the query to keep typing snappy on large lists
+    const deferredQuery = useDeferredValue(query)
 
     // Items (filtered by category + search)
     const items = useMemo(() => {
-        const buckets = active === "All"
-            ? data
-            : data.filter(d => sameCat(d.category, active))
-
-        const flat = buckets.flatMap(d =>
-            (d.items || []).map(it => ({ ...it, _category: d.category }))
-        )
-
-        const q = query.trim().toLowerCase()
-        if (!q) return flat
-
-        return flat.filter(it =>
-            (it.name?.en || "").toLowerCase().includes(q) ||
-            (it.name?.zh || "").toLowerCase().includes(q) ||
-            (it.name?.km || "").toLowerCase().includes(q)
-        )
-    }, [active, query])
+        return filterItems(active, deferredQuery)
+    }, [active, deferredQuery, filterItems])
 
     const fadeUp = {
         hidden: { opacity: 0, y: prefersReduced ? 0 : 18, filter: "blur(6px)" },
@@ -109,7 +76,7 @@ export default function Menu() {
             </div>
 
             {/* Header card */}
-            <motion.div
+            <Motion.div
                 variants={fadeUp}
                 initial="hidden"
                 animate="show"
@@ -160,10 +127,10 @@ export default function Menu() {
                         />
                     </div>
                 </div>
-            </motion.div>
+            </Motion.div>
 
             {/* Grid: 2 items per row on mobile, 3 on large screens */}
-            <motion.div
+            <Motion.div
                 key={`${active}-${query}`}
                 variants={stagger}
                 initial="hidden"
@@ -172,11 +139,11 @@ export default function Menu() {
                 className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-6"
             >
                 {items.map(it => (
-                    <motion.div key={it.id} variants={fadeUp}>
+                    <Motion.div key={it.id} variants={fadeUp}>
                         <ProductCard item={it} lang={i18n.language} />
-                    </motion.div>
+                    </Motion.div>
                 ))}
-            </motion.div>
+            </Motion.div>
         </section>
     )
 }

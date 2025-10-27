@@ -10,7 +10,7 @@ function getBaseLang(code = "en") {
     return code.split("-")[0]
 }
 
-export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
+function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
     const { i18n } = useTranslation()
     const code = getBaseLang(lang || i18n.language || "en")
     const name = item?.name?.[code] ?? item?.name?.en ?? "—"
@@ -31,7 +31,8 @@ export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) 
     }, [item])
 
     const [size, setSize] = useState(variants[0]?.key)
-    useEffect(() => setSize(variants[0]?.key), [open]) // reset each open
+    // Reset when opening or when the variants set changes
+    useEffect(() => setSize(variants[0]?.key), [open, variants])
     const current = variants.find(v => v.key === size) || variants[0]
 
     const closeBtnRef = useRef(null)
@@ -102,6 +103,7 @@ export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) 
             >
                 {/* Close */}
                 <button
+                    type="button"
                     ref={closeBtnRef}
                     onClick={onClose}
                     aria-label="Close"
@@ -190,3 +192,5 @@ export default function ProductCardDetail({ open, item, lang, onClose, onAdd }) 
         document.body
     )
 }
+
+export default React.memo(ProductCardDetail)

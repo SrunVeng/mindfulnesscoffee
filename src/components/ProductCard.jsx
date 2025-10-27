@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { motion, useReducedMotion } from "framer-motion"
+import { motion as Motion, useReducedMotion } from "framer-motion"
 import ProductCardDetail from "./ProductCardDetail.jsx"
 
 function isNumber(n) {
@@ -11,7 +11,7 @@ function getBaseLang(code = "en") {
     return code.split("-")[0]
 }
 
-export default function ProductCard({ item, lang, onAdd }) {
+function ProductCard({ item, lang, onAdd }) {
     const { i18n } = useTranslation()
     const [open, setOpen] = useState(false)
     const prefersReduced = useReducedMotion()
@@ -40,7 +40,7 @@ export default function ProductCard({ item, lang, onAdd }) {
 
     return (
         <>
-            <motion.div
+            <Motion.div
                 className="border border-[#e7dbc9] rounded-2xl bg-white hover:shadow-md transition cursor-pointer focus:outline-none focus:ring"
                 onClick={openModal}
                 onKeyDown={keyOpen}
@@ -58,6 +58,8 @@ export default function ProductCard({ item, lang, onAdd }) {
                         alt={name}
                         className="w-full h-full object-cover"
                         loading="lazy"
+                        decoding="async"
+                        sizes="(max-width: 1024px) 50vw, 33vw"
                     />
                 </div>
 
@@ -71,7 +73,7 @@ export default function ProductCard({ item, lang, onAdd }) {
                         <div className="text-xs text-gray-500 mt-1">{item._category}</div>
                     )}
                 </div>
-            </motion.div>
+            </Motion.div>
 
             <ProductCardDetail
                 open={open}
@@ -83,3 +85,15 @@ export default function ProductCard({ item, lang, onAdd }) {
         </>
     )
 }
+
+function shallowEqual(a, b) {
+    if (a === b) return true
+    if (!a || !b) return false
+    return a.id === b.id && a.image === b.image && a._category === b._category && JSON.stringify(a.name) === JSON.stringify(b.name)
+}
+
+export default React.memo(ProductCard, (prev, next) => {
+    if (prev.lang !== next.lang) return false
+    if (prev.onAdd !== next.onAdd) return false
+    return shallowEqual(prev.item, next.item)
+})

@@ -1,20 +1,23 @@
-import React from "react"
+import React, { Suspense, lazy } from "react"
 import Layout from "./components/Layout.jsx"
 import { Routes, Route } from "react-router-dom"
-import Home from "./pages/Home.jsx"
-import Menu from "./pages/Menu.jsx"
-import About from "./pages/About.jsx"
-import Contact from "./pages/Contact.jsx"
+
+const Home = lazy(() => import("./pages/Home.jsx"))
+const Menu = lazy(() => import("./pages/Menu.jsx"))
+const About = lazy(() => import("./pages/About.jsx"))
+const Contact = lazy(() => import("./pages/Contact.jsx"))
 
 export default function App() {
     return (
         <Layout>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/menu" element={<Menu />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/contact" element={<Contact />} />
-            </Routes>
+            <Suspense fallback={<div className="py-12 text-center text-gray-500">Loading…</div>}>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/menu" element={<Menu />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
+            </Suspense>
         </Layout>
     )
 }
