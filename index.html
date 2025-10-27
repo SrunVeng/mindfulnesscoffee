@@ -19,17 +19,32 @@
     >
 
     <style>
-        :root{
+        :root {
             --font-en: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
             --font-zh: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC", system-ui, sans-serif;
             --font-km: "Noto Sans Khmer", "Khmer OS", "Khmer MN", system-ui, sans-serif;
         }
-        /* Switch font by language on the <html> element */
-        .lang-en body { font-family: var(--font-en); }
-        .lang-zh body { font-family: var(--font-zh); }
-        .lang-km body { font-family: var(--font-km); }
+
+        /* Automatically switch font based on <html lang="..."> */
+        html[lang="en"] body {
+            font-family: var(--font-en);
+        }
+        html[lang="zh"] body {
+            font-family: var(--font-zh);
+        }
+        html[lang="km"] body {
+            font-family: var(--font-km);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
     </style>
 </head>
+
 <body class="antialiased">
 <div id="root"></div>
 <script type="module" src="/src/main.jsx"></script>

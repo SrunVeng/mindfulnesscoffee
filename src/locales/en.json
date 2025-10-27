@@ -14,22 +14,22 @@
     "cta": "Explore Menu",
     "cards": {
       "beans": {
-        "title": "Ethically Sourced Beans",
-        "text": "We partner directly with responsible farms to ensure quality and fairness."
+        "title": "100% Arabica Beans",
+        "text": "We care about healthy taste and quality — every cup begins with premium 100% Arabica beans"
       },
       "local": {
-        "title": "Locally Roasted",
-        "text": "Fresh roasts crafted in small batches for peak flavor and aroma."
+        "title": "Fresh Roasted and Brew",
+        "text": "Freshly roasted and brew everyday"
       },
       "cozy": {
-        "title": "Cozy, Mindful Space",
+        "title": "Mindful Area",
         "text": "Slow down, breathe, and enjoy a cup designed to brighten your day."
       }
     },
     "stats": {
-      "farmers": "Partner farmers",
-      "profiles": "Flavor profiles",
-      "rating": "Average rating"
+      "farmers": "Branches",
+      "profiles": "Drink Menu Available",
+      "rating": "Arabica Bean"
     },
     "sections": {
       "farm": {
