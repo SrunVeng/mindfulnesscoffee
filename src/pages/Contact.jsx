@@ -147,7 +147,7 @@ export default function Contact() {
                         className={BTN_OUTLINE}
                     >
                         <AiFillTikTok className="h-4 w-4 shrink-0" />
-                        <span>{t("contact.Tiktok", "TikTok")}</span>
+                        <span>{t("contact.tiktok", "TikTok")}</span>
                         <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
                     </Motion.a>
                 )}
