@@ -193,9 +193,9 @@
       },
       {
         "id": "cold-2",
-        "name": { "en": "Iced Americano", "zh": "Iced Americano", "km": "Iced Americano" },
+        "name": { "en": "Iced Americano", "zh": "美式咖啡", "km": "ការហ្វេខ្មៅទឺកកក" },
         "price": { "s": 1.00, "m": 1.50, "l": 1.99 },
-        "image": "/assets/products/iced-americano.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761467653/Ice_Americano_boydni.jpg"
       },
       {
         "id": "cold-3",
