@@ -13,7 +13,7 @@ const textVariants = {
 
 export default function ScrollSection({ title, subtitle, image, cta, reverse }) {
     return (
-        <section className="w-full bg-[var(--brand-bg)] text-[var(--brand-ink)] py-20">
+        <section className="w-full text-brand-dark py-20">
             <div
                 className={`container mx-auto px-6 flex flex-col md:flex-row items-center gap-12 ${
                     reverse ? "md:flex-row-reverse" : ""
@@ -52,7 +52,7 @@ export default function ScrollSection({ title, subtitle, image, cta, reverse }) 
                         <div>
                             <Link
                                 to={cta.to}
-                                className="inline-block bg-[var(--brand-accent)] text-white px-6 py-3 rounded-xl shadow-md hover:scale-105 transition"
+                                className="inline-block btn-brand px-6 py-3 rounded-xl shadow-md hover:scale-105 transition"
                             >
                                 {cta.label}
                             </Link>

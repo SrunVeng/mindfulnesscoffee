@@ -28,7 +28,7 @@ export default function About() {
     return (
         <main className="relative">
             {/* HERO (parallax image + tint + subtle texture, aligned with Home) */}
-            <section className="relative h-[52vh] min-h-[340px] flex items-center justify-center overflow-hidden bg-[var(--brand-bg)]">
+            <section className="relative isolate z-0 h-[92vh] min-h-[560px] flex items-center justify-center overflow-hidden bg-[var(--brand-bg)]">
                 <Motion.div
                     style={{ y: yBg, backgroundImage: `url(${aboutImage})` }}
                     className="absolute inset-0 bg-cover bg-center scale-110"
@@ -117,7 +117,7 @@ export default function About() {
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, margin: "-80px" }}
-                        className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+                        className="py-6 mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
                     >
                         {team?.map((member, idx) => (
                             <Motion.li

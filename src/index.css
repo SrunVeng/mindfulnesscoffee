@@ -1,11 +1,65 @@
 @import "tailwindcss";
 
 :root {
-    --brand-from: #62B672;
-    --brand-to: #1F4D28;
+  /* Core brand palette (only three colors) */
+  --brand-light: #62B672; /* light green */
+  --brand-dark:  #1F4D28; /* dark green */
+  --brand-white: #ffffff; /* white */
+
+  /* Backwards-compat aliases (kept for existing utilities) */
+  --brand-from: var(--brand-light);
+  --brand-to:   var(--brand-dark);
+
+  /* Common tokens used in components */
+  --ring: var(--brand-light);
+  --brand-ink: var(--brand-dark);
+  /* Subtle brand-tinted surface (very light) */
+  --brand-bg: rgba(98, 182, 114, 0.08);
 }
 
 /* Handy utilities */
 .bg-brand-gradient { background: linear-gradient(90deg, var(--brand-from), var(--brand-to)); }
 .text-brand { color: var(--brand-to); }
 .border-brand { border-color: var(--brand-from); }
+
+/* New utilities for consistency */
+.bg-brand-light { background-color: var(--brand-light); }
+.bg-brand-dark { background-color: var(--brand-dark); }
+.bg-brand-white { background-color: var(--brand-white); }
+
+.text-brand-light { color: var(--brand-light); }
+.text-brand-dark { color: var(--brand-dark); }
+.text-brand-white { color: var(--brand-white); }
+
+.border-brand-light { border-color: var(--brand-light); }
+.border-brand-dark { border-color: var(--brand-dark); }
+
+.ring-brand { --tw-ring-color: var(--ring); }
+
+.btn-brand {
+  background-color: var(--brand-dark);
+  color: var(--brand-white);
+}
+.btn-brand:hover { filter: brightness(1.05); }
+.btn-brand:active { filter: brightness(0.95); }
+
+.btn-brand-outline {
+  background-color: transparent;
+  color: var(--brand-dark);
+  border: 1px solid var(--brand-dark);
+}
+.btn-brand-outline:hover { background-color: rgba(31, 77, 40, 0.06); }
+
+/* Alpha variants for overlays, rings, subtle hovers */
+.bg-brand-dark-5 { background-color: rgba(31, 77, 40, 0.05); }
+.bg-brand-dark-10 { background-color: rgba(31, 77, 40, 0.10); }
+.bg-brand-dark-20 { background-color: rgba(31, 77, 40, 0.20); }
+.bg-brand-dark-30 { background-color: rgba(31, 77, 40, 0.30); }
+.bg-brand-dark-50 { background-color: rgba(31, 77, 40, 0.50); }
+
+.border-brand-dark-20 { border-color: rgba(31, 77, 40, 0.20); }
+.ring-brand-20 { --tw-ring-color: rgba(31, 77, 40, 0.20); }
+.ring-brand-30 { --tw-ring-color: rgba(31, 77, 40, 0.30); }
+
+/* Divide color utilities for brand */
+.divide-brand-dark-20 > :not([hidden]) ~ :not([hidden]) { border-color: rgba(31, 77, 40, 0.20); }

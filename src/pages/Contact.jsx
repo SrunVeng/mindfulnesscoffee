@@ -47,13 +47,13 @@ export default function Contact() {
     // Consistent button styles
     const BTN_BASE =
         "group inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-3 md:h-12 font-medium transition-all " +
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/60 active:scale-[0.98]"
+        "focus-visible:outline-none focus-visible:ring-2 ring-brand-20 active:scale-[0.98]"
     const BTN_SOFT =
-        BTN_BASE + " border-[#e7dbc9] bg-[#fffaf3] text-[#2d1a14] shadow-sm hover:-translate-y-0.5 hover:shadow-md"
+        BTN_BASE + " border-brand-dark-20 bg-brand-dark-5 text-brand-dark shadow-sm hover:-translate-y-0.5 hover:shadow-md"
     const BTN_OUTLINE =
-        BTN_BASE + " border-[#e7dbc9] bg-white text-[#2d1a14] shadow-sm hover:bg-[#fffaf3] hover:-translate-y-0.5 hover:shadow-md"
+        BTN_BASE + " border-brand-dark-20 bg-brand-white text-brand-dark shadow-sm hover:bg-brand-dark-5 hover:-translate-y-0.5 hover:shadow-md"
     const BTN_PRIMARY =
-        BTN_BASE + " border-transparent bg-[var(--brand-accent)] text-black shadow-sm hover:-translate-y-0.5 hover:shadow-md"
+        BTN_BASE + " border-transparent btn-brand text-brand-white shadow-sm hover:-translate-y-0.5 hover:shadow-md"
 
     return (
         <section className="relative mx-auto max-w-6xl px-4 py-12 space-y-10">
@@ -72,8 +72,8 @@ export default function Contact() {
                 viewport={{ once: true, margin: "-100px" }}
                 className="flex flex-col gap-2"
             >
-                <Motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold leading-tight">
-                    <span className="bg-clip-text text-black">{t("contact.title", "Get in touch")}</span>
+                <Motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold leading-tight text-brand-dark">
+                    <span className="bg-clip-text">{t("contact.title", "Get in touch")}</span>
                 </Motion.h1>
                 {info.tagline ? (
                     <Motion.p variants={fadeUp} className="max-w-prose text-sm text-gray-600">
@@ -156,7 +156,7 @@ export default function Contact() {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, margin: "-80px" }}
-                    className="rounded-2xl border border-[#e7dbc9] bg-[#fffaf3] p-6 shadow-sm"
+                    className="rounded-2xl border border-brand-dark-20 bg-brand-dark-5 p-6 shadow-sm"
                 >
                     <div className="space-y-8 text-gray-800">
                         {(cfg.logo) && (

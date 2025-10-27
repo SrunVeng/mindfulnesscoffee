@@ -172,12 +172,12 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="mx-auto max-w-6xl rounded-2xl border border-[#e7dbc9] bg-[#fffaf3] p-6 md:p-8 text-center shadow-sm"
+                    className="mx-auto max-w-6xl rounded-2xl bg-[var(--bg-brand)] p-6 md:p-8 text-center "
                 >
-                    <h3 className="text-2xl md:text-3xl font-bold text-[#2d1a14]">
+                    <h3 className="text-2xl md:text-3xl font-bold text-[var(--text-dark)]">
                         {t("home.banner.title")}
                     </h3>
-                    <p className="mt-2 text-[#6b5545]">
+                    <p className="mt-2 text-[var(--text-dark)]">
                         {t("home.banner.subtitle")}
                     </p>
                     <div className="mt-5">

@@ -74,8 +74,8 @@ export default function Header() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 border-b border-[#1f4d28]
-        transition-[height,box-shadow] duration-300 bg-[linear-gradient(to_right,#f5f1ea,#f8f4ef)]
+            className={`fixed top-0 left-0 right-0 z-50 border-b border-brand-dark
+        transition-[height,box-shadow] duration-300 bg-brand-white
         ${scrolled ? "h-14 shadow-md" : "h-16 shadow-sm"}`}
         >
             <div className="mx-auto max-w-6xl px-4 h-full flex items-center justify-between">
@@ -84,9 +84,9 @@ export default function Header() {
                     <img
                         src={variables.logo}
                         alt={t("brand")}
-                        className="h-9 w-9 rounded-xl bg-white shadow-sm ring-1 ring-[#1f4d28]/30 object-cover group-hover:scale-105 transition"
+                        className="h-9 w-9 rounded-xl bg-brand-white shadow-sm ring-1 ring-brand-30 object-cover group-hover:scale-105 transition"
                     />
-                    <span className="font-semibold tracking-tight text-[#1f4d28] group-hover:opacity-90 transition">
+                    <span className="font-semibold tracking-tight text-brand-dark group-hover:opacity-90 transition">
             {t("brand")}
           </span>
                 </Link>
@@ -101,13 +101,13 @@ export default function Header() {
                             className={({ isActive }) =>
                                 `group relative px-1 text-[13px] md:text-sm leading-5 tracking-tight
                  opacity-85 hover:opacity-100 transition whitespace-nowrap
-                 ${isActive ? "opacity-100 font-semibold text-[#1f4d28]" : "text-[#1f4d28]"}`
+                 ${isActive ? "opacity-100 font-semibold text-brand-dark" : "text-brand-dark"}`
                             }
                         >
                             {t(`nav.${key}`)}
                             <span
                                 className="pointer-events-none absolute left-0 -bottom-1 h-0.5 w-0 rounded-full
-                           bg-[#1f4d28] transition-[width] duration-300 group-hover:w-full"
+                           bg-brand-dark transition-[width] duration-300 group-hover:w-full"
                             />
                         </NavLink>
                     ))}
@@ -147,19 +147,19 @@ export default function Header() {
                             initial={false}
                             animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="block w-6 h-0.5 bg-[#1f4d28] rounded"
+                            className="block w-6 h-0.5 bg-brand-dark rounded"
                         />
                         <Motion.span
                             initial={false}
                             animate={open ? { opacity: 0 } : { opacity: 1 }}
                             transition={{ duration: 0.2 }}
-                            className="block w-6 h-0.5 bg-[#1f4d28] rounded my-1"
+                            className="block w-6 h-0.5 bg-brand-dark rounded my-1"
                         />
                         <Motion.span
                             initial={false}
                             animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="block w-6 h-0.5 bg-[#1f4d28] rounded"
+                            className="block w-6 h-0.5 bg-brand-dark rounded"
                         />
                     </button>
                 </div>
@@ -176,7 +176,7 @@ export default function Header() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.25 }}
-                            className={`md:hidden fixed left-0 right-0 bottom-0 z-40 bg-black/30 backdrop-blur-md ${scrolled ? "top-14" : "top-16"}`}
+                            className={`md:hidden fixed left-0 right-0 bottom-0 z-40 bg-brand-dark-30 backdrop-blur-md ${scrolled ? "top-14" : "top-16"}`}
                             role="button"
                             tabIndex={0}
                             aria-label={t("common.closeMenu", { defaultValue: "Close menu" })}
@@ -197,7 +197,7 @@ export default function Header() {
                             transition={{ type: "spring", stiffness: 260, damping: 22 }}
                             className="md:hidden absolute top-full left-0 right-0 z-50
                          rounded-b-2xl shadow-2xl overflow-hidden
-                         bg-[#fffaf3] border-b border-[#1f4d28]/30"
+                         bg-brand-white border-b border-brand-dark-20"
                         >
                             {/* Subtle texture */}
                             <Motion.div
@@ -229,11 +229,11 @@ export default function Header() {
                                                 className={({ isActive }) =>
                                                     [
                                                         "group relative block rounded-lg px-4 py-3 transition-colors outline-none",
-                                                        "hover:bg-[#1f4d28]/5 active:bg-[#1f4d28]/10",
-                                                        "focus-visible:ring-2 focus-visible:ring-[#1f4d28]/30",
+                                                        "hover:bg-brand-dark-5 active:bg-brand-dark-10",
+                                                        "focus-visible:ring-2 ring-brand-30",
                                                         isActive
-                                                            ? "bg-[#1f4d28]/10 text-[#1f4d28] font-semibold ring-1 ring-[#1f4d28]/20"
-                                                            : "text-[#1f4d28] opacity-85 hover:opacity-100",
+                                                            ? "bg-brand-dark-10 text-brand-dark font-semibold ring-1 ring-brand-20"
+                                                            : "text-brand-dark opacity-85 hover:opacity-100",
                                                     ].join(" ")
                                                 }
                                             >
@@ -245,7 +245,7 @@ export default function Header() {
                                             {/* Divider */}
                                             {idx < NAV.length - 1 && (
                                                 <div aria-hidden className="px-2">
-                                                    <div className="h-px bg-[#1f4d28]/20" />
+                                                    <div className="h-px bg-brand-dark-20" />
                                                 </div>
                                             )}
                                         </Motion.li>

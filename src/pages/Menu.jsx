@@ -132,17 +132,30 @@ export default function Menu() {
 
             {/* Grid: 2 items per row on mobile, 3 on large screens */}
             <Motion.div
+                key={`${active}|${deferredQuery}`}
                 variants={stagger}
                 initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, margin: "-80px" }}
+                animate="show"
                 className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-6"
             >
-                {items.map(it => (
-                    <Motion.div key={it.id} variants={fadeUp}>
-                        <ProductCard item={it} lang={i18n.language} />
-                    </Motion.div>
-                ))}
+                {items.length === 0 ? (
+                    <div className="col-span-2 lg:col-span-3 text-center text-[#6b5545] py-10">
+                        {t("menu.empty", "No items match your filters.")}
+                        <button
+                            type="button"
+                            className="ml-3 px-3 py-1.5 rounded-lg border border-[#e7dbc9] text-sm hover:bg-[#fffaf3]"
+                            onClick={() => { setActive("All"); setQuery(""); }}
+                        >
+                            {t("menu.clear_filters", "Clear filters")}
+                        </button>
+                    </div>
+                ) : (
+                    items.map(it => (
+                        <Motion.div key={it.id} variants={fadeUp}>
+                            <ProductCard item={it} lang={i18n.language} />
+                        </Motion.div>
+                    ))
+                )}
             </Motion.div>
         </section>
     )

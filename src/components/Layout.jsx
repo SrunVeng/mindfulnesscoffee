@@ -4,7 +4,7 @@ import Footer from "./Footer.jsx"
 
 export default function Layout({ children }) {
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50 text-gray-900">
+        <div className="min-h-screen flex flex-col bg-[var(--brand-bg)] text-brand-dark">
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
