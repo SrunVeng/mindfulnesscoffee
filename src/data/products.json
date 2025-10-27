@@ -229,9 +229,9 @@
       },
       {
         "id": "cold-8",
-        "name": { "en": "Iced Caramel Coffee", "zh": "Iced Caramel Coffee", "km": "Iced Caramel Coffee" },
+        "name": { "en": "Iced Caramel Coffee", "zh": "冰焦糖咖啡", "km": "កាហ្វេការ៉ាមែលទឹកកក" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
-        "image": "/assets/products/iced-caramel-coffee.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761467653/Caramel_Latte_sks2ot.jpg"
       },
       {
         "id": "cold-9",
