@@ -48,7 +48,7 @@ function CategoryBar({ categories, active, onChange }) {
                     onClick={() => onChange(cat)}
                     className={`px-3 py-1.5 whitespace-nowrap rounded-full border transition
           ${active === cat
-                        ? "bg-brand-gradient text-white border-transparent"
+                        ? "bg-brand-dark text-white border-transparent"
                         : "bg-white hover:bg-gray-50 border-gray-200"}`}
                     aria-pressed={active === cat}
                 >
