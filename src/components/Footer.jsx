@@ -26,9 +26,12 @@ export default function Footer() {
                         alt={t("brand")}
                         className="h-8 w-8 rounded-lg bg-white shadow-sm ring-1 ring-[var(--ring)] object-cover"
                     />
-                    <span className="text-sm opacity-80">
-                        {t("footer.legal", {year: new Date().getFullYear(), brand: t("brand")})}
-                    </span>
+                    <span className="text-sm opacity-80 whitespace-pre-line">
+  {t("footer.legal", {
+      year: new Date().getFullYear(),
+      brand: t("brand")
+  })}
+</span>
                 </div>
 
                 {/* Rtiktokht: Social links */}

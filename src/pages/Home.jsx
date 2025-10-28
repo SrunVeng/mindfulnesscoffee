@@ -77,7 +77,7 @@ export default function Home() {
                             className="
       inline-flex items-center justify-center rounded-xl
       px-6 py-3 font-semibold
-      bg-[color:var(--brand-dark)] text-white
+      bg-[color:var(--brand-light)] text-white
       shadow-lg shadow-black/15 transition-all duration-200
       hover:-translate-y-0.5 hover:shadow-xl
       active:translate-y-0 active:shadow-md
