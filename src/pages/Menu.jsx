@@ -4,15 +4,17 @@ import { motion as Motion, useReducedMotion } from "framer-motion"
 import useProducts from "../hooks/useProducts.js"
 import CategoryBar from "../components/CategoryBar.jsx"
 import ProductCard from "../components/ProductCard.jsx"
+import { labelForCategory } from "../utils/categoryI18n.js"
 
 // Mobile-only wrapped categories (no horizontal scroll)
-function WrappedCategories({ categories, active, onChange }) {
+const WrappedCategories = React.memo(function WrappedCategories({ categories, active, onChange }) {
+    const { t } = useTranslation()
     const eq = (a, b) => (a || "").trim().toLowerCase() === (b || "").trim().toLowerCase()
     const chips = useMemo(() => ["All", ...categories], [categories])
 
     return (
         <div className="flex flex-wrap gap-2">
-            {chips.map(cat => {
+            {chips.map((cat) => {
                 const isActive = eq(cat, active)
                 return (
                     <button
@@ -24,26 +26,25 @@ function WrappedCategories({ categories, active, onChange }) {
                             "border-[#e7dbc9]",
                             isActive
                                 ? "bg-[#2d1a14] text-white"
-                                : "bg-white hover:bg-[#fffaf3] text-[#2d1a14]"
+                                : "bg-white hover:bg-[#fffaf3] text-[#2d1a14]",
                         ].join(" ")}
                         aria-pressed={isActive}
                     >
-                        {cat}
+                        {labelForCategory(t, cat)}
                     </button>
                 )
             })}
         </div>
     )
-}
+})
 
 export default function Menu() {
     const { t, i18n } = useTranslation()
     const prefersReduced = useReducedMotion()
 
-    // State first (avoid TDZ issues)
+    // State
     const [active, setActive] = useState("All")
     const [query, setQuery] = useState("")
-
 
     // Centralized products data and helpers
     const { displayCategories, filterItems } = useProducts()
@@ -56,16 +57,27 @@ export default function Menu() {
         return filterItems(active, deferredQuery)
     }, [active, deferredQuery, filterItems])
 
-    // Memoized animation variants (avoid re-creating objects and drop costly CSS blur)
-    const fadeUp = useMemo(() => ({
-        hidden: { opacity: 0, y: prefersReduced ? 0 : 18 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-    }), [prefersReduced])
+    // Animation variants
+    const fadeUp = useMemo(
+        () => ({
+            hidden: { opacity: 0, y: prefersReduced ? 0 : 18 },
+            show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+        }),
+        [prefersReduced]
+    )
 
-    const stagger = useMemo(() => ({
-        hidden: {},
-        show: { transition: { staggerChildren: prefersReduced ? 0 : 0.05, delayChildren: prefersReduced ? 0 : 0.06 } },
-    }), [prefersReduced])
+    const stagger = useMemo(
+        () => ({
+            hidden: {},
+            show: {
+                transition: {
+                    staggerChildren: prefersReduced ? 0 : 0.05,
+                    delayChildren: prefersReduced ? 0 : 0.06,
+                },
+            },
+        }),
+        [prefersReduced]
+    )
 
     return (
         <section className="relative mx-auto max-w-6xl px-8 py-20">
@@ -110,7 +122,7 @@ export default function Menu() {
 
                         <input
                             value={query}
-                            onChange={e => setQuery(e.target.value)}
+                            onChange={(e) => setQuery(e.target.value)}
                             placeholder={t("menu.search_placeholder", "Search drinks or food...")}
                             className="w-full md:w-72 md:flex-none md:shrink-0 px-3 py-2 rounded-xl border border-[#e7dbc9] bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#c9a44c] shadow-sm"
                             aria-label={t("menu.search_aria", "Search menu")}
@@ -121,7 +133,7 @@ export default function Menu() {
                     <div className="md:hidden">
                         <input
                             value={query}
-                            onChange={e => setQuery(e.target.value)}
+                            onChange={(e) => setQuery(e.target.value)}
                             placeholder={t("menu.search_placeholder", "Search drinks or food...")}
                             className="w-full px-3 py-2 rounded-xl border border-[#e7dbc9] bg-white/70 focus:outline-none focus:ring-2 focus:ring-[#c9a44c] shadow-sm"
                             aria-label={t("menu.search_aria", "Search menu")}
@@ -144,13 +156,16 @@ export default function Menu() {
                         <button
                             type="button"
                             className="ml-3 px-3 py-1.5 rounded-lg border border-[#e7dbc9] text-sm hover:bg-[#fffaf3]"
-                            onClick={() => { setActive("All"); setQuery(""); }}
+                            onClick={() => {
+                                setActive("All")
+                                setQuery("")
+                            }}
                         >
                             {t("menu.clear_filters", "Clear filters")}
                         </button>
                     </div>
                 ) : (
-                    items.map(it => (
+                    items.map((it) => (
                         <Motion.div key={it.id} variants={fadeUp}>
                             <ProductCard item={it} lang={i18n.language} />
                         </Motion.div>
