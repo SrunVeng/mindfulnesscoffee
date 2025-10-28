@@ -12,19 +12,19 @@
         "id": "sig-2",
         "name": { "en": "Iced Cafe Trapae", "zh": "发酵糯米咖啡冰", "km": "កាហ្វេត្រប៉ែ" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
-        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761470146/%E1%9E%80%E1%9E%B6%E1%9E%A0%E1%9F%92%E1%9E%9C%E1%9F%81%E1%9E%8F%E1%9F%92%E1%9E%9A%E1%9E%94%E1%9F%89%E1%9F%82_oz8a7b.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639189/IMG_0263_oyiyaj.jpg"
       },
       {
         "id": "sig-3",
         "name": { "en": "Cafe Trapae Frappe", "zh": "发酵糯米咖啡冰沙", "km": "កាហ្វេត្រប៉ែហ្វ្រាប" },
         "price": { "s": 2.25, "m": 2.99, "l": 3.50 },
-        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761470354/Trapae_Frappe_cyaiku.png"
+        "image": ""
       },
       {
         "id": "sig-4",
-        "name": { "en": "Trapae Milk Frappe", "zh": "Trapae Milk Frappe", "km": "Trapae Milk Frappe" },
+        "name": { "en": "Trapae Milk Frappe", "zh": "发酵糯米奶冰沙", "km": "ត្រប៉ែទឹកដោះគោហ្វ្រាប" },
         "price": { "s": 2.00, "m": 2.75, "l": 3.25 },
-        "image": "/assets/products/trapae-milk-frappe.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761470354/Trapae_Frappe_cyaiku.png"
       },
       {
         "id": "sig-5",
@@ -39,9 +39,9 @@
     "items": [
       {
         "id": "pre-1",
-        "name": { "en": "Bopha Chnas", "zh": "Bopha Chnas", "km": "Bopha Chnas" },
+        "name": { "en": "Bopha Chnas", "zh": "刚烈女子", "km": "បុប្ផាឆ្នាស់" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
-        "image": "/assets/products/bopha-chnas.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639870/IMG_0265_oe1kp4.jpg"
       },
       {
         "id": "pre-2",
@@ -110,63 +110,63 @@
     "items": [
       {
         "id": "hot-1",
-        "name": { "en": "Espresso / Americano", "zh": "Espresso / Americano", "km": "Espresso / Americano" },
+        "name": { "en": "Americano", "zh": "美式咖啡热", "km": "អាមេរិកាណូក្តៅ" },
         "price": { "s": 1.00, "m": 1.50 },
-        "image": "/assets/products/hot-americano.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639868/IMG_0272_fosuyq.jpg"
       },
       {
         "id": "hot-2",
-        "name": { "en": "Hot Fresh Milk", "zh": "Hot Fresh Milk", "km": "Hot Fresh Milk" },
+        "name": { "en": "Hot Fresh Milk", "zh": "热鲜牛奶", "km": "ទឹកដោះគោស្រស់ក្តៅ" },
         "price": { "s": 1.25, "m": 1.99 },
         "image": "/assets/products/hot-fresh-milk.jpg"
       },
       {
         "id": "hot-3",
-        "name": { "en": "Condensed Milk Coffee", "zh": "Condensed Milk Coffee", "km": "Condensed Milk Coffee" },
+        "name": { "en": "Condensed Milk Coffee", "zh": "炼乳咖啡", "km": "កាហ្វេទឹកដោះគោខាប់" },
         "price": { "s": 1.25, "m": 1.99 },
-        "image": "/assets/products/hot-condensed-milk-coffee.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639863/IMG_0276_b1u4db.jpg"
       },
       {
         "id": "hot-4",
-        "name": { "en": "Hot Latte", "zh": "Hot Latte", "km": "Hot Latte" },
+        "name": { "en": "Hot Latte", "zh": "热拿铁", "km": "ឡាតេក្តៅ" },
         "price": { "s": 1.25, "m": 1.99 },
-        "image": "/assets/products/hot-latte.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639863/IMG_0277_culewv.jpg"
       },
       {
         "id": "hot-5",
-        "name": { "en": "Hot Cappuccino", "zh": "Hot Cappuccino", "km": "Hot Cappuccino" },
+        "name": { "en": "Hot Cappuccino", "zh": "卡布奇诺热", "km": "កាពូឈីណូក្តៅ" },
         "price": { "s": 1.25, "m": 1.99 },
-        "image": "/assets/products/hot-cappuccino.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639866/IMG_0273_rphsfl.jpg"
       },
       {
         "id": "hot-6",
-        "name": { "en": "Hot Mocha", "zh": "Hot Mocha", "km": "Hot Mocha" },
+        "name": { "en": "Hot Mocha", "zh": "热摩卡", "km": "ម៉ូកាក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
-        "image": "/assets/products/hot-mocha.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639863/IMG_0278_vhdz6n.jpg"
       },
       {
         "id": "hot-7",
-        "name": { "en": "Hot Vanilla Latte", "zh": "Hot Vanilla Latte", "km": "Hot Vanilla Latte" },
+        "name": { "en": "Hot Vanilla Latte", "zh": "热香草拿铁", "km": "ឡាតេវ៉ានីឡាក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
-        "image": "/assets/products/hot-vanilla-latte.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639864/IMG_0279_ndf7vx.jpg"
       },
       {
         "id": "hot-8",
-        "name": { "en": "Hot Caramel Latte", "zh": "Hot Caramel Latte", "km": "Hot Caramel Latte" },
+        "name": { "en": "Hot Caramel Latte", "zh": "热焦糖拿铁", "km": "ឡាតេការ៉ាមែលក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
-        "image": "/assets/products/hot-caramel-latte.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639864/IMG_0274_n84svp.jpg"
       },
       {
         "id": "hot-9",
-        "name": { "en": "Hot Chocolate Latte", "zh": "Hot Chocolate Latte", "km": "Hot Chocolate Latte" },
+        "name": { "en": "Hot Chocolate Latte", "zh": "热巧克力拿铁", "km": "ឡាតេសូកូឡាក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
-        "image": "/assets/products/hot-chocolate-latte.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639864/IMG_0275_z8fub5.jpg"
       },
       {
         "id": "hot-10",
-        "name": { "en": "Hot Green Tea Latte", "zh": "Hot Green Tea Latte", "km": "Hot Green Tea Latte" },
+        "name": { "en": "Hot Green Tea Latte", "zh": "热绿茶拿铁", "km": "តែបៃតងឡាតេក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
-        "image": "/assets/products/hot-green-tea-latte.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639868/IMG_0271_kvmmzz.jpg"
       },
       {
         "id": "hot-11",
@@ -176,9 +176,15 @@
       },
       {
         "id": "hot-12",
-        "name": { "en": "Hot Honey Lemon Tea", "zh": "Hot Honey Lemon Tea", "km": "Hot Honey Lemon Tea" },
+        "name": { "en": "Hot Honey Lemon Tea", "zh": "热蜂蜜柠檬茶", "km": "តែទឹកឃ្មុំក្រូចឆ្មារក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
         "image": "/assets/products/hot-honey-lemon-tea.jpg"
+      },
+      {
+        "id": "hot-3",
+        "name": { "en": "Espresso", "zh": "浓缩咖啡", "km": "អេសប្រេសសូ" },
+        "price": { "s": 1.00, "m": 1.50 },
+        "image": "/assets/products/hot-americano.jpg"
       }
     ]
   },

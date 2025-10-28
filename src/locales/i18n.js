@@ -14,7 +14,6 @@ const resources = {
 }
 
 const supportedLngs = ['en', 'km', 'zh']
-
 const initial = (() => {
     const saved = localStorage.getItem('lang')
     if (saved) return saved
@@ -29,7 +28,7 @@ i18n
     .init({
         resources,
         lng: initial,
-        fallbackLng: 'en',
+        fallbackLng: 'km',
         supportedLngs,
         nonExplicitSupportedLngs: true, // treat zh-CN -> zh, en-US -> en
         interpolation: { escapeValue: false },
