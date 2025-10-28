@@ -71,31 +71,41 @@ export default function Home() {
                     {/*    {t("home.heroSubtitle")}*/}
                     {/*</p>*/}
 
-              {/*      <div className="mt-7 flex items-center justify-center gap-3">*/}
-              {/*          <Link*/}
-              {/*              to="/menu"*/}
-              {/*              className="*/}
-              {/*  inline-flex items-center justify-center rounded-xl*/}
-              {/*  bg-[var(--brand-accent)] px-6 py-3 text-white font-semibold*/}
-              {/*  shadow-lg shadow-black/20 transition-transform hover:scale-[1.03] active:scale-[0.98]*/}
-              {/*  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black/20*/}
-              {/*"*/}
-              {/*          >*/}
-              {/*              {t("home.cta")}*/}
-              {/*          </Link>*/}
+                    <div className="mt-7 flex items-center justify-center gap-3">
+                        <Link
+                            to="/menu"
+                            className="
+      inline-flex items-center justify-center rounded-xl
+      px-6 py-3 font-semibold
+      bg-[color:var(--brand-dark)] text-white
+      shadow-lg shadow-black/15 transition-all duration-200
+      hover:-translate-y-0.5 hover:shadow-xl
+      active:translate-y-0 active:shadow-md
+      focus:outline-none focus-visible:ring-2
+      focus-visible:ring-[color:var(--ring)]
+      focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--brand-bg)]
+    "
+                        >
+                            {t('home.cta')}
+                        </Link>
 
-              {/*          <Link*/}
-              {/*              to="/about"*/}
-              {/*              className="*/}
-              {/*  inline-flex items-center justify-center rounded-xl*/}
-              {/*  bg-white/10 px-6 py-3 text-white backdrop-blur*/}
-              {/*  ring-1 ring-white/30 hover:bg-white/20 transition*/}
-              {/*  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70*/}
-              {/*"*/}
-              {/*          >*/}
-              {/*              {t("nav.about")}*/}
-              {/*          </Link>*/}
-              {/*      </div>*/}
+                        <Link
+                            to="/contact"
+                            className="
+      inline-flex items-center justify-center rounded-xl
+      px-6 py-3 font-semibold
+      bg-white text-[color:var(--brand-dark)]
+      ring-1 ring-black/10 shadow transition-all duration-200
+      hover:bg-[color:var(--brand-light)] hover:text-white hover:ring-transparent hover:shadow-lg
+      active:shadow
+      focus:outline-none focus-visible:ring-2
+      focus-visible:ring-[color:var(--ring)]
+      focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--brand-bg)]
+    "
+                        >
+                            {t('nav.contact')}
+                        </Link>
+                    </div>
                 </motion.div>
             </section>
 
