@@ -28,7 +28,7 @@
     },
     "stats": {
       "farmers": "សាខា",
-      "profiles": "មីនុយភេសជ្ជៈ",
+      "profiles": "គ្រឿងផ្សំដែលមានគុណភាពខ្ពស់",
       "rating": "គ្រាប់កាហ្វេអារ៉ាប៊ីកា"
     },
     "sections": {
@@ -80,14 +80,14 @@
     "all": "ទាំងអស់",
     "categories": {
       "signature": "ប្រចាំហាង",
-      "premium": "ព្រីម្យូម",
+      "premium": "ឧត្តមភេសជ្ជៈ",
       "hot": "ក្តៅ",
       "cold": "ត្រជាក់",
       "frappe_smoothies": "ក្រឡុក",
       "tea_passion_soda": "តែ / ផាសិន / សូដា",
       "food": "ម្ហូបអាហារ"
     },
-    "search_placeholder": "ស្វែងរក"
+    "search_placeholder": "ស្វែងរក..."
   },
   "footer": {
     "legal": "© {{year}} {{brand}} រក្សាសិទ្ធិគ្រប់យ៉ាង។"
@@ -96,6 +96,7 @@
     "title": "វិចិត្រសាល"
   },
   "product": {
+    "from": "ចាប់ពី",
     "close": "បិទ",
     "size": {
       "label": "ទំហំ",

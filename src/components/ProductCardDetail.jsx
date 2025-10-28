@@ -11,14 +11,37 @@ function getBaseLang(code = "en") {
     return code.split("-")[0]
 }
 
-// Translate size key -> label with fallbacks
+// Translate size key -> label with fallbacks (includes "regular")
 function sizeLabel(t, key) {
     switch (key) {
         case "s": return t("product.size.s", "Small")
         case "m": return t("product.size.m", "Medium")
         case "l": return t("product.size.l", "Large")
+        case "regular": return t("product.size.regular", "Regular")
         default:  return t("product.size.regular", "Regular")
     }
+}
+
+// Normalize any price shape into variants [{key,label,price}]
+function extractVariants(price, t) {
+    if (isNumber(price)) {
+        return [{ key: "regular", label: sizeLabel(t, "regular"), price }]
+    }
+    if (price && typeof price === "object") {
+        const out = []
+        const knownOrder = ["s", "m", "l", "regular"]
+        for (const k of knownOrder) {
+            if (isNumber(price[k])) out.push({ key: k, label: sizeLabel(t, k), price: price[k] })
+        }
+        // Include any other numeric keys just in case
+        for (const k of Object.keys(price)) {
+            if (!knownOrder.includes(k) && isNumber(price[k])) {
+                out.push({ key: k, label: sizeLabel(t, k), price: price[k] })
+            }
+        }
+        return out
+    }
+    return []
 }
 
 function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
@@ -28,21 +51,10 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
     const desc = item?.desc?.[code] ?? item?.desc?.en ?? ""
     const categoryLabel = item?._category ? labelForCategory(t, item._category) : ""
 
-    // Build variant list from { s, m, l } or a single number
-    const variants = useMemo(() => {
-        if (!item) return []
-        if (typeof item.price === "object") {
-            const v = []
-            if (isNumber(item.price.s)) v.push({ key: "s", label: sizeLabel(t, "s"), price: item.price.s })
-            if (isNumber(item.price.m)) v.push({ key: "m", label: sizeLabel(t, "m"), price: item.price.m })
-            if (isNumber(item.price.l)) v.push({ key: "l", label: sizeLabel(t, "l"), price: item.price.l })
-            return v
-        }
-        if (isNumber(item.price)) return [{ key: "one", label: sizeLabel(t, "one"), price: item.price }]
-        return []
-    }, [item, t])
-
+    // Build variants from { s,m,l } OR { regular } OR number
+    const variants = useMemo(() => extractVariants(item?.price, t), [item, t])
     const [size, setSize] = useState(variants[0]?.key)
+
     // Reset when opening or when the variants set changes
     useEffect(() => setSize(variants[0]?.key), [open, variants])
     const current = variants.find(v => v.key === size) || variants[0]
@@ -154,7 +166,7 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
                             </p>
                         )}
 
-                        {/* Size picker */}
+                        {/* Size picker — only when there are multiple sizes */}
                         {variants.length > 1 && (
                             <div className="mt-5">
                                 <div className="text-sm text-[#6b5545] mb-2">
@@ -195,7 +207,6 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
                                 type="button"
                                 onClick={onClose}
                                 className="px-4 py-2 rounded-xl bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-300 transition"
-                                aria-label={t("product.close", "Close")}
                             >
                                 {t("product.close", "Close")}
                             </button>

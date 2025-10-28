@@ -28,7 +28,7 @@
     },
     "stats": {
       "farmers": "分店",
-      "profiles": "可选饮品菜单",
+      "profiles": "高品质原料",
       "rating": "阿拉比卡咖啡豆"
     },
     "sections": {
@@ -96,6 +96,7 @@
     "title": "画廊"
   },
   "product": {
+    "from": "起",
     "close": "关闭",
     "size": {
       "label": "规格",

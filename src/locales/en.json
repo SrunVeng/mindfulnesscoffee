@@ -28,7 +28,7 @@
     },
     "stats": {
       "farmers": "Branches",
-      "profiles": "Drink Menu Available",
+      "profiles": "High Quality Ingredients",
       "rating": "Arabica Bean"
     },
     "sections": {
@@ -98,6 +98,7 @@
   },
 
   "product": {
+    "from": "From",
     "close": "Close",
     "size": {
       "label": "Size",

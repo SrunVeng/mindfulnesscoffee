@@ -138,7 +138,7 @@ export default function Home() {
                     <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#e7dbc9] text-center">
                         {[
                             { k: "home.stats.farmers",  n: "2", label: t("home.stats.farmers")  },
-                            { k: "home.stats.profiles", n: "56",   label: t("home.stats.profiles") },
+                            { k: "home.stats.profiles", n: "5.0★",   label: t("home.stats.profiles") },
                             { k: "home.stats.rating",   n: "5.0★", label: t("home.stats.rating")   },
                         ].map((s, i) => (
                             <motion.div

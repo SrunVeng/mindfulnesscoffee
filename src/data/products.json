@@ -10,25 +10,31 @@
       },
       {
         "id": "sig-2",
-        "name": { "en": "Iced Cafe Trapae", "zh": "发酵糯米咖啡冰", "km": "កាហ្វេត្រប៉ែ" },
+        "name": { "en": "Iced Cafe Trapae", "zh": "发酵糯米咖啡冰", "km": "កាហ្វេត្រប៉ែទឹកដោះគោ" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639189/IMG_0263_oyiyaj.jpg"
       },
       {
         "id": "sig-3",
-        "name": { "en": "Cafe Trapae Frappe", "zh": "发酵糯米咖啡冰沙", "km": "កាហ្វេត្រប៉ែហ្វ្រាប" },
+        "name": { "en": "Cafe Trapae Frappe", "zh": "发酵糯米咖啡冰沙", "km": "កាហ្វេត្រប៉ែទឹកដោះគោ" },
         "price": { "s": 2.25, "m": 2.99, "l": 3.50 },
         "image": ""
       },
       {
         "id": "sig-4",
-        "name": { "en": "Trapae Milk Frappe", "zh": "发酵糯米奶冰沙", "km": "ត្រប៉ែទឹកដោះគោហ្វ្រាប" },
+        "name": { "en": "Trapae Milk Frappe", "zh": "发酵糯米奶冰沙", "km": "ត្រប៉ែទឹកដោះគោក្រឡុក" },
         "price": { "s": 2.00, "m": 2.75, "l": 3.25 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761470354/Trapae_Frappe_cyaiku.png"
       },
       {
         "id": "sig-5",
-        "name": { "en": "Trapae Green / Red Tea", "zh": "Trapae Green / Red Tea", "km": "Trapae Green / Red Tea" },
+        "name": { "en": "Trapae Green Tea", "zh": "发酵糯米绿茶", "km": "តែបៃតងត្រប៉ែ" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "/assets/products/trapae-green-red-tea.jpg"
+      },
+      {
+        "id": "sig-6",
+        "name": { "en": "Trapae Red Tea", "zh": "发酵糯米红茶", "km": "តែក្រហមត្រប៉ែ" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
         "image": "/assets/products/trapae-green-red-tea.jpg"
       }
@@ -45,61 +51,61 @@
       },
       {
         "id": "pre-2",
-        "name": { "en": "Champei Siemreap", "zh": "Champei Siemreap", "km": "Champei Siemreap" },
+        "name": { "en": "Champei Siemreap", "zh": "暹粒省的花", "km": "ចំប៉ីសៀមរាប" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
         "image": "/assets/products/champei-siemreap.jpg"
       },
       {
         "id": "pre-3",
-        "name": { "en": "Cafe Oreo", "zh": "Cafe Oreo", "km": "Cafe Oreo" },
+        "name": { "en": "Cafe Oreo", "zh": "奥利奥咖啡", "km": "កាហ្វេអូរីអូ" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
         "image": "/assets/products/cafe-oreo.jpg"
       },
       {
         "id": "pre-4",
-        "name": { "en": "Yogurt Frappe", "zh": "Yogurt Frappe", "km": "Yogurt Frappe" },
+        "name": { "en": "Yogurt Frappe", "zh": "酸奶冰沙", "km": "យ៉ាអួក្រឡុក" },
         "price": { "s": 2.00, "m": 2.75, "l": 3.25 },
-        "image": "/assets/products/yogurt-frappe.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664929/%E1%9E%99%E1%9F%89%E1%9E%B6%E1%9E%A2%E1%9E%BD%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%A1%E1%9E%BB%E1%9E%80_ry2jzg.jpg"
       },
       {
         "id": "pre-5",
-        "name": { "en": "Yogurt Passion Frappe", "zh": "Yogurt Passion Frappe", "km": "Yogurt Passion Frappe" },
+        "name": { "en": "Yogurt Passion Frappe", "zh": "酸奶百香果冰沙", "km": "យ៉ាអួផាសិនក្រឡុក" },
         "price": { "s": 2.50, "m": 2.99, "l": 3.50 },
-        "image": "/assets/products/yogurt-passion-frappe.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664919/%E1%9E%99%E1%9F%89%E1%9E%B6%E1%9E%A2%E1%9E%BD%E1%9E%95%E1%9E%B6%E1%9E%9F%E1%9E%B7%E1%9E%93%E1%9E%80%E1%9F%92%E1%9E%9A%E1%9E%A1%E1%9E%BB%E1%9E%80_lcobo2.jpg"
       },
       {
         "id": "pre-6",
-        "name": { "en": "Yogurt Strawberry Frappe", "zh": "Yogurt Strawberry Frappe", "km": "Yogurt Strawberry Frappe" },
+        "name": { "en": "Yogurt Strawberry Frappe", "zh": "酸奶草莓冰沙", "km": "យ៉ាអួស្រ្តប៊ែរីក្រឡុក" },
         "price": { "s": 2.50, "m": 2.99, "l": 3.50 },
         "image": "/assets/products/yogurt-strawberry-frappe.jpg"
       },
       {
         "id": "pre-7",
-        "name": { "en": "Red Syrup Sterilized Milk", "zh": "Red Syrup Sterilized Milk", "km": "Red Syrup Sterilized Milk" },
+        "name": { "en": "Red Syrup Sterilized Milk", "zh": "红糖浆灭菌奶", "km": "ស៊ីរ៉ូដោះគោឆៅ" },
         "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
         "image": "/assets/products/red-syrup-milk.jpg"
       },
       {
         "id": "pre-8",
-        "name": { "en": "Brown Sugar Milk Tea", "zh": "Brown Sugar Milk Tea", "km": "Brown Sugar Milk Tea" },
+        "name": { "en": "Brown Sugar Milk Tea", "zh": "黑糖奶茶", "km": "តែទឹកដោះគោ (Brown Sugar)" },
         "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
         "image": "/assets/products/brown-sugar-milk-tea.jpg"
       },
       {
         "id": "pre-9",
-        "name": { "en": "Iced Ovaltine Volcano", "zh": "Iced Ovaltine Volcano", "km": "Iced Ovaltine Volcano" },
+        "name": { "en": "Iced Ovaltine Volcano", "zh": "冰镇阿华田火山", "km": "អូវ៉ាល់ទីនភ្នំភ្លើង" },
         "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
         "image": "/assets/products/ovaltine-volcano.jpg"
       },
       {
         "id": "pre-10",
-        "name": { "en": "Honey Lemon Tea", "zh": "Honey Lemon Tea", "km": "Honey Lemon Tea" },
+        "name": { "en": "Honey Lemon Tea", "zh": "蜂蜜柠檬茶", "km": "តែជ្រក់ទឹកឃ្មុំ" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
         "image": "/assets/products/honey-lemon-tea.jpg"
       },
       {
         "id": "pre-11",
-        "name": { "en": "Matcha Latte (Iced & Hot)", "zh": "Matcha Latte", "km": "Matcha Latte" },
+        "name": { "en": "Matcha Latte Iced", "zh": "抹茶拿铁冰", "km": "ម៉ាឆាឡាតេទឹកកក" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
         "image": "/assets/products/matcha-latte.jpg"
       }
@@ -116,75 +122,81 @@
       },
       {
         "id": "hot-2",
-        "name": { "en": "Hot Fresh Milk", "zh": "热鲜牛奶", "km": "ទឹកដោះគោស្រស់ក្តៅ" },
+        "name": { "en": "Hot Fresh Milk", "zh": "热鲜牛奶", "km": "ទឹកដោះគោក្តៅ" },
         "price": { "s": 1.25, "m": 1.99 },
         "image": "/assets/products/hot-fresh-milk.jpg"
       },
       {
         "id": "hot-3",
-        "name": { "en": "Condensed Milk Coffee", "zh": "炼乳咖啡", "km": "កាហ្វេទឹកដោះគោខាប់" },
+        "name": { "en": "Condensed Milk Coffee", "zh": "炼乳咖啡", "km": "កាហ្វេទឹកដោះគោក្តៅ" },
         "price": { "s": 1.25, "m": 1.99 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639863/IMG_0276_b1u4db.jpg"
       },
       {
         "id": "hot-4",
-        "name": { "en": "Hot Latte", "zh": "热拿铁", "km": "ឡាតេក្តៅ" },
+        "name": { "en": "Hot Latte", "zh": "热拿铁", "km": "កាហ្វេឡាតេក្តៅ" },
         "price": { "s": 1.25, "m": 1.99 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639863/IMG_0277_culewv.jpg"
       },
       {
         "id": "hot-5",
-        "name": { "en": "Hot Cappuccino", "zh": "卡布奇诺热", "km": "កាពូឈីណូក្តៅ" },
+        "name": { "en": "Hot Cappuccino", "zh": "卡布奇诺热", "km": "កាហ្វេកាពូឈីណូក្តៅ" },
         "price": { "s": 1.25, "m": 1.99 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639866/IMG_0273_rphsfl.jpg"
       },
       {
         "id": "hot-6",
-        "name": { "en": "Hot Mocha", "zh": "热摩卡", "km": "ម៉ូកាក្តៅ" },
+        "name": { "en": "Hot Mocha", "zh": "热摩卡", "km": "កាហ្វេម៉ូកាក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639863/IMG_0278_vhdz6n.jpg"
       },
       {
         "id": "hot-7",
-        "name": { "en": "Hot Vanilla Latte", "zh": "热香草拿铁", "km": "ឡាតេវ៉ានីឡាក្តៅ" },
+        "name": { "en": "Hot Vanilla Latte", "zh": "热香草拿铁", "km": "កាហ្វេវ៉ានីឡាក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639864/IMG_0279_ndf7vx.jpg"
       },
       {
         "id": "hot-8",
-        "name": { "en": "Hot Caramel Latte", "zh": "热焦糖拿铁", "km": "ឡាតេការ៉ាមែលក្តៅ" },
+        "name": { "en": "Hot Caramel Latte", "zh": "热焦糖拿铁", "km": "កាហ្វេការ៉ាមែលក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639864/IMG_0274_n84svp.jpg"
       },
       {
         "id": "hot-9",
-        "name": { "en": "Hot Chocolate Latte", "zh": "热巧克力拿铁", "km": "ឡាតេសូកូឡាក្តៅ" },
+        "name": { "en": "Hot Chocolate Latte", "zh": "热巧克力拿铁", "km": "សូកូឡាក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639864/IMG_0275_z8fub5.jpg"
       },
       {
         "id": "hot-10",
-        "name": { "en": "Hot Green Tea Latte", "zh": "热绿茶拿铁", "km": "តែបៃតងឡាតេក្តៅ" },
+        "name": { "en": "Hot Green Tea Latte", "zh": "热绿茶拿铁", "km": "តែបៃតងក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761639868/IMG_0271_kvmmzz.jpg"
       },
       {
         "id": "hot-11",
-        "name": { "en": "Hot Lemon Tea", "zh": "Hot Lemon Tea", "km": "Hot Lemon Tea" },
+        "name": { "en": "Hot Lemon Tea", "zh": "热柠檬茶", "km": "តែជ្រក់ក្តៅ" },
         "price": { "s": 1.25, "m": 1.99 },
         "image": "/assets/products/hot-lemon-tea.jpg"
       },
       {
         "id": "hot-12",
-        "name": { "en": "Hot Honey Lemon Tea", "zh": "热蜂蜜柠檬茶", "km": "តែទឹកឃ្មុំក្រូចឆ្មារក្តៅ" },
+        "name": { "en": "Hot Honey Lemon Tea", "zh": "热蜂蜜柠檬茶", "km": "តែជ្រក់ទឹកឃ្មុំក្តៅ" },
         "price": { "s": 1.50, "m": 2.25 },
         "image": "/assets/products/hot-honey-lemon-tea.jpg"
       },
       {
-        "id": "hot-3",
+        "id": "hot-13",
         "name": { "en": "Espresso", "zh": "浓缩咖啡", "km": "អេសប្រេសសូ" },
         "price": { "s": 1.00, "m": 1.50 },
         "image": "/assets/products/hot-americano.jpg"
+      },
+      {
+        "id": "hot-14",
+        "name": { "en": "Matcha Latte Hot", "zh": "热抹茶拿铁", "km": "ម៉ាឆាឡាតេក្តៅ" },
+        "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
+        "image": "/assets/products/matcha-latte.jpg"
       }
     ]
   },
@@ -193,63 +205,69 @@
     "items": [
       {
         "id": "cold-1",
-        "name": { "en": "Iced Fresh Milk", "zh": "Iced Fresh Milk", "km": "Iced Fresh Milk" },
+        "name": { "en": "Iced Fresh Milk", "zh": "冰牛奶", "km": "ទឹកដោះគោស្រស់" },
         "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
         "image": "/assets/products/iced-fresh-milk.jpg"
       },
       {
         "id": "cold-2",
-        "name": { "en": "Iced Americano", "zh": "美式咖啡", "km": "ការហ្វេខ្មៅទឺកកក" },
+        "name": { "en": "Iced Americano", "zh": "美式咖啡", "km": "កាហ្វេទឹកកក" },
         "price": { "s": 1.00, "m": 1.50, "l": 1.99 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761467653/Ice_Americano_boydni.jpg"
       },
       {
         "id": "cold-3",
-        "name": { "en": "Condensed Milk Coffee", "zh": "Condensed Milk Coffee", "km": "Condensed Milk Coffee" },
+        "name": { "en": "Condensed Milk Coffee", "zh": "炼乳咖啡", "km": "កាហ្វេទឹកដោះគោទឹកកក" },
         "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
-        "image": "/assets/products/iced-condensed-milk-coffee.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664917/milk_coffee_lwfegd.jpg"
       },
       {
         "id": "cold-4",
-        "name": { "en": "Iced Latte", "zh": "Iced Latte", "km": "Iced Latte" },
+        "name": { "en": "Iced Latte", "zh": "冰拿铁", "km": "កាហ្វេឡាតេទឹកកក" },
         "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
-        "image": "/assets/products/iced-latte.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664917/Ice_late_usxbvg.jpg"
       },
       {
         "id": "cold-5",
-        "name": { "en": "Iced Cappuccino", "zh": "Iced Cappuccino", "km": "Iced Cappuccino" },
+        "name": { "en": "Iced Cappuccino", "zh": "冰卡布奇诺", "km": "កាហ្វេកាពូឈីណូទឹកកក" },
         "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
-        "image": "/assets/products/iced-cappuccino.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664916/Iced_Cappuccino_fyaqgf.jpg"
       },
       {
         "id": "cold-6",
-        "name": { "en": "Iced Mocha Coffee", "zh": "Iced Mocha Coffee", "km": "Iced Mocha Coffee" },
+        "name": { "en": "Iced Mocha Coffee", "zh": "冰摩卡咖啡", "km": "កាហ្វេម៉ូកាទឹកកក" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
-        "image": "/assets/products/iced-mocha.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664917/Iced_Mocha_m6vbor.jpg"
       },
       {
         "id": "cold-7",
-        "name": { "en": "Iced Vanilla Coffee", "zh": "Iced Vanilla Coffee", "km": "Iced Vanilla Coffee" },
+        "name": { "en": "Iced Vanilla Coffee", "zh": "冰香草咖啡", "km": "កាហ្វេវ៉ានីឡាទឹកកក" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
         "image": "/assets/products/iced-vanilla-coffee.jpg"
       },
       {
         "id": "cold-8",
-        "name": { "en": "Iced Caramel Coffee", "zh": "冰焦糖咖啡", "km": "កាហ្វេការ៉ាមែលទឹកកក" },
+        "name": { "en": "Iced Caramel Coffee", "zh": "冰焦糖咖啡", "km": "កាហ្វេការ៉ាម៉ែលទឹកកក" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761467653/Caramel_Latte_sks2ot.jpg"
       },
       {
         "id": "cold-9",
-        "name": { "en": "Iced Chocolate", "zh": "Iced Chocolate", "km": "Iced Chocolate" },
+        "name": { "en": "Iced Chocolate", "zh": "冰巧克力", "km": "សូកូឡាទឹកកក" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
         "image": "/assets/products/iced-chocolate.jpg"
       },
       {
         "id": "cold-10",
-        "name": { "en": "Iced Spanish Latte", "zh": "Iced Spanish Latte", "km": "Iced Spanish Latte" },
+        "name": { "en": "Iced Spanish Latte", "zh": "冰西班牙拿铁", "km": "កាហ្វេស្ពេនីសឡាតេ" },
         "price": { "s": 1.50, "m": 2.25, "l": 2.75 },
         "image": "/assets/products/iced-spanish-latte.jpg"
+      },
+      {
+        "id": "cold-11",
+        "name": { "en": "Iced Vanilla Latte", "zh": "香草拿铁冰", "km": "កាហ្វេវ៉ានីឡាទឹកកក" },
+        "price": { "s": 1.50, "m": 2.25 },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664930/Vanilla_Latte_i9mm7b.jpg"
       }
     ]
   },
@@ -258,69 +276,81 @@
     "items": [
       {
         "id": "fra-1",
-        "name": { "en": "Milk Frappe", "zh": "Milk Frappe", "km": "Milk Frappe" },
+        "name": { "en": "Milk Frappe", "zh": "牛奶冰沙", "km": "ទឹកដោះគោក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
-        "image": "/assets/products/milk-frappe.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664918/Milk_Frappe_ybyyuy.jpg"
       },
       {
         "id": "fra-2",
-        "name": { "en": "Coffee Frappe", "zh": "Coffee Frappe", "km": "Coffee Frappe" },
+        "name": { "en": "Coffee Frappe", "zh": "咖啡冰沙", "km": "កាហ្វេក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
         "image": "/assets/products/coffee-frappe.jpg"
       },
       {
         "id": "fra-3",
-        "name": { "en": "Cappuccino Frappe", "zh": "Cappuccino Frappe", "km": "Cappuccino Frappe" },
+        "name": { "en": "Cappuccino Frappe", "zh": "卡布奇诺星冰沙", "km": "កាពូឈីណូក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
-        "image": "/assets/products/cappuccino-frappe.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664916/Cappuccino_Frappe_prnbgu.jpgx"
       },
       {
         "id": "fra-4",
-        "name": { "en": "Mocha Coffee Frappe", "zh": "Mocha Coffee Frappe", "km": "Mocha Coffee Frappe" },
+        "name": { "en": "Mocha Coffee Frappe", "zh": "摩卡咖啡冰沙", "km": "កាហ្វេម៉ូកាក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
         "image": "/assets/products/mocha-coffee-frappe.jpg"
       },
       {
         "id": "fra-5",
-        "name": { "en": "Vanilla Coffee Frappe", "zh": "Vanilla Coffee Frappe", "km": "Vanilla Coffee Frappe" },
+        "name": { "en": "Vanilla Coffee Frappe", "zh": "香草咖啡冰沙", "km": "កាហ្វេវ៉ានីឡាក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
         "image": "/assets/products/vanilla-coffee-frappe.jpg"
       },
       {
         "id": "fra-6",
-        "name": { "en": "Caramel Coffee Frappe", "zh": "Caramel Coffee Frappe", "km": "Caramel Coffee Frappe" },
+        "name": { "en": "Caramel Coffee Frappe", "zh": "焦糖咖啡冰沙", "km": "កាហ្វេការ៉ាមែលក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
         "image": "/assets/products/caramel-coffee-frappe.jpg"
       },
       {
         "id": "fra-7",
-        "name": { "en": "Chocolate Frappe", "zh": "Chocolate Frappe", "km": "Chocolate Frappe" },
+        "name": { "en": "Chocolate Frappe", "zh": "巧克力冰沙", "km": "សូកូឡាក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
-        "image": "/assets/products/chocolate-frappe.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664918/Schocolate_Frappe_yno2dv.jpg"
       },
       {
         "id": "fra-8",
-        "name": { "en": "Green Tea Frappe", "zh": "Green Tea Frappe", "km": "Green Tea Frappe" },
+        "name": { "en": "Green Tea Frappe", "zh": "绿茶冰沙", "km": "តែបៃតងក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
         "image": "/assets/products/green-tea-frappe.jpg"
       },
       {
         "id": "fra-9",
-        "name": { "en": "Caramel Green Tea Frappe", "zh": "Caramel Green Tea Frappe", "km": "Caramel Green Tea Frappe" },
+        "name": { "en": "Caramel Green Tea Frappe", "zh": "焦糖绿茶冰沙", "km": "តែបៃតងការ៉ាមែលក្រឡុក" },
         "price": { "s": 1.99, "m": 2.99, "l": 3.50 },
-        "image": "/assets/products/caramel-green-tea-frappe.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664916/Caramel_Green_Tea_Frappe_rmfxxl.jpg"
       },
       {
         "id": "fra-10",
-        "name": { "en": "Passion Milk Frappe", "zh": "Passion Milk Frappe", "km": "Passion Milk Frappe" },
+        "name": { "en": "Passion Milk Frappe", "zh": "百香果牛奶冰沙", "km": "ផាសិនទឹកដោះគោក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
         "image": "/assets/products/passion-milk-frappe.jpg"
       },
       {
         "id": "fra-11",
-        "name": { "en": "Strawberry Frappe", "zh": "Strawberry Frappe", "km": "Strawberry Frappe" },
+        "name": { "en": "Strawberry Frappe", "zh": "草莓冰沙", "km": "ស្ត្រប៊ែរីទឹកដោះគោក្រឡុក" },
         "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
-        "image": "/assets/products/strawberry-frappe.jpg"
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664930/Strawberry_Frappe_fjnaep.jpg"
+      },
+      {
+        "id": "fra-12",
+        "name": { "en": "White Chocolate Frappe", "zh": "白巧克力冰沙", "km": "សូកូឡាសក្រឡុក" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664918/WhiteChocolate_Frappe_chrhts.jpg"
+      },
+      {
+        "id": "fra-13",
+        "name": { "en": "Blueberry Frappe", "zh": "蓝莓冰沙", "km": "ប៊្លូបឺរី្រឡុក" },
+        "price": { "s": 1.75, "m": 2.50, "l": 2.99 },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664916/Blueberry_Frappe_ukg1rk.jpg"
       }
     ]
   },
@@ -329,45 +359,154 @@
     "items": [
       {
         "id": "tea-1",
-        "name": { "en": "Iced Lemon Tea", "zh": "Iced Lemon Tea", "km": "Iced Lemon Tea" },
-        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "name": {
+          "en": "Iced Lemon Tea",
+          "zh": "冰柠檬茶",
+          "km": "តែជ្រក់"
+        },
+        "price": {
+          "s": 1.25,
+          "m": 1.99,
+          "l": 2.50
+        },
         "image": "/assets/products/iced-lemon-tea.jpg"
       },
       {
         "id": "tea-2",
-        "name": { "en": "Iced Green Tea Milk", "zh": "Iced Green Tea Milk", "km": "Iced Green Tea Milk" },
-        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "name": {
+          "en": "Iced Green Tea Milk",
+          "zh": "冰绿茶奶",
+          "km": "តែបៃតងទឹកដោះគោ"
+        },
+        "price": {
+          "s": 1.25,
+          "m": 1.99,
+          "l": 2.50
+        },
         "image": "/assets/products/iced-green-tea-milk.jpg"
       },
       {
         "id": "tea-3",
-        "name": { "en": "Iced Red Tea Milk", "zh": "Iced Red Tea Milk", "km": "Iced Red Tea Milk" },
-        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
-        "image": "/assets/products/iced-red-tea-milk.jpg"
+        "name": {
+          "en": "Iced Red Tea Milk",
+          "zh": "冰红茶奶",
+          "km": "តែក្រហមទឹកដោះគោ"
+        },
+        "price": {
+          "s": 1.25,
+          "m": 1.99,
+          "l": 2.50
+        },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664929/Red_Tea_Milk_mnukjv.jpg"
       },
       {
         "id": "tea-4",
-        "name": { "en": "Iced Passion Milk", "zh": "Iced Passion Milk", "km": "Iced Passion Milk" },
-        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
-        "image": "/assets/products/iced-passion-milk.jpg"
+        "name": {
+          "en": "Iced Passion Milk",
+          "zh": "冰百香果牛奶",
+          "km": "ផាសិនទឹកដោះគោ"
+        },
+        "price": {
+          "s": 1.25,
+          "m": 1.99,
+          "l": 2.50
+        },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664916/Ice_%E1%9E%95%E1%9E%B6%E1%9E%9F%E1%9E%B7%E1%9E%93_c96kqe.jpg"
       },
       {
         "id": "tea-5",
-        "name": { "en": "Iced Passion Soda", "zh": "Iced Passion Soda", "km": "Iced Passion Soda" },
-        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
+        "name": {
+          "en": "Iced Passion Soda",
+          "zh": "冰百香果汽水",
+          "km": "ផាសិនសូដា"
+        },
+        "price": {
+          "s": 1.25,
+          "m": 1.99,
+          "l": 2.50
+        },
         "image": "/assets/products/iced-passion-soda.jpg"
       },
       {
         "id": "tea-6",
-        "name": { "en": "Iced Passion Soda Milk", "zh": "Iced Passion Soda Milk", "km": "Iced Passion Soda Milk" },
-        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
-        "image": "/assets/products/iced-passion-soda-milk.jpg"
+        "name": {
+          "en": "Iced Passion Soda Milk",
+          "zh": "冰百香果苏打牛奶",
+          "km": "ផាសិនទឹកដោះគោសូដា"
+        },
+        "price": {
+          "s": 1.25,
+          "m": 1.99,
+          "l": 2.50
+        },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664930/Passion_Soda_Milk_q0usv5.jpg"
       },
       {
         "id": "tea-7",
-        "name": { "en": "Iced Strawberry Soda", "zh": "Iced Strawberry Soda", "km": "Iced Strawberry Soda" },
-        "price": { "s": 1.25, "m": 1.99, "l": 2.50 },
-        "image": "/assets/products/iced-strawberry-soda.jpg"
+        "name": {
+          "en": "Iced Strawberry Soda",
+          "zh": "冰草莓汽水",
+          "km": "ស្ត្រប៊ែរីសូដា"
+        },
+        "price": {
+          "s": 1.25,
+          "m": 1.99,
+          "l": 2.50
+        },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664931/Strawberry_Sne_Bong_bhr3hz.jpg"
+      }
+    ]
+  },
+  {
+    "category": "food",
+    "items": [
+      {
+        "id": "food-1",
+        "name": {
+          "en": "Grilled Sandwich",
+          "zh": "烤三明治",
+          "km": "សាំងវិចគៀប"
+        },
+        "price": {
+          "regular": 0.75
+        },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761663220/1_e0soff.png"
+      },
+      {
+        "id": "food-2",
+        "name": {
+          "en": "Grilled Bread",
+          "zh": "烤面包",
+          "km": "នំបុ័ងអាំង"
+        },
+        "price": {
+          "regular": 1
+        },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761663235/3_1_hcrukv.png"
+      },
+      {
+        "id": "food-3",
+        "name": {
+          "en": "Grilled Banh Trang",
+          "zh": "烤越南菜",
+          "km": "បាញ់ត្រាងអាំង"
+        },
+        "price": {
+          "regular": 1.25
+        },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761663235/2_1_ma0pko.png"
+      },
+      {
+        "id": "food-4",
+        "name": {
+          "en": "Fresh Sandwich",
+          "zh": "新鲜三明治",
+          "km": "សាំងវិចស្រស់"
+        },
+        "price": {
+          "regular": 1.5
+        },
+        "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664407/IMAGE_2025-10-28_22_13_23_zd4okg.jpg"
       }
     ]
   }
