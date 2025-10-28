@@ -94,5 +94,15 @@
   },
   "gallery": {
     "title": "画廊"
+  },
+  "product": {
+    "close": "关闭",
+    "size": {
+      "label": "规格",
+      "s": "小杯",
+      "m": "中杯",
+      "l": "大杯",
+      "regular": "标准杯"
+    }
   }
 }

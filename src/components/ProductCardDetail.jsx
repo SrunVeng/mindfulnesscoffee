@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useMemo } from "react"
 import { createPortal } from "react-dom"
 import { useTranslation } from "react-i18next"
 import { X } from "lucide-react"
+import { labelForCategory } from "../utils/categoryI18n.js"
 
 function isNumber(n) {
     return typeof n === "number" && !Number.isNaN(n)
@@ -10,25 +11,36 @@ function getBaseLang(code = "en") {
     return code.split("-")[0]
 }
 
+// Translate size key -> label with fallbacks
+function sizeLabel(t, key) {
+    switch (key) {
+        case "s": return t("product.size.s", "Small")
+        case "m": return t("product.size.m", "Medium")
+        case "l": return t("product.size.l", "Large")
+        default:  return t("product.size.regular", "Regular")
+    }
+}
+
 function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
-    const { i18n } = useTranslation()
+    const { t, i18n } = useTranslation()
     const code = getBaseLang(lang || i18n.language || "en")
     const name = item?.name?.[code] ?? item?.name?.en ?? "—"
     const desc = item?.desc?.[code] ?? item?.desc?.en ?? ""
+    const categoryLabel = item?._category ? labelForCategory(t, item._category) : ""
 
     // Build variant list from { s, m, l } or a single number
     const variants = useMemo(() => {
         if (!item) return []
         if (typeof item.price === "object") {
             const v = []
-            if (isNumber(item.price.s)) v.push({ key: "s", label: "Small", price: item.price.s })
-            if (isNumber(item.price.m)) v.push({ key: "m", label: "Medium", price: item.price.m })
-            if (isNumber(item.price.l)) v.push({ key: "l", label: "Large", price: item.price.l })
+            if (isNumber(item.price.s)) v.push({ key: "s", label: sizeLabel(t, "s"), price: item.price.s })
+            if (isNumber(item.price.m)) v.push({ key: "m", label: sizeLabel(t, "m"), price: item.price.m })
+            if (isNumber(item.price.l)) v.push({ key: "l", label: sizeLabel(t, "l"), price: item.price.l })
             return v
         }
-        if (isNumber(item.price)) return [{ key: "one", label: "Regular", price: item.price }]
+        if (isNumber(item.price)) return [{ key: "one", label: sizeLabel(t, "one"), price: item.price }]
         return []
-    }, [item])
+    }, [item, t])
 
     const [size, setSize] = useState(variants[0]?.key)
     // Reset when opening or when the variants set changes
@@ -42,7 +54,7 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
         if (!open) return
         const prev = document.body.style.overflow
         document.body.style.overflow = "hidden"
-        const t = setTimeout(() => closeBtnRef.current?.focus(), 0)
+        const tmr = setTimeout(() => closeBtnRef.current?.focus(), 0)
 
         const onKey = (e) => {
             if (e.key === "Escape") onClose?.()
@@ -68,7 +80,7 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
         return () => {
             document.body.style.overflow = prev
             window.removeEventListener("keydown", onKey)
-            clearTimeout(t)
+            clearTimeout(tmr)
         }
     }, [open, onClose])
 
@@ -106,7 +118,7 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
                     type="button"
                     ref={closeBtnRef}
                     onClick={onClose}
-                    aria-label="Close"
+                    aria-label={t("product.close", "Close")}
                     className="absolute top-3 right-3 p-2 rounded-lg border border-[#e7dbc9] hover:bg-[#fffaf3] focus:outline-none focus:ring"
                 >
                     <X className="h-5 w-5" />
@@ -125,7 +137,7 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
 
                     {/* Info */}
                     <div className="p-5 md:p-6 bg-[#fffdf9]">
-                        <div className="text-sm text-gray-500">{item._category ?? ""}</div>
+                        <div className="text-sm text-gray-500">{categoryLabel}</div>
                         <h2 id={`product-title-${item.id}`} className="text-2xl font-semibold mt-1 text-[#2d1a14]">
                             {name}
                         </h2>
@@ -145,7 +157,9 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
                         {/* Size picker */}
                         {variants.length > 1 && (
                             <div className="mt-5">
-                                <div className="text-sm text-[#6b5545] mb-2">Size</div>
+                                <div className="text-sm text-[#6b5545] mb-2">
+                                    {t("product.size.label", "Size")}
+                                </div>
                                 <div className="flex flex-wrap gap-2">
                                     {variants.map(v => (
                                         <button
@@ -158,6 +172,7 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
                                                     : "border-[#e7dbc9] hover:bg-[#fffaf3]"
                                             ].join(" ")}
                                             aria-pressed={size === v.key}
+                                            aria-label={`${t("product.size.label", "Size")}: ${v.label}`}
                                         >
                                             <span className="font-medium">{v.label}</span>
                                             <span className="ml-2 text-sm opacity-80">${v.price.toFixed(2)}</span>
@@ -173,16 +188,16 @@ function ProductCardDetail({ open, item, lang, onClose, onAdd }) {
                                     onClick={handleAdd}
                                     className="px-4 py-2 rounded-xl text-white bg-[var(--brand-accent)] shadow-sm transition hover:scale-[1.02] active:scale-[0.98]"
                                 >
-                                    Add to order
+                                    {t("product.add_to_order", "Add to order")}
                                 </button>
                             )}
                             <button
                                 type="button"
                                 onClick={onClose}
                                 className="px-4 py-2 rounded-xl bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-300 transition"
-                                aria-label="Close"
+                                aria-label={t("product.close", "Close")}
                             >
-                                Close
+                                {t("product.close", "Close")}
                             </button>
                         </div>
                     </div>

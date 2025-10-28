@@ -95,5 +95,16 @@
   },
   "gallery": {
     "title": "Gallery"
+  },
+
+  "product": {
+    "close": "Close",
+    "size": {
+      "label": "Size",
+      "s": "Small",
+      "m": "Medium",
+      "l": "Large",
+      "regular": "Regular"
+    }
   }
 }

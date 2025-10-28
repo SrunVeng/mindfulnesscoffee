@@ -1,6 +1,7 @@
 import React, { useCallback, useState, lazy, Suspense } from "react"
 import { useTranslation } from "react-i18next"
 import { motion as Motion, useReducedMotion } from "framer-motion"
+import { labelForCategory } from "../utils/categoryI18n.js"
 
 const ProductCardDetail = lazy(() => import("./ProductCardDetail.jsx"))
 
@@ -13,7 +14,7 @@ function getBaseLang(code = "en") {
 }
 
 function ProductCard({ item, lang, onAdd }) {
-    const { i18n } = useTranslation()
+    const { t, i18n } = useTranslation()
     const [open, setOpen] = useState(false)
     const prefersReduced = useReducedMotion()
 
@@ -29,7 +30,14 @@ function ProductCard({ item, lang, onAdd }) {
         : isNumber(item?.price) ? [item.price] : []
 
     const min = prices.length ? Math.min(...prices) : null
-    const priceLabel = min !== null ? `${hasVariants ? "from " : ""}$${min.toFixed(2)}` : "—"
+    const priceLabel =
+        min !== null
+            ? hasVariants
+                ? `${t("product.from", "from")} $${min.toFixed(2)}`
+                : `$${min.toFixed(2)}`
+            : "—"
+
+    const categoryLabel = item?._category ? labelForCategory(t, item._category) : null
 
     const openModal = useCallback(() => setOpen(true), [])
     const keyOpen = useCallback((e) => {
@@ -71,8 +79,8 @@ function ProductCard({ item, lang, onAdd }) {
                         <h3 className="font-semibold leading-tight text-[#2d1a14]">{name}</h3>
                         <span className="text-sm text-[#6b5545]">{priceLabel}</span>
                     </div>
-                    {item._category && (
-                        <div className="text-xs text-gray-500 mt-1">{item._category}</div>
+                    {categoryLabel && (
+                        <div className="text-xs text-gray-500 mt-1">{categoryLabel}</div>
                     )}
                 </div>
             </Motion.div>
