@@ -5,6 +5,7 @@
   --brand-light: #62B672; /* light green */
   --brand-dark:  #1F4D28; /* dark green */
   --brand-white: #ffffff; /* white */
+ --brand-red: #e11d48;
 
   /* Backwards-compat aliases (kept for existing utilities) */
   --brand-from: var(--brand-light);

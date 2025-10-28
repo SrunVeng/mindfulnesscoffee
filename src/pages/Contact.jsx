@@ -1,18 +1,15 @@
-import React, { useMemo } from "react"
+// src/pages/Contact.jsx
+import React, { useMemo, useState } from "react"
 import variables from "../data/variables.json"
 import { useTranslation } from "react-i18next"
-import { Phone, Mail, MapPinned, ExternalLink } from "lucide-react"
+import { Phone, Mail, ExternalLink } from "lucide-react"
 import { SiFacebook, SiTelegram } from "react-icons/si"
-import { AiFillTikTok } from "react-icons/ai";
+import { AiFillTikTok } from "react-icons/ai"
 import { motion as Motion, useReducedMotion } from "framer-motion"
-import {
-    parsePhones,
-    telegramHref,
-    buildDirectionsUrl,
-    safeEmbedSrc,
-} from "../utils/contactUtils"
+import { parsePhones, telegramHref } from "../utils/contactUtils"
+import BranchModal from "../components/BranchModal.jsx"
 
-// Animation factories for stable objects and reduced-motion support
+// ---------- Animations ----------
 const createFadeUp = (reduced) => ({
     hidden: { opacity: 0, y: reduced ? 0 : 18, filter: "blur(6px)" },
     show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" } },
@@ -22,47 +19,79 @@ const createStagger = (reduced) => ({
     show: { transition: { staggerChildren: reduced ? 0 : 0.06, delayChildren: reduced ? 0 : 0.06 } },
 })
 
+// ---------- Utils ----------
+const normalizeUrl = (u) => (!u ? null : /^https?:\/\//i.test(u) ? u : `https://${u}`)
 
+// i18n helper: try multiple keys for branch title, fall back to data name -> "Branch"
+const keyFrom = (s) =>
+    (s || "")
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}]+/gu, "_")
+        .replace(/^_+|_+$/g, "")
 
-const normalizeUrl = (u) => {
-    if (!u) return null
-    return /^https?:\/\//i.test(u) ? u : `https://${u}`
+const useBranchTitle = (t) => (b) => {
+    const keys = []
+    if (b?.i18nKey) keys.push(`branches.${b.i18nKey}.title`)
+    if (b?.id) keys.push(`branches.${keyFrom(b.id)}.title`)
+    if (b?.name) keys.push(`branches.${keyFrom(b.name)}.title`)
+    // t() accepts array of keys; defaultValue returns if none found
+    return t(keys, { defaultValue: b?.name || t("contact.branch", "Branch") })
 }
 
 export default function Contact() {
     const { t } = useTranslation()
     const prefersReduced = useReducedMotion()
+    const branchTitle = useBranchTitle(t)
 
-    const cfg = variables
-    const info = cfg.contact
+    const cfg = variables || {}
+    const info = cfg.contact || {}
+    const social = variables.social || {}
 
-    const phones = useMemo(() => parsePhones(info.phone), [info.phone])
-    const primaryTel = phones?.[0]
+    // Branch list (back-compat if branches missing)
+    const branches = useMemo(() => {
+        if (Array.isArray(info.branches) && info.branches.length > 0) return info.branches
+        return [
+            {
+                id: "main",
+                name: info.branchName || t("contact.branch_generic", "Our Café"),
+                phone: info.phone,
+                email: info.email,
+                address: info.address,
+                hours: info.hours,
+                lat: info.lat,
+                lng: info.lng,
+                image: cfg.logo, // fallback visual
+                map: info.map, // for directionsQuery fallback
+            },
+        ]
+    }, [info, cfg.logo, t])
+
+    const firstPhones = parsePhones(branches?.[0]?.phone)
+    const primaryTel = firstPhones?.[0]
+
+    // Social
     const tgLink = telegramHref(info.telegram) || normalizeUrl(info.telegram)
     const fbLink = normalizeUrl(info.facebook)
-    const social = variables.social || {}
-    const tiktok = social.tiktok
-    const mapEmbed = safeEmbedSrc(info.map?.embedUrl)
-    const directionsUrl = buildDirectionsUrl(info.map?.directionsQuery || info.address)
+    const tiktok = social.tiktok || info.tiktok
 
     // Animations
     const fadeUp = createFadeUp(prefersReduced)
     const stagger = createStagger(prefersReduced)
 
-    // Consistent button styles
+    // Styles
     const BTN_BASE =
         "group inline-flex items-center justify-center gap-2 rounded-xl border px-4 py-3 md:h-12 font-medium transition-all " +
         "focus-visible:outline-none focus-visible:ring-2 ring-brand-20 active:scale-[0.98]"
-    const BTN_SOFT =
-        BTN_BASE + " border-brand-dark-20 bg-brand-dark-5 text-brand-dark shadow-sm hover:-translate-y-0.5 hover:shadow-md"
     const BTN_OUTLINE =
         BTN_BASE + " border-brand-dark-20 bg-brand-white text-brand-dark shadow-sm hover:bg-brand-dark-5 hover:-translate-y-0.5 hover:shadow-md"
-    const BTN_PRIMARY =
-        BTN_BASE + " border-transparent btn-brand text-brand-white shadow-sm hover:-translate-y-0.5 hover:shadow-md"
+
+    // Modal state
+    const [modalOpen, setModalOpen] = useState(false)
+    const [activeBranch, setActiveBranch] = useState(null)
 
     return (
         <section className="relative mx-auto max-w-6xl px-4 py-12 space-y-10">
-            {/* Ambient background aligned with Home */}
+            {/* Ambient background */}
             <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
                 <div className="absolute -top-24 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-gradient-to-b from-amber-100 via-orange-50 to-transparent blur-3xl opacity-70" />
                 <div className="absolute bottom-0 right-0 h-56 w-56 rounded-full bg-gradient-to-tr from-amber-200/50 to-white/0 blur-2xl" />
@@ -77,7 +106,7 @@ export default function Contact() {
                 viewport={{ once: true, margin: "-100px" }}
                 className="flex flex-col gap-2"
             >
-                <Motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl font-extrabold leading-tight text-brand-dark">
+                <Motion.h1 variants={fadeUp} className=" py-10 text-3xl sm:text-4xl font-extrabold leading-tight text-brand-dark">
                     <span className="bg-clip-text">{t("contact.title", "Get in touch")}</span>
                 </Motion.h1>
                 {info.tagline ? (
@@ -87,7 +116,7 @@ export default function Contact() {
                 ) : null}
             </Motion.header>
 
-            {/* Single action bar */}
+            {/* Global quick actions (no 'Directions nearby') */}
             <Motion.div
                 variants={stagger}
                 initial="hidden"
@@ -96,26 +125,14 @@ export default function Contact() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-3"
             >
                 {primaryTel && (
-                    <Motion.a
-                        variants={fadeUp}
-                        href={primaryTel.href}
-                        aria-label={t("contact.call_primary", "Call")}
-                        className={BTN_OUTLINE}
-                    >
+                    <Motion.a variants={fadeUp} href={primaryTel.href} aria-label={t("contact.call_primary", "Call")} className={BTN_OUTLINE}>
                         <Phone className="h-4 w-4 shrink-0" />
                         <span>{t("contact.call", "Call")}</span>
                     </Motion.a>
                 )}
 
                 {tgLink && (
-                    <Motion.a
-                        variants={fadeUp}
-                        href={tgLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={t("contact.telegram", "Telegram")}
-                        className={BTN_OUTLINE}
-                    >
+                    <Motion.a variants={fadeUp} href={tgLink} target="_blank" rel="noopener noreferrer" aria-label={t("contact.telegram", "Telegram")} className={BTN_OUTLINE}>
                         <SiTelegram className="h-4 w-4 shrink-0" />
                         <span>{t("contact.telegram", "Telegram")}</span>
                         <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
@@ -123,163 +140,102 @@ export default function Contact() {
                 )}
 
                 {fbLink && (
-                    <Motion.a
-                        variants={fadeUp}
-                        href={fbLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={t("contact.facebook", "Facebook")}
-                        className={BTN_OUTLINE}
-                    >
+                    <Motion.a variants={fadeUp} href={fbLink} target="_blank" rel="noopener noreferrer" aria-label={t("contact.facebook", "Facebook")} className={BTN_OUTLINE}>
                         <SiFacebook className="h-4 w-4 shrink-0" />
                         <span>{t("contact.facebook", "Facebook")}</span>
                         <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
-                        </Motion.a>
+                    </Motion.a>
                 )}
 
                 {tiktok && (
-                    <Motion.a
-                        variants={fadeUp}
-                        href={tiktok}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={t("contact.tiktok", "TikTok")}
-                        className={BTN_OUTLINE}
-                    >
+                    <Motion.a variants={fadeUp} href={tiktok} target="_blank" rel="noopener noreferrer" aria-label={t("contact.tiktok", "TikTok")} className={BTN_OUTLINE}>
                         <AiFillTikTok className="h-4 w-4 shrink-0" />
                         <span>{t("contact.tiktok", "TikTok")}</span>
                         <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
                     </Motion.a>
                 )}
-
-                {directionsUrl && (
-                    <Motion.a
-                        variants={fadeUp}
-                        href={directionsUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={t("contact.get_directions", "Directions")}
-                        className={BTN_OUTLINE + " hover:scale-[1.02]"}
-                    >
-                        <MapPinned className="h-4 w-4 shrink-0" />
-                        <span>{t("contact.get_directions", "Directions")}</span>
-                        <ExternalLink className="h-4 w-4 shrink-0 opacity-70 group-hover:opacity-100 transition-opacity" />
-                    </Motion.a>
-                )}
             </Motion.div>
 
-            {/* Main content */}
-            <div className="grid gap-8 md:grid-cols-2">
-                {/* Details card */}
-                <Motion.div
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-80px" }}
-                    className="rounded-2xl border border-brand-dark-20 bg-brand-dark-5 p-6 shadow-sm"
-                >
-                    <div className="space-y-8 text-gray-800">
-                        {(cfg.logo) && (
-                            <img
-                                src={cfg.logo}
-                                alt={t("contact.hero_alt", "Our space")}
-                                className="h-52 w-full object-cover rounded-lg ring-1 ring-[#e7dbc9]"
-                                loading="lazy"
-                                decoding="async"
-                            />
-                        )}
+            {/* Branch cards grid (mobile: 2 per row, desktop: 4–5 per row) */}
+            <Motion.div
+                variants={stagger}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-80px" }}
+                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6"
+            >
+                {branches.map((b, idx) => {
+                    const phones = parsePhones(b.phone)
+                    return (
+                        <Motion.div
+                            key={b.id || b.name || idx}
+                            variants={fadeUp}
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => { setActiveBranch(b); setModalOpen(true) }}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" || e.key === " ") {
+                                    e.preventDefault()
+                                    setActiveBranch(b)
+                                    setModalOpen(true)
+                                }
+                            }}
+                            className="rounded-2xl border border-brand-dark-20 bg-brand-dark-5 p-4 shadow-sm flex flex-col cursor-pointer hover:-translate-y-0.5 hover:shadow-md transition"
+                        >
+                            {(b.image || variables.logo) && (
+                                <img
+                                    src={b.image || variables.logo}
+                                    alt={`${branchTitle(b)} photo`}
+                                    className="w-full h-36 sm:h-40 object-cover rounded-lg ring-1 ring-[#e7dbc9] mb-3"
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            )}
 
-                        {phones?.length > 0 && (
-                            <section aria-labelledby="phones-heading">
-                                <div className="mb-3 flex items-center gap-2">
-                                    <Phone className="h-4 w-4 text-[#2d1a14]" />
-                                    <h2 id="phones-heading" className="font-semibold text-[#2d1a14]">
+                            {/* Card title with i18n (supports 3 languages via your i18next files) */}
+                            <h2 className="text-base font-semibold text-[#2d1a14] mb-1">
+                                {branchTitle(b)}
+                            </h2>
+
+                            {b.address && (
+                                <address className="not-italic text-xs text-[#6b5545] mb-3 whitespace-pre-line">
+                                    {b.address}
+                                </address>
+                            )}
+
+                            {(b.hours || info.hours) && (
+                                <p className="text-[11px] text-[#6b5545] mb-3">
+                                    {b.hours || info.hours || t("contact.hours_value", "Daily, 7:00–21:00")}
+                                </p>
+                            )}
+
+                            {phones?.length > 0 && (
+                                <div className="mt-auto">
+                                    <div className="mb-1 text-xs font-semibold text-[#2d1a14]">
                                         {t("contact.phone", "Phone")}
-                                    </h2>
-                                </div>
-                                <ul className="space-y-1">
-                                    {phones.map((p) => (
-                                        <li key={p.href}>
-                                            <a
-                                                href={p.href}
-                                                className="underline decoration-dotted underline-offset-4 hover:decoration-solid"
-                                            >
-                                                {p.display}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </section>
-                        )}
-
-                        {info.email && (
-                            <section aria-labelledby="email-heading">
-                                <div className="mb-3 flex items-center gap-2">
-                                    <Mail className="h-4 w-4 text-[#2d1a14]" />
-                                    <h2 id="email-heading" className="font-semibold text-[#2d1a14]">
-                                        {t("contact.email", "Email")}
-                                    </h2>
-                                </div>
-                                <a
-                                    href={`mailto:${info.email}`}
-                                    className="break-all underline decoration-dotted underline-offset-4 hover:decoration-solid"
-                                >
-                                    {info.email}
-                                </a>
-                            </section>
-                        )}
-
-                        {(info.address || info.hours) && (
-                            <section className="grid gap-6 sm:grid-cols-2">
-                                {info.address && (
-                                    <div>
-                                        <div className="mb-1 font-semibold text-[#2d1a14]">
-                                            {t("contact.address", "Address")}
-                                        </div>
-                                        <address className="not-italic text-[#6b5545] whitespace-pre-line">
-                                            {info.address}
-                                        </address>
                                     </div>
-                                )}
-                                <div>
-                                    <div className="mb-1 font-semibold text-[#2d1a14]">
-                                        {t("contact.hours", "Hours")}
-                                    </div>
-                                    <p className="text-[#6b5545]">
-                                        {info.hours || t("contact.hours_value", "Daily, 7:00–21:00")}
-                                    </p>
+                                    <ul className="space-y-0.5">
+                                        {phones.map((p) => (
+                                            <li key={p.href}>
+                                                <a
+                                                    href={p.href}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    className="text-sm underline decoration-dotted underline-offset-4 hover:decoration-solid"
+                                                >
+                                                    {p.display}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-                            </section>
-                        )}
-                    </div>
-                </Motion.div>
+                            )}
+                        </Motion.div>
+                    )
+                })}
+            </Motion.div>
 
-                {/* Map card */}
-                <Motion.div
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: "-80px" }}
-                    className="rounded-2xl border border-[#e7dbc9] bg-white p-4 shadow-sm"
-                >
-                    {mapEmbed ? (
-                        <div className="overflow-hidden rounded-xl border border-[#e7dbc9]">
-                            <iframe
-                                title={t("contact.map_title", "Map")}
-                                src={mapEmbed}
-                                className="w-full h-80 md:h-[28rem]"
-                                loading="lazy"
-                                allowFullScreen
-                                referrerPolicy="no-referrer-when-downgrade"
-                            />
-                        </div>
-                    ) : (
-                        <div className="p-6 text-sm text-gray-600">
-                            {t("contact.map_unavailable", "Map unavailable.")}
-                        </div>
-                    )}
-                </Motion.div>
-            </div>
+            {/* Modal */}
+            <BranchModal open={modalOpen} branch={activeBranch} onClose={() => setModalOpen(false)} />
         </section>
     )
 }
