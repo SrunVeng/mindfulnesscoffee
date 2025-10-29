@@ -31,11 +31,23 @@ export default function Home() {
     return (
         <>
             {/* HERO */}
-            <section className="relative h-[92vh] min-h-[560px] flex items-center justify-center overflow-hidden bg-[var(--brand-bg)]">
-                {/* Parallax image */}
+            <section
+                className="
+          relative w-full overflow-hidden bg-[var(--brand-bg)]
+          aspect-square md:aspect-auto md:h-[92vh] md:min-h-[560px]
+          flex items-center justify-center
+        "
+            >
+                {/* Parallax image (overscanned so parallax never shows edges) */}
                 <motion.div
                     style={{ y: yBg, backgroundImage: `url(${HOME_IMAGES.hero})` }}
-                    className="absolute inset-0 bg-cover bg-center scale-110"
+                    className="
+            absolute left-0 right-0
+            top-[-80px] bottom-[-80px]
+            bg-no-repeat bg-center
+            bg-contain md:bg-cover
+            md:top-0 md:bottom-0 md:scale-110
+          "
                     aria-hidden
                 />
 
@@ -48,7 +60,10 @@ export default function Home() {
                     }}
                     aria-hidden
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" aria-hidden />
+                <div
+                    className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"
+                    aria-hidden
+                />
 
                 {/* Subtle texture */}
                 <div
@@ -65,28 +80,20 @@ export default function Home() {
 
                 {/* Content */}
                 <motion.div {...fadeInUp} className="relative z-10 px-6 text-center max-w-3xl">
-                    {/*<h1 className="text-white text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-sm">*/}
-                    {/*    {t("home.heroTitle")}*/}
-                    {/*</h1>*/}
-
-                    {/*<p className="mt-4 text-white/90 text-base md:text-lg">*/}
-                    {/*    {t("home.heroSubtitle")}*/}
-                    {/*</p>*/}
-
                     <div className="mt-7 flex items-center justify-center gap-3">
                         <Link
                             to="/menu"
                             className="
-      inline-flex items-center justify-center rounded-xl
-      px-6 py-3 font-semibold
-      bg-[color:var(--brand-light)] text-white
-      shadow-lg shadow-black/15 transition-all duration-200
-      hover:-translate-y-0.5 hover:shadow-xl
-      active:translate-y-0 active:shadow-md
-      focus:outline-none focus-visible:ring-2
-      focus-visible:ring-[color:var(--ring)]
-      focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--brand-bg)]
-    "
+                inline-flex items-center justify-center rounded-xl
+                px-6 py-3 font-semibold
+                bg-[color:var(--brand-light)] text-white
+                shadow-lg shadow-black/15 transition-all duration-200
+                hover:-translate-y-0.5 hover:shadow-xl
+                active:translate-y-0 active:shadow-md
+                focus:outline-none focus-visible:ring-2
+                focus-visible:ring-[color:var(--ring)]
+                focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--brand-bg)]
+              "
                         >
                             {t('home.cta')}
                         </Link>
@@ -94,16 +101,16 @@ export default function Home() {
                         <Link
                             to="/contact"
                             className="
-      inline-flex items-center justify-center rounded-xl
-      px-6 py-3 font-semibold
-      bg-white text-[color:var(--brand-dark)]
-      ring-1 ring-black/10 shadow transition-all duration-200
-      hover:bg-[color:var(--brand-light)] hover:text-white hover:ring-transparent hover:shadow-lg
-      active:shadow
-      focus:outline-none focus-visible:ring-2
-      focus-visible:ring-[color:var(--ring)]
-      focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--brand-bg)]
-    "
+                inline-flex items-center justify-center rounded-xl
+                px-6 py-3 font-semibold
+                bg-white text-[color:var(--brand-dark)]
+                ring-1 ring-black/10 shadow transition-all duration-200
+                hover:bg-[color:var(--brand-light)] hover:text-white hover:ring-transparent hover:shadow-lg
+                active:shadow
+                focus:outline-none focus-visible:ring-2
+                focus-visible:ring-[color:var(--ring)]
+                focus-visible:ring-offset-2 focus-visible:ring-offset-[color:var(--brand-bg)]
+              "
                         >
                             {t('nav.contact')}
                         </Link>
@@ -139,9 +146,9 @@ export default function Home() {
                 <div className="mx-auto max-w-6xl rounded-2xl border border-[#e7dbc9] bg-white/70 p-5">
                     <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#e7dbc9] text-center">
                         {[
-                            { k: "home.stats.farmers",  n: "2", label: t("home.stats.farmers")  },
+                            { k: "home.stats.farmers",  n: "2",      label: t("home.stats.farmers")  },
                             { k: "home.stats.profiles", n: "5.0★",   label: t("home.stats.profiles") },
-                            { k: "home.stats.rating",   n: "5.0★", label: t("home.stats.rating")   },
+                            { k: "home.stats.rating",   n: "5.0★",   label: t("home.stats.rating")   },
                         ].map((s, i) => (
                             <motion.div
                                 key={s.k}
