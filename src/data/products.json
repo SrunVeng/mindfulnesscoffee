@@ -480,7 +480,7 @@
           "km": "នំបុ័ងអាំង"
         },
         "price": {
-          "regular": 1
+          "regular": 1.25
         },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761663235/3_1_hcrukv.png"
       },
@@ -492,7 +492,7 @@
           "km": "បាញ់ត្រាងអាំង"
         },
         "price": {
-          "regular": 1.25
+          "regular": 1
         },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761663235/2_1_ma0pko.png"
       },
@@ -504,7 +504,7 @@
           "km": "សាំងវិចស្រស់"
         },
         "price": {
-          "regular": 1.5
+          "regular": 1
         },
         "image": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761664407/IMAGE_2025-10-28_22_13_23_zd4okg.jpg"
       }
