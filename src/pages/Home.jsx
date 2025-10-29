@@ -11,9 +11,11 @@ export default function Home() {
     // Map available images from variables.json
     const HOME_IMAGES = {
         hero: data.logo,
-        farm: data.aboutImage,
-        brew: data.contactImage,
-        featured: data.feature,
+        section1: data.section1,
+        section2: data.section2,
+        section3: data.section3,
+        section4: data.section4,
+        section5: data.section5,
     }
 
     // Parallax for hero background
@@ -159,20 +161,31 @@ export default function Home() {
 
             {/* SCROLL SECTIONS */}
             <ScrollSection
-                title={t("home.sections.farm.title")}
-                subtitle={t("home.sections.farm.subtitle")}
-                image={HOME_IMAGES.farm}
+                title={t("home.sections.section1.title")}
+                subtitle={t("home.sections.section1.subtitle")}
+                image={HOME_IMAGES.section1}
             />
             <ScrollSection
-                title={t("home.sections.brew.title")}
-                subtitle={t("home.sections.brew.subtitle")}
-                image={HOME_IMAGES.brew}
+                title={t("home.sections.section2.title")}
+                subtitle={t("home.sections.section2.subtitle")}
+                image={HOME_IMAGES.section2}
                 reverse
             />
             <ScrollSection
-                title={t("home.sections.featured.title")}
-                subtitle={t("home.sections.featured.subtitle")}
-                image={HOME_IMAGES.featured}
+                title={t("home.sections.section3.title")}
+                subtitle={t("home.sections.section3.subtitle")}
+                image={HOME_IMAGES.section3}
+            />
+            <ScrollSection
+                title={t("home.sections.section4.title")}
+                subtitle={t("home.sections.section4.subtitle")}
+                image={HOME_IMAGES.section4}
+                reverse
+            />
+            <ScrollSection
+                title={t("home.sections.section5.title")}
+                subtitle={t("home.sections.section5.subtitle")}
+                image={HOME_IMAGES.section5}
             />
 
             {/* CTA BANNER */}

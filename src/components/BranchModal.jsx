@@ -1,7 +1,3 @@
-// src/components/BranchModal.jsx
-// Note: define a red token in your CSS if you want a custom one:
-// :root { --brand-red: #e11d48; }
-
 import React, { useEffect, useRef, useMemo } from "react"
 import { motion as Motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { X, MapPinned, Phone, Mail, ExternalLink } from "lucide-react"

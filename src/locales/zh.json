@@ -32,78 +32,87 @@
       "rating": "阿拉比卡咖啡豆"
     },
     "sections": {
-      "farm": {
-        "title": "从产地到杯中",
-        "subtitle": "可追溯采购，与区域伙伴建立长期关系。"
+        "section1": {
+          "title": "人第一，事第二",
+          "subtitle": "我们致力于通过友好的团队、高品质的饮品和积极的氛围，提供卓越的客户服务。"
+        },
+        "section2": {
+          "title": "妈妈最爱的饮料",
+          "subtitle": "柬埔寨传统甜点“空中飞人”（发酵糯米）如今已成为柬埔寨最受欢迎的冰沙饮品。这款饮品完全由当地制作。"
+        },
+        "section3": {
+          "title": "最佳伴侣——糯米咖啡",
+          "subtitle": "对于咖啡爱好者来说，现在您可以同时品尝到我们最好的咖啡豆和本地产的糯米。"
+        },
+        "section4": {
+          "title": "更强大的你造就更强大的社会",
+          "subtitle": "让我们读书，提升知识和技能。阅读创造每一个成功的机会。"
+        },
+        "section5": {
+          "title": "我们关心您的个人成长",
+          "subtitle": "这是一家致力于教育的咖啡店，我们希望通过一杯咖啡带来积极的改变。我们不仅仅是一家企业，我们更关心您的身心健康。让我们携手共进！"
+        }
       },
-      "brew": {
-        "title": "以用心之名萃取",
-        "subtitle": "每一杯都经过称量、计时与杯测，确保稳定。"
-      },
-      "featured": {
-        "title": "本周推荐",
-        "subtitle": "向咖啡师咨询季节限定与限量上新。"
+      "banner": {
+        "title": "准备好遇见下一杯最爱了吗？",
+        "subtitle": "探索我们的招牌饮品与最新上新。"
       }
     },
-    "banner": {
-      "title": "准备好遇见下一杯最爱了吗？",
-      "subtitle": "探索我们的招牌饮品与最新上新。"
-    }
-  },
-  "about": {
-    "founders_title": "我们的团队",
-    "founders_blurb": "认识“森林咖啡”背后的团队。",
-    "title": "我们的故事",
-    "body": "“要统御宇宙，先要统御自己。要统御自己，先要能统御自心。要统御自心，先要修习正念和清晰的理解。”——玛哈·戈萨南达\n\n这就是我们开设这家小咖啡馆的原因。我们于2021年1月1日星期五创立了这家咖啡馆。我们憧憬着一杯咖啡能够激发人们和社区的积极改变。",
-    "image_alt": "关于我们的图片"
-  },
-  "contact": {
-    "title": "联系我们",
-    "tagline": "",
-    "call": "拨打电话",
-    "call_primary": "拨打电话",
-    "telegram": "Telegram 电报",
-    "facebook": "Facebook",
-    "tiktok": "抖音",
-    "get_directions": "导航",
-    "phone": "电话",
-    "email": "邮箱",
-    "address": "地址",
-    "hours": "营业时间",
-    "hours_value": "每天 7:00早晨–6:00晚上",
-    "map_title": "地图",
-    "map_unavailable": "地图不可用。",
-    "hero_alt": "我们的空间"
-  },
-  "menu": {
-    "title": "菜单",
-    "all": "全部",
-    "categories": {
-      "signature": "招牌",
-      "premium": "精品",
-      "hot": "热饮",
-      "cold": "冷饮",
-      "frappe_smoothies": "星冰乐 / 思慕雪",
-      "tea_passion_soda": "茶 / 百香果 / 汽水",
-      "food": "餐食"
+    "about": {
+      "founders_title": "我们的团队",
+      "founders_blurb": "认识“森林咖啡”背后的团队。",
+      "title": "我们的故事",
+      "body": "“要统御宇宙，先要统御自己。要统御自己，先要能统御自心。要统御自心，先要修习正念和清晰的理解。”——玛哈·戈萨南达\n\n这就是我们开设这家小咖啡馆的原因。我们于2021年1月1日星期五创立了这家咖啡馆。我们憧憬着一杯咖啡能够激发人们和社区的积极改变。",
+      "image_alt": "关于我们的图片"
     },
-    "search_placeholder": "搜索饮品…"
-  },
-  "footer": {
-    "legal": "© {{year}} {{brand}}。保留所有权利。"
-  },
-  "gallery": {
-    "title": "画廊"
-  },
-  "product": {
-    "from": "起",
-    "close": "关闭",
-    "size": {
-      "label": "规格",
-      "s": "小杯",
-      "m": "中杯",
-      "l": "大杯",
-      "regular": "标准杯"
+    "contact": {
+      "title": "联系我们",
+      "tagline": "",
+      "call": "拨打电话",
+      "call_primary": "拨打电话",
+      "telegram": "Telegram 电报",
+      "facebook": "Facebook",
+      "tiktok": "抖音",
+      "get_directions": "导航",
+      "phone": "电话",
+      "email": "邮箱",
+      "address": "地址",
+      "hours": "营业时间",
+      "hours_value": "每天 7:00早晨–6:00晚上",
+      "map_title": "地图",
+      "map_unavailable": "地图不可用。",
+      "hero_alt": "我们的空间"
+    },
+    "menu": {
+      "title": "菜单",
+      "all": "全部",
+      "categories": {
+        "signature": "招牌",
+        "premium": "精品",
+        "hot": "热饮",
+        "cold": "冷饮",
+        "frappe_smoothies": "星冰乐 / 思慕雪",
+        "tea_passion_soda": "茶 / 百香果 / 汽水",
+        "food": "餐食"
+      },
+      "search_placeholder": "搜索饮品…"
+    },
+    "footer": {
+      "legal": "© {{year}} {{brand}}。保留所有权利。"
+    },
+    "gallery": {
+      "title": "画廊"
+    },
+    "product": {
+      "from": "起",
+      "close": "关闭",
+      "size": {
+        "label": "规格",
+        "s": "小杯",
+        "m": "中杯",
+        "l": "大杯",
+        "regular": "标准杯"
+      }
     }
   }
-}
+
