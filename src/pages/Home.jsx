@@ -195,7 +195,7 @@ export default function Home() {
                             to="/menu"
                             className="
                 inline-flex items-center justify-center rounded-xl
-                bg-[var(--brand-accent)] px-6 py-3 text-black font-semibold
+                bg-[var(--brand-dark)] px-6 py-3 text-white font-semibold
                 shadow-md transition-transform hover:scale-[1.03] active:scale-[0.98]
                 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a44c] focus-visible:ring-offset-2
               "
