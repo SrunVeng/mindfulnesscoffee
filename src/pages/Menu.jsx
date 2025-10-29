@@ -1,10 +1,146 @@
-import React, { useMemo, useState, useDeferredValue } from "react"
+import React, { useMemo, useState, useDeferredValue, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { motion as Motion, useReducedMotion } from "framer-motion"
 import useProducts from "../hooks/useProducts.js"
 import CategoryBar from "../components/CategoryBar.jsx"
 import ProductCard from "../components/ProductCard.jsx"
 import { labelForCategory } from "../utils/categoryI18n.js"
+
+const PAGE_SIZE = 12 // adjust as needed
+
+function Pagination({ page, pageCount, onChange }) {
+    if (pageCount <= 1) return null
+    const go = (p) => onChange(Math.min(Math.max(1, p), pageCount))
+
+    const nums = useMemo(() => {
+        const span = 2
+        const start = Math.max(1, page - span)
+        const end = Math.min(pageCount, page + span)
+        const arr = []
+        for (let i = start; i <= end; i++) arr.push(i)
+        return arr
+    }, [page, pageCount])
+
+    return (
+        <div className="mt-1">
+            {/* Mobile: compact */}
+            <div className="md:hidden flex items-center justify-center gap-2">
+                <button
+                    type="button"
+                    onClick={() => go(page - 1)}
+                    disabled={page === 1}
+                    className="px-3 py-1.5 rounded-lg border border-[#e7dbc9] disabled:opacity-40"
+                    aria-label="Previous page"
+                >
+                    ‹
+                </button>
+                <span className="text-sm text-[#6b5545]">
+                    Page {page} of {pageCount}
+                </span>
+                <button
+                    type="button"
+                    onClick={() => go(page + 1)}
+                    disabled={page === pageCount}
+                    className="px-3 py-1.5 rounded-lg border border-[#e7dbc9] disabled:opacity-40"
+                    aria-label="Next page"
+                >
+                    ›
+                </button>
+            </div>
+
+            {/* Desktop/Tablet: numbered */}
+            <div className="hidden md:flex items-center justify-center gap-2">
+                <button
+                    type="button"
+                    onClick={() => go(1)}
+                    disabled={page === 1}
+                    className="px-3 py-1.5 rounded-lg border border-[#e7dbc9] disabled:opacity-40"
+                    aria-label="First page"
+                >
+                    «
+                </button>
+                <button
+                    type="button"
+                    onClick={() => go(page - 1)}
+                    disabled={page === 1}
+                    className="px-3 py-1.5 rounded-lg border border-[#e7dbc9] disabled:opacity-40"
+                    aria-label="Previous page"
+                >
+                    ‹
+                </button>
+
+                {/* Leading ellipsis */}
+                {nums[0] > 1 && (
+                    <>
+                        <button
+                            type="button"
+                            onClick={() => go(1)}
+                            className="px-3 py-1.5 rounded-lg border border-[#e7dbc9]"
+                        >
+                            1
+                        </button>
+                        {nums[0] > 2 && <span className="px-1 text-[#6b5545]">…</span>}
+                    </>
+                )}
+
+                {nums.map((n) => {
+                    const isActive = n === page
+                    return (
+                        <button
+                            key={n}
+                            type="button"
+                            onClick={() => go(n)}
+                            aria-current={isActive ? "page" : undefined}
+                            className={[
+                                "px-3 py-1.5 rounded-lg border",
+                                isActive
+                                    ? "border-[#2d1a14] bg-[#2d1a14] text-white"
+                                    : "border-[#e7dbc9] bg-white hover:bg-[#fffaf3] text-[#2d1a14]",
+                            ].join(" ")}
+                        >
+                            {n}
+                        </button>
+                    )
+                })}
+
+                {/* Trailing ellipsis */}
+                {nums[nums.length - 1] < pageCount && (
+                    <>
+                        {nums[nums.length - 1] < pageCount - 1 && (
+                            <span className="px-1 text-[#6b5545]">…</span>
+                        )}
+                        <button
+                            type="button"
+                            onClick={() => go(pageCount)}
+                            className="px-3 py-1.5 rounded-lg border border-[#e7dbc9]"
+                        >
+                            {pageCount}
+                        </button>
+                    </>
+                )}
+
+                <button
+                    type="button"
+                    onClick={() => go(page + 1)}
+                    disabled={page === pageCount}
+                    className="px-3 py-1.5 rounded-lg border border-[#e7dbc9] disabled:opacity-40"
+                    aria-label="Next page"
+                >
+                    ›
+                </button>
+                <button
+                    type="button"
+                    onClick={() => go(pageCount)}
+                    disabled={page === pageCount}
+                    className="px-3 py-1.5 rounded-lg border border-[#e7dbc9] disabled:opacity-40"
+                    aria-label="Last page"
+                >
+                    »
+                </button>
+            </div>
+        </div>
+    )
+}
 
 // Mobile-only wrapped categories (no horizontal scroll)
 const WrappedCategories = React.memo(function WrappedCategories({ categories, active, onChange }) {
@@ -45,6 +181,7 @@ export default function Menu() {
     // State
     const [active, setActive] = useState("All")
     const [query, setQuery] = useState("")
+    const [page, setPage] = useState(1)
 
     // Centralized products data and helpers
     const { displayCategories, filterItems } = useProducts()
@@ -53,9 +190,18 @@ export default function Menu() {
     const deferredQuery = useDeferredValue(query)
 
     // Items (filtered by category + search)
-    const items = useMemo(() => {
-        return filterItems(active, deferredQuery)
-    }, [active, deferredQuery, filterItems])
+    const items = useMemo(() => filterItems(active, deferredQuery), [active, deferredQuery, filterItems])
+
+    // Reset to first page whenever filters/search change
+    useEffect(() => {
+        setPage(1)
+    }, [active, deferredQuery])
+
+    const pageCount = Math.max(1, Math.ceil(items.length / PAGE_SIZE))
+    const pageItems = useMemo(() => {
+        const start = (page - 1) * PAGE_SIZE
+        return items.slice(start, start + PAGE_SIZE)
+    }, [items, page])
 
     // Animation variants
     const fadeUp = useMemo(
@@ -99,9 +245,9 @@ export default function Menu() {
                     {t("menu.title", "Our Menu")}
                 </h1>
 
-                {/* On mobile: wrapped chips (no scroll). On md+: original CategoryBar */}
+                {/* Filters & search */}
                 <div className="mt-4 flex flex-col gap-3">
-                    {/* Mobile filter (always visible, wraps to multiple lines) */}
+                    {/* Mobile filter (wraps, no scroll) */}
                     <div className="md:hidden">
                         <WrappedCategories
                             categories={displayCategories}
@@ -139,18 +285,29 @@ export default function Menu() {
                             aria-label={t("menu.search_aria", "Search menu")}
                         />
                     </div>
+
+                    {/* Navigator (pagination) below CategoryBar */}
+                    <Pagination page={page} pageCount={pageCount} onChange={setPage} />
+
+                    {/* Results meta */}
+                    <div className="text-sm text-[#6b5545]" aria-live="polite">
+                        {items.length} {t("menu.results", "results")}
+                        {pageCount > 1 && (
+                            <> · {t("menu.showing_page", "showing page")} {page}/{pageCount}</>
+                        )}
+                    </div>
                 </div>
             </Motion.div>
 
-            {/* Grid: 2 items per row on mobile, 3 on large screens */}
+            {/* Grid */}
             <Motion.div
-                key={`${active}|${deferredQuery}`}
+                key={`${active}|${deferredQuery}|${page}`}
                 variants={stagger}
                 initial="hidden"
                 animate="show"
                 className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-6"
             >
-                {items.length === 0 ? (
+                {pageItems.length === 0 ? (
                     <div className="col-span-2 lg:col-span-3 text-center text-[#6b5545] py-10">
                         {t("menu.empty", "No items match your filters.")}
                         <button
@@ -159,19 +316,21 @@ export default function Menu() {
                             onClick={() => {
                                 setActive("All")
                                 setQuery("")
+                                setPage(1)
                             }}
                         >
                             {t("menu.clear_filters", "Clear filters")}
                         </button>
                     </div>
                 ) : (
-                    items.map((it) => (
+                    pageItems.map((it) => (
                         <Motion.div key={it.id} variants={fadeUp}>
                             <ProductCard item={it} lang={i18n.language} />
                         </Motion.div>
                     ))
                 )}
             </Motion.div>
+            {/* No bottom pager */}
         </section>
     )
 }
