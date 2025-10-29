@@ -27,13 +27,27 @@ export default function About() {
 
     return (
         <main className="relative">
-            {/* HERO (parallax image + tint + subtle texture, aligned with Home) */}
-            <section className="relative isolate z-0 h-[92vh] min-h-[560px] flex items-center justify-center overflow-hidden bg-[var(--brand-bg)]">
+            {/* HERO (parallax image + tint + subtle texture, mobile-safe fit) */}
+            <section
+                className="
+          relative isolate z-0 w-full overflow-hidden bg-[var(--brand-bg)]
+          aspect-square md:aspect-auto md:h-[92vh] md:min-h-[560px]
+          flex items-center justify-center
+        "
+            >
+                {/* Overscanned bg layer so parallax never reveals edges */}
                 <Motion.div
                     style={{ y: yBg, backgroundImage: `url(${aboutImage})` }}
-                    className="absolute inset-0 bg-cover bg-center scale-110"
+                    className="
+            absolute left-0 right-0
+            top-[-60px] bottom-[-60px]
+            bg-no-repeat bg-center
+            bg-contain md:bg-cover
+            md:top-0 md:bottom-0 md:scale-110
+          "
                     aria-hidden
                 />
+
                 <div
                     className="absolute inset-0"
                     style={{
@@ -86,7 +100,7 @@ export default function About() {
                                 src={aboutImage}
                                 alt={t("about.image_alt")}
                                 loading="lazy"
-                                className="h-64 w-full object-cover sm:h-80 md:h-full"
+                                className="h-64 w-full object-contain sm:h-80 md:h-full bg-white"
                             />
                         </figure>
                     </div>
