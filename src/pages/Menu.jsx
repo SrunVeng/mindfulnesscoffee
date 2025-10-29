@@ -23,8 +23,17 @@ function Pagination({ page, pageCount, onChange }) {
 
     return (
         <div className="mt-1">
-            {/* Mobile: compact */}
+            {/* Mobile: compact (with first/last) */}
             <div className="md:hidden flex items-center justify-center gap-2">
+                <button
+                    type="button"
+                    onClick={() => go(1)}
+                    disabled={page === 1}
+                    className="px-3 py-1.5 rounded-lg border border-[#e7dbc9] disabled:opacity-40"
+                    aria-label="First page"
+                >
+                    «
+                </button>
                 <button
                     type="button"
                     onClick={() => go(page - 1)}
@@ -45,6 +54,15 @@ function Pagination({ page, pageCount, onChange }) {
                     aria-label="Next page"
                 >
                     ›
+                </button>
+                <button
+                    type="button"
+                    onClick={() => go(pageCount)}
+                    disabled={page === pageCount}
+                    className="px-3 py-1.5 rounded-lg border border-[#e7dbc9] disabled:opacity-40"
+                    aria-label="Last page"
+                >
+                    »
                 </button>
             </div>
 
@@ -286,7 +304,7 @@ export default function Menu() {
                         />
                     </div>
 
-                    {/* Navigator (pagination) below CategoryBar */}
+                    {/* Top pager */}
                     <Pagination page={page} pageCount={pageCount} onChange={setPage} />
 
                     {/* Results meta */}
@@ -330,10 +348,11 @@ export default function Menu() {
                     ))
                 )}
             </Motion.div>
+
+            {/* Bottom pager */}
             <div className="mt-6">
                 <Pagination page={page} pageCount={pageCount} onChange={setPage} />
             </div>
         </section>
-
     )
 }
