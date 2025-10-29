@@ -2,9 +2,11 @@
   "brandName": "Mindfulness Coffee",
   "logo": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761455161/redesign_mindfulness_logo_2025-05_1_a7ci7o.jpg",
   "logo_corner": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761556325/IMG_0247_lthfou.jpg",
-  "aboutImage": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761467653/Ice_Americano_boydni.jpg",
-  "contactImage": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761467655/5_hfxsg7.png",
-  "feature": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761467653/Caramel_Latte_sks2ot.jpg",
+  "section1": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761714941/Screenshot_2025-10-29_at_12.06.04_PM_sgox5q.png",
+  "section2": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761714938/Screenshot_2025-10-29_at_12.00.30_PM_orcxuo.png",
+  "section3": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761714939/Screenshot_2025-10-29_at_12.02.26_PM_scsqw5.png",
+  "section4": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761716698/Screenshot_2025-10-29_at_12.01.07_PM_ekewi2.png",
+  "section5": "https://res.cloudinary.com/dayrc0f7r/image/upload/v1761714939/Screenshot_2025-10-29_at_12.06.24_PM_cdihfr.png",
 
   "team": {
     "founders": [

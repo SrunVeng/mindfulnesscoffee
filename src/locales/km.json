@@ -32,17 +32,25 @@
       "rating": "គ្រាប់កាហ្វេអារ៉ាប៊ីកា"
     },
     "sections": {
-      "farm": {
-        "title": "កាហ្វេសម្មាធិ",
-        "subtitle": "កាហ្វេសម្មាធិ"
+      "section1": {
+        "title": "From Farm to Cup",
+        "subtitle": "Traceable sourcing and long-term relationships across the region."
       },
-      "brew": {
-        "title": "កាហ្វេសម្មាធិា",
-        "subtitle": "កាហ្វេសម្មាធិ"
+      "section2": {
+        "title": "Brewing with Intention",
+        "subtitle": "Every cup is weighed, timed, and tasted for consistency."
       },
-      "featured": {
-        "title": "កាហ្វេសម្មាធិ",
-        "subtitle": "កាហ្វេសម្មាធិ"
+      "section3": {
+        "title": "Featured This Week",
+        "subtitle": "Ask our baristas about seasonal specials and limited releases."
+      },
+      "section4": {
+        "title": "Featured This Week",
+        "subtitle": "Ask our baristas about seasonal specials and limited releases."
+      },
+      "section5": {
+        "title": "Featured This Week",
+        "subtitle": "Ask our baristas about seasonal specials and limited releases."
       }
     },
     "banner": {

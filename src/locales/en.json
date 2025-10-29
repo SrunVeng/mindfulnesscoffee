@@ -32,17 +32,25 @@
       "rating": "Arabica Bean"
     },
     "sections": {
-      "farm": {
-        "title": "From Farm to Cup",
-        "subtitle": "Traceable sourcing and long-term relationships across the region."
+      "section1": {
+        "title": "People First, Things Second",
+        "subtitle": "We commit to provide excellent customer service through friendly team, high quality drinks and postive atmosphere."
       },
-      "brew": {
-        "title": "Brewing with Intention",
-        "subtitle": "Every cup is weighed, timed, and tasted for consistency."
+      "section2": {
+        "title": "Mommy's Favorite Drink",
+        "subtitle": "A long time Khmer dessert, trapae, has now become the most popular smothie drink in Cambodia. This is purly local made."
       },
-      "featured": {
-        "title": "Featured This Week",
-        "subtitle": "Ask our baristas about seasonal specials and limited releases."
+      "section3": {
+        "title": "The Best Companion - Coffee with Sticky Rice",
+        "subtitle": "For coffee lover, you can now taste both our best coffee bean and local made sticky rice."
+      },
+      "section4": {
+        "title": "A Stronger You Makes a Stronger Society",
+        "subtitle": "Let's read, let's improve our knowledge and skills. Reading creates every opportunity of success."
+      },
+      "section5": {
+        "title": "We Care about Your Personal Growth",
+        "subtitle": "This is a coffee for education and we envision a positive change through a cup of coffee.  We do not just run a business, we care about your physical and mental health. We will grow altogether!"
       }
     },
     "banner": {
