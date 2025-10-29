@@ -330,7 +330,10 @@ export default function Menu() {
                     ))
                 )}
             </Motion.div>
-            {/* No bottom pager */}
+            <div className="mt-6">
+                <Pagination page={page} pageCount={pageCount} onChange={setPage} />
+            </div>
         </section>
+
     )
 }
